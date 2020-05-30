@@ -169,13 +169,13 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     private void abrirMenu() {
-        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
+        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
         btnImage.setImage(image);
         openNav.play();
     }
 
     private void cerrarMenu() {
-        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
+        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
         btnImage.setImage(image);
         closeNav.setToX(-(apMenu.getWidth()));
         closeNav.play();
