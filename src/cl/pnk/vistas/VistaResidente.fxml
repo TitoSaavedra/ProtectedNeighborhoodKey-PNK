@@ -3,9 +3,12 @@
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="cl.pnk.controlador.VistaResidenteControlador">
+<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" style="-fx-background-color: #1D70F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaResidenteControlador">
    <children>
-      <JFXSpinner layoutX="617.0" layoutY="585.0" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXSpinner layoutX="575.0" layoutY="644.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="644.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

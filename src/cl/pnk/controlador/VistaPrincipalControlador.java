@@ -48,10 +48,6 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     private Text txtNombreApellido;
     @FXML
-    private Text txtNombreProyecto;
-    @FXML
-    private Text txtVersion;
-    @FXML
     private Button btnVisita;
     @FXML
     private Button bntResidentes;
@@ -63,6 +59,8 @@ public class VistaPrincipalControlador implements Initializable {
     private Button btnInforme;
     @FXML
     private ImageView btnImage;
+    @FXML
+    private Button btnCerrarSerion;
 
     /**
      * Initializes the controller class.
@@ -85,13 +83,10 @@ public class VistaPrincipalControlador implements Initializable {
 
     @FXML
     private void accionBarrera(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaResidente.fxml"));
-        AnchorPane.setTopAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setBottomAnchor(pane, 0.0);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarrera.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
-        apVista.getChildren().setAll(pane);
+        apVista.getChildren().setAll(panel);
     }
 
     @FXML
@@ -99,7 +94,11 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     @FXML
-    private void accionResidente(ActionEvent event) {
+    private void accionResidente(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaResidente.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
     }
 
     @FXML
@@ -127,7 +126,7 @@ public class VistaPrincipalControlador implements Initializable {
                         btnImage.setImage(image);
                         openNav.play();
                     } else {
-                       Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
+                        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
                         btnImage.setImage(image);
                         closeNav.setToX(-(apMenu.getWidth()));
                         closeNav.play();
@@ -136,6 +135,22 @@ public class VistaPrincipalControlador implements Initializable {
             }
         });
 
+    }
+
+    private AnchorPane tamanoPanel(AnchorPane pane) {
+        AnchorPane.setTopAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        return pane;
+    }
+
+    @FXML
+    private void accionCerrarSesion(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaIngreso.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apPanelPrincipal.getChildren().removeAll();
+        apPanelPrincipal.getChildren().setAll(panel);
     }
 
 }
