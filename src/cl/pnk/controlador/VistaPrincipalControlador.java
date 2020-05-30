@@ -61,6 +61,9 @@ public class VistaPrincipalControlador implements Initializable {
     private ImageView btnImage;
     @FXML
     private Button btnCerrarSerion;
+    TranslateTransition openNav = null;
+
+    TranslateTransition closeNav = null;
 
     /**
      * Initializes the controller class.
@@ -82,12 +85,9 @@ public class VistaPrincipalControlador implements Initializable {
         AnchorPane.setBottomAnchor(pane, 0.0);
     }
 
-    private void limpiarPanel(AnchorPane pane) {
-        // panelPrincipal.getChildren().removeAll();
-    }
-
     @FXML
     private void accionBarrera(ActionEvent event) throws IOException {
+        cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -95,11 +95,17 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     @FXML
-    private void accionVisita(ActionEvent event) {
+    private void accionVisita(ActionEvent event) throws IOException {
+        cerrarMenu();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaVisitante.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
     }
 
     @FXML
     private void accionResidente(ActionEvent event) throws IOException {
+        cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaResidente.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -108,46 +114,44 @@ public class VistaPrincipalControlador implements Initializable {
 
     @FXML
     private void accionEncomienda(ActionEvent event) {
+        cerrarMenu();
     }
 
     @FXML
     private void accionNotificacion(ActionEvent event) {
+        cerrarMenu();
     }
 
     @FXML
     private void accionInforme(ActionEvent event) {
+        cerrarMenu();
     }
 
     private void prepareSlideMenuAnimation() {
-        TranslateTransition openNav = new TranslateTransition(new Duration(350), apMenu);
+        openNav = new TranslateTransition(new Duration(350), apMenu);
         openNav.setToX(0);
-        TranslateTransition closeNav = new TranslateTransition(new Duration(350), apMenu);
+        closeNav = new TranslateTransition(new Duration(350), apMenu);
         btnImage.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
                 if (me.getButton() != MouseButton.MIDDLE) {
                     if (apMenu.getTranslateX() != 0) {
-                        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
-                        btnImage.setImage(image);
-                        openNav.play();
+                        abrirMenu();
                     } else {
-                        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
-                        btnImage.setImage(image);
-                        closeNav.setToX(-(apMenu.getWidth()));
-                        closeNav.play();
+                        cerrarMenu();
                     }
                 }
             }
         });
-
     }
 
-    private void inicioApp () throws IOException{
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
+    private void inicioApp() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
         apVista.getChildren().setAll(panel);
     }
+
     private AnchorPane tamanoPanel(AnchorPane pane) {
         AnchorPane.setTopAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);
@@ -162,6 +166,19 @@ public class VistaPrincipalControlador implements Initializable {
         AnchorPane panel = tamanoPanel(pane);
         apPanelPrincipal.getChildren().removeAll();
         apPanelPrincipal.getChildren().setAll(panel);
+    }
+
+    private void abrirMenu() {
+        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
+        btnImage.setImage(image);
+        openNav.play();
+    }
+
+    private void cerrarMenu() {
+        Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
+        btnImage.setImage(image);
+        closeNav.setToX(-(apMenu.getWidth()));
+        closeNav.play();
     }
 
 }

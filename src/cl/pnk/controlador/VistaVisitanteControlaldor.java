@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -20,18 +19,26 @@ import javafx.scene.text.Text;
  *
  * @author TitoS
  */
-public class VistaBarreraUAControlador implements Initializable {
+public class VistaVisitanteControlaldor implements Initializable {
 
     @FXML
     private Text txtNombreMenu2;
     @FXML
     private Text txtNombreRuta;
     @FXML
-    private TextField jtfBusqueda1;
+    private TextField jtfBusqueda;
+    @FXML
+    private Text txtResultadoBusquedaRut;
+    @FXML
+    private JFXButton btnFiltro;
+    @FXML
+    private JFXButton btnImagen;
+    @FXML
+    private JFXButton btnFiltro1;
     @FXML
     private Text txtResultadoBusquedaRut1;
     @FXML
-    private JFXButton btnFiltro1;
+    private TextField jtfBusqueda1;
     @FXML
     private TextField jtfBusqueda11;
     @FXML
@@ -49,6 +56,10 @@ public class VistaBarreraUAControlador implements Initializable {
 
     @FXML
     private void accionFiltrar(ActionEvent event) {
+    }
+
+    @FXML
+    private void accionBuscarImagen(ActionEvent event) {
     }
     
 }

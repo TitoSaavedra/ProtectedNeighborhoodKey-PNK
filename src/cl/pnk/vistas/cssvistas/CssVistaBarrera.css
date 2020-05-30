@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30 may. 2020, 2:39:22
+    Author     : TitoS
+*/
+
+.jfx-tab-pane .headers-region {
+    -fx-background-color:  #1D5EEF;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color:   #1D5EEF;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: #ffff00;
+    -fx-stroke-width: 3pt;
+}

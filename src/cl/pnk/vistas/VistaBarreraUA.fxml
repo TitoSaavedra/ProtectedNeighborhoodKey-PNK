@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -22,56 +23,146 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #1D5EEF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <AnchorPane layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="1200.0" style="-fx-background-color: #1D5EEF;" stylesheets="@cssvistas/CssVistaBarrera.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                <children>
-                  <Text fx:id="txtNombreMenu" fill="WHITE" layoutX="63.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimos accesos" wrappingWidth="505.13671875">
+                  <Text fx:id="txtNombreMenu2" fill="WHITE" layoutX="32.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingreso Visitante" wrappingWidth="505.13671875">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtNombreMenu1" fill="#ffffff81" layoutX="63.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial de acceso/Ultimos Accesos" wrappingWidth="505.13671875">
+                  <Text fx:id="txtNombreRuta" fill="#ffffff81" layoutX="32.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial de acceso/Ultimos Accesos" wrappingWidth="505.13671875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-               </children></AnchorPane>
-            <GridPane layoutX="50.0" layoutY="193.0" prefHeight="541.0" prefWidth="1100.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="167.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <TableView prefHeight="454.0" prefWidth="1100.0" GridPane.rowIndex="1">
-                    <columns>
-                      <TableColumn minWidth="220.0" prefWidth="-1.0" text="Nombres" />
-                      <TableColumn minWidth="220.0" prefWidth="-1.0" text="Apellidos" />
-                        <TableColumn minWidth="220.0" prefWidth="-1.0" text="Dirección" />
-                        <TableColumn minWidth="220.0" prefWidth="-1.0" text="Hora de acceso" />
-                        <TableColumn minWidth="220.0" prefWidth="-1.0" text="Tipo de acceso" />
-                    </columns>
-                  </TableView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="jtfBusqueda" prefHeight="36.0" prefWidth="263.0">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextField>
-                        <Button fx:id="btnFiltro" mnemonicParsing="false" onAction="#btnFiltrar" prefHeight="36.0" prefWidth="142.0" text="Buscar">
-                           <graphic>
-                              <FontAwesomeIcon glyphName="SEARCH" />
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets left="3.0" />
-                           </opaqueInsets>
-                        </Button>
-                     </children>
-                  </HBox>
                </children>
-            </GridPane>
+            </AnchorPane>
+            <JFXTabPane layoutY="139.0" prefHeight="632.0" prefWidth="1200.0" stylesheets="@cssvistas/CssVistaBarrera.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
+               <tabs>
+                  <Tab text="Últimos accesos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="50.0" layoutY="27.0" prefHeight="541.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="167.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TableView prefHeight="454.0" prefWidth="1100.0" GridPane.rowIndex="1">
+                                      <columns>
+                                        <TableColumn minWidth="220.0" prefWidth="-1.0" text="Nombres" />
+                                        <TableColumn minWidth="220.0" prefWidth="-1.0" text="Apellidos" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Dirección" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Hora de acceso" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Tipo de acceso" />
+                                      </columns>
+                                    </TableView>
+                                    <GridPane prefHeight="76.0" prefWidth="1100.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="374.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="919.0" minWidth="10.0" prefWidth="726.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="jtfBusqueda1" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                          <Text fx:id="txtResultadoBusquedaRut1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="375.13671875" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXButton fx:id="btnFiltro1" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #1D5EEF;" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
+                                             </graphic>
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Historial de Acceso">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="50.0" layoutY="27.0" prefHeight="541.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="167.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TableView prefHeight="454.0" prefWidth="1100.0" GridPane.rowIndex="1">
+                                       <columns>
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Nombres" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Apellidos" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Dirección" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Hora de acceso" />
+                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Tipo de acceso" />
+                                       </columns>
+                                    </TableView>
+                                    <GridPane prefHeight="76.0" prefWidth="1100.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="374.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="919.0" minWidth="10.0" prefWidth="726.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="jtfBusqueda11" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                          <Text fx:id="txtResultadoBusquedaRut11" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="375.13671875" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXButton fx:id="btnFiltro11" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #1D5EEF;" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
+                                             </graphic>
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
          </children>
       </AnchorPane>
    </children>
