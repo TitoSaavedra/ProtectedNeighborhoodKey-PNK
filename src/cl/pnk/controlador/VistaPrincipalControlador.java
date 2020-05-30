@@ -68,6 +68,11 @@ public class VistaPrincipalControlador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         prepareSlideMenuAnimation();
+        try {
+            inicioApp();
+        } catch (IOException ex) {
+            Logger.getLogger(VistaPrincipalControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void posicionPanel(AnchorPane pane) {
@@ -83,7 +88,7 @@ public class VistaPrincipalControlador implements Initializable {
 
     @FXML
     private void accionBarrera(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarrera.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
         apVista.getChildren().setAll(panel);
@@ -137,6 +142,12 @@ public class VistaPrincipalControlador implements Initializable {
 
     }
 
+    private void inicioApp () throws IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
+    }
     private AnchorPane tamanoPanel(AnchorPane pane) {
         AnchorPane.setTopAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);

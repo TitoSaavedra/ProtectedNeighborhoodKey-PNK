@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
  *
  * @author TitoS
  */
-public class VistaBarreraControlador implements Initializable {
+public class VistaBarreraUAControlador implements Initializable {
 
     @FXML
     private Text txtNombreMenu;

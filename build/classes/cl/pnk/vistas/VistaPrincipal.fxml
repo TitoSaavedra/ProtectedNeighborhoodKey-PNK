@@ -72,7 +72,7 @@
                   <FontAwesomeIcon glyphName="FILE_TEXT" styleClass="btnMenu" />
                </graphic>
             </Button>
-            <Button fx:id="btnBarrera" layoutY="220.0" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Historial Acceso" textOverrun="CLIP">
+            <Button fx:id="btnBarrera" layoutY="220.0" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Historial de acceso" textOverrun="CLIP">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
