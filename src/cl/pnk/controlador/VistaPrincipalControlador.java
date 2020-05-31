@@ -7,6 +7,7 @@ package cl.pnk.controlador;
 
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,12 +66,18 @@ public class VistaPrincipalControlador implements Initializable {
     private ImageView btnImage;
     @FXML
     private Button btnCerrarSerion;
+    @FXML
+    private FontAwesomeIcon btnCerrar;
+    @FXML
+    private FontAwesomeIcon btnOpciones;
+    @FXML
+    private FontAwesomeIcon btnMinimizar;
 
     //Atributos utils
     private TranslateTransition openNav = null;
     private TranslateTransition closeNav = null;
     private RotateTransition rt;
-    private double x , y;
+    private double x, y;
 
     /**
      * Initializes the controller class.
@@ -91,7 +98,6 @@ public class VistaPrincipalControlador implements Initializable {
         AnchorPane.setLeftAnchor(pane, 0.0);
         AnchorPane.setBottomAnchor(pane, 0.0);
     }
-
 
     @FXML
     private void accionBarrera(ActionEvent event) throws IOException {
@@ -201,32 +207,32 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     @FXML
-    private void accionCerrar(ActionEvent event) {
-
-        Stage stage = (Stage) apPanelPrincipal.getScene().getWindow();
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void accionMiniminizar(ActionEvent event) {
-        Stage stage = (Stage) apPanelPrincipal.getScene().getWindow();
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    @FXML
     private void accMover(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX()-x);
-        stage.setY(event.getScreenY()-y);
-        
-        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+
     }
 
     @FXML
     private void accPresionar(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+
+    @FXML
+    private void accionCerrar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void accionMiniminizar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void accionOpcion(MouseEvent event) {
     }
 }

@@ -5,6 +5,7 @@
  */
 package cl.pnk.controlador;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +36,10 @@ public class VistaIngresoControlador implements Initializable {
     @FXML
     private AnchorPane pnPanelPrincipal;
     private double x, y;
+    @FXML
+    private FontAwesomeIcon btnCerrar;
+    @FXML
+    private FontAwesomeIcon btnMinimizar;
 
     /**
      * Initializes the controller class.
@@ -64,20 +69,6 @@ public class VistaIngresoControlador implements Initializable {
     }
 
     @FXML
-    private void accionCerrar(ActionEvent event) {
-         Stage stage = (Stage) pnPanelPrincipal.getScene().getWindow();
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void accionMiniminizar(ActionEvent event) {
-         Stage stage = (Stage) pnPanelPrincipal.getScene().getWindow();
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    @FXML
     private void accMover(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
@@ -88,6 +79,18 @@ public class VistaIngresoControlador implements Initializable {
     private void accPresionar(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+
+    @FXML
+    private void accionCerrar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void accionMiniminizar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
 }

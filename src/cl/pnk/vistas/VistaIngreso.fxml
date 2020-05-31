@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
@@ -84,7 +85,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="30.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" stylesheets="@cssvistas/CssMenuWindows.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -97,9 +98,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionCerrar" prefHeight="25.0" prefWidth="25.0" text="X" GridPane.columnIndex="5" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionMiniminizar" prefHeight="25.0" prefWidth="25.0" text="-" GridPane.columnIndex="4" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." GridPane.columnIndex="3" />
+                        <FontAwesomeIcon fx:id="btnCerrar" glyphName="CLOSE" onMouseClicked="#accionCerrar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="5" />
+                        <FontAwesomeIcon fx:id="btnMinimizar" glyphName="MINUS" layoutX="1.0" layoutY="1.0" onMouseClicked="#accionMiniminizar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="4" />
                      </children>
                   </GridPane>
                </children>
