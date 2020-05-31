@@ -14,11 +14,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaPrincipalControlador">
+<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaPrincipalControlador">
    <children>
-      <AnchorPane fx:id="apVista" prefHeight="768.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="apBarrera" layoutY="725.0" prefHeight="43.0" prefWidth="1200.0" />
-      <AnchorPane fx:id="apMenu" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionCerrar" prefHeight="25.0" prefWidth="25.0" text="X" GridPane.columnIndex="5" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionMiniminizar" prefHeight="25.0" prefWidth="25.0" text="-" GridPane.columnIndex="4" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." GridPane.columnIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="apVista" prefHeight="768.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+      <AnchorPane fx:id="apBarrera" layoutY="725.0" prefHeight="43.0" prefWidth="1200.0" AnchorPane.topAnchor="725.0" />
+      <AnchorPane fx:id="apMenu" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
             <GridPane alignment="CENTER" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columnConstraints>
@@ -36,7 +58,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnBarrera" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Historial de acceso" textOverrun="CLIP">
+                  <Button fx:id="btnBarrera" alignment="CENTER" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de acceso" textOverrun="CLIP">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -48,7 +70,7 @@
                         </FontAwesomeIcon>
                      </graphic>
                   </Button>
-                  <Button fx:id="bntResidentes" mnemonicParsing="false" onAction="#accionResidente" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de residentes" textOverrun="CLIP" GridPane.rowIndex="1">
+                  <Button fx:id="bntResidentes" alignment="CENTER" mnemonicParsing="false" onAction="#accionResidente" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de residentes" textOverrun="CLIP" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -56,15 +78,7 @@
                         <FontAwesomeIcon glyphName="USER" styleClass="btnMenu" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnEncomienda" mnemonicParsing="false" onAction="#accionEncomienda" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de encomiendas" textOverrun="CLIP" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="DROPBOX" styleClass="btnMenu" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnVisita" mnemonicParsing="false" onAction="#accionVisita" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de visitas" textOverrun="CLIP" GridPane.rowIndex="3">
+                  <Button fx:id="btnVisita" alignment="CENTER" mnemonicParsing="false" onAction="#accionVisita" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de visitas" textOverrun="CLIP" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -72,7 +86,7 @@
                         <FontAwesomeIcon glyphName="USERS" styleClass="btnMenu" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnNotificacion" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP" GridPane.rowIndex="4">
+                  <Button fx:id="btnNotificacion" alignment="CENTER" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -80,7 +94,7 @@
                         <FontAwesomeIcon glyphName="BELL" styleClass="btnMenu" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnInforme" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP" GridPane.rowIndex="5">
+                  <Button fx:id="btnInforme" alignment="CENTER" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP" GridPane.rowIndex="5">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -96,6 +110,14 @@
                         <FontAwesomeIcon glyphName="SIGN_OUT" wrappingWidth="21.0" />
                      </graphic>
                   </Button>
+                  <Button fx:id="btnEncomienda" alignment="CENTER" mnemonicParsing="false" onAction="#accionEncomienda" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de encomiendas" textOverrun="CLIP" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="DROPBOX" styleClass="btnMenu" text="" />
+                     </graphic>
+                  </Button>
                </children>
             </GridPane>
             <GridPane layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="300.0">
@@ -103,8 +125,8 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="76.0" minHeight="1.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="176.0" minHeight="10.0" prefHeight="137.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="82.0" minHeight="1.0" prefHeight="81.0" valignment="BASELINE" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Circle radius="58.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-width: 5;" GridPane.halignment="CENTER">
@@ -126,7 +148,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="btnImage" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="25.0" y="25.0">
+      <ImageView fx:id="btnImage" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="25.0" y="55.0">
          <image>
             <Image url="@../imagenes/IconoMenuCerrar.png" />
          </image>

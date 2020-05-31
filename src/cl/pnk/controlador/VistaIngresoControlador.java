@@ -12,9 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -31,6 +34,7 @@ public class VistaIngresoControlador implements Initializable {
     private TextField txtIngresoContrasena;
     @FXML
     private AnchorPane pnPanelPrincipal;
+    private double x, y;
 
     /**
      * Initializes the controller class.
@@ -57,6 +61,33 @@ public class VistaIngresoControlador implements Initializable {
 
     @FXML
     private void ingresoContrasena(ActionEvent event) {
+    }
+
+    @FXML
+    private void accionCerrar(ActionEvent event) {
+         Stage stage = (Stage) pnPanelPrincipal.getScene().getWindow();
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void accionMiniminizar(ActionEvent event) {
+         Stage stage = (Stage) pnPanelPrincipal.getScene().getWindow();
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void accMover(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void accPresionar(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
 }

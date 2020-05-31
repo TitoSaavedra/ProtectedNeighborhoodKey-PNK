@@ -6,80 +6,104 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" fx:id="pnPanelPrincipal" maxHeight="768.0" maxWidth="1200.0" minHeight="768.0" minWidth="1200.0" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaIngresoControlador">
+<AnchorPane id="AnchorPane" maxHeight="768.0" maxWidth="1200.0" minHeight="768.0" minWidth="1200.0" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaIngresoControlador">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="445.0" style="-fx-background-color: #1D70F0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="AnchorPane" fx:id="pnPanelPrincipal" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="253.0" fitWidth="216.0" layoutX="115.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/IconoApp.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="43.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protected Neighborhood Key">
-               <font>
-                  <Font name="Arial Bold" size="26.0" />
-               </font>
-            </Text>
-            <TextFlow layoutX="123.0" layoutY="508.0" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+            <AnchorPane prefHeight="768.0" prefWidth="581.0" style="-fx-background-color: #3FA7D9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de prueba" textAlignment="CENTER">
+                  <Button fx:id="btnIngresar" layoutX="270.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnIngresar" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: #3FA7D9; -fx-border-radius: 100; -fx-border-width: 3; -fx-border-color: #62DBCE;" text="Ingresar al sistema" textFill="WHITE" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="269.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                      <font>
-                        <Font name="Arial Bold" size="24.0" />
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="302.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="145.0">
+                     <image>
+                        <Image url="@../imagenes/LogginUsuario.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="310.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar sesión" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="308.81640625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtIngresoRut" layoutX="246.0" layoutY="402.0" onAction="#ingresoRut" prefHeight="39.0" prefWidth="264.0" promptText="Dirección de correo" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="245.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtIngresoContrasena" layoutX="245.0" layoutY="504.0" onAction="#ingresoContrasena" prefHeight="39.0" prefWidth="264.0" promptText="Ingrese su Contraseña" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="246.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="246.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección de correo:" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="333.9482421875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="245.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="404.9794921875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
                </children>
-            </TextFlow>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="445.0" prefHeight="768.0" prefWidth="581.0" style="-fx-background-color: #3FA7D9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="btnIngresar" layoutX="270.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnIngresar" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: #3FA7D9; -fx-border-radius: 100; -fx-border-width: 3; -fx-border-color: #62DBCE;" text="Ingresar al sistema" textFill="WHITE" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="269.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="302.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="145.0">
-               <image>
-                  <Image url="@../imagenes/LogginUsuario.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="310.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar sesión" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="308.81640625">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField fx:id="txtIngresoRut" layoutX="246.0" layoutY="402.0" onAction="#ingresoRut" prefHeight="39.0" prefWidth="264.0" promptText="Dirección de correo" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="245.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtIngresoContrasena" layoutX="245.0" layoutY="504.0" onAction="#ingresoContrasena" prefHeight="39.0" prefWidth="264.0" promptText="Ingrese su Contraseña" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="246.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <ImageView fitHeight="39.0" fitWidth="35.0" layoutX="524.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-               <image>
-                  <Image url="@../imagenes/AjustesIcono.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" layoutX="246.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección de correo:" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="333.9482421875">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="245.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="404.9794921875">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Text>
+            </AnchorPane>
+            <AnchorPane prefHeight="600.0" prefWidth="445.0" style="-fx-background-color: #1D70F0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <ImageView fitHeight="253.0" fitWidth="216.0" layoutX="115.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/IconoApp.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="43.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protected Neighborhood Key">
+                     <font>
+                        <Font name="Arial Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <TextFlow layoutX="123.0" layoutY="508.0" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de prueba" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </TextFlow>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="30.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionCerrar" prefHeight="25.0" prefWidth="25.0" text="X" GridPane.columnIndex="5" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#accionMiniminizar" prefHeight="25.0" prefWidth="25.0" text="-" GridPane.columnIndex="4" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." GridPane.columnIndex="3" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

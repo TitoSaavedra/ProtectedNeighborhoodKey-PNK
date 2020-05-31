@@ -14,11 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -67,6 +70,7 @@ public class VistaPrincipalControlador implements Initializable {
     private TranslateTransition openNav = null;
     private TranslateTransition closeNav = null;
     private RotateTransition rt;
+    private double x , y;
 
     /**
      * Initializes the controller class.
@@ -87,6 +91,7 @@ public class VistaPrincipalControlador implements Initializable {
         AnchorPane.setLeftAnchor(pane, 0.0);
         AnchorPane.setBottomAnchor(pane, 0.0);
     }
+
 
     @FXML
     private void accionBarrera(ActionEvent event) throws IOException {
@@ -178,6 +183,7 @@ public class VistaPrincipalControlador implements Initializable {
         btnImage.setImage(image);
         rotacion();
         openNav.play();
+
     }
 
     private void cerrarMenu() {
@@ -186,6 +192,7 @@ public class VistaPrincipalControlador implements Initializable {
         rotacion();
         closeNav.setToX(-(apMenu.getWidth()));
         closeNav.play();
+
     }
 
     private void rotacion() {
@@ -193,4 +200,33 @@ public class VistaPrincipalControlador implements Initializable {
         rt.play();
     }
 
+    @FXML
+    private void accionCerrar(ActionEvent event) {
+
+        Stage stage = (Stage) apPanelPrincipal.getScene().getWindow();
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void accionMiniminizar(ActionEvent event) {
+        Stage stage = (Stage) apPanelPrincipal.getScene().getWindow();
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void accMover(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX()-x);
+        stage.setY(event.getScreenY()-y);
+        
+        
+    }
+
+    @FXML
+    private void accPresionar(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
 }

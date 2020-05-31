@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ProtectedNeighborhoodKeyPNK extends Application {
 
@@ -19,6 +20,7 @@ public class ProtectedNeighborhoodKeyPNK extends Application {
             loader.setLocation(ProtectedNeighborhoodKeyPNK.class.getResource("/cl/pnk/vistas/VistaIngreso.fxml"));
             Pane ventana = (Pane) loader.load();
             Scene scene = new Scene(ventana);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
