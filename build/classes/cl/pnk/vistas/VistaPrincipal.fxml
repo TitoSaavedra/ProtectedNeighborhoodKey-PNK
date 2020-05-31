@@ -5,6 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
@@ -17,83 +20,113 @@
       <AnchorPane fx:id="apBarrera" layoutY="725.0" prefHeight="43.0" prefWidth="1200.0" />
       <AnchorPane fx:id="apMenu" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fx:id="txtNombreApellido" fill="WHITE" layoutX="51.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Apellido Portero">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Text>
-            <Circle layoutX="150.0" layoutY="82.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-width: 5;">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#a4bfc6" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Button fx:id="btnVisita" layoutY="277.0" mnemonicParsing="false" onAction="#accionVisita" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de visitas" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="USERS" styleClass="btnMenu" text="" />
-               </graphic>
-            </Button>
-            <Button fx:id="bntResidentes" layoutY="334.0" mnemonicParsing="false" onAction="#accionResidente" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de residentes" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="USER" styleClass="btnMenu" />
-               </graphic>
-            </Button>
-            <Button fx:id="btnEncomienda" layoutY="390.0" mnemonicParsing="false" onAction="#accionEncomienda" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de encomiendas" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="DROPBOX" styleClass="btnMenu" />
-               </graphic>
-            </Button>
-            <Button fx:id="btnNotificacion" layoutY="446.0" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="BELL" styleClass="btnMenu" />
-               </graphic>
-            </Button>
-            <Button fx:id="btnInforme" layoutY="502.0" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="FILE_TEXT" styleClass="btnMenu" />
-               </graphic>
-            </Button>
-            <Button fx:id="btnBarrera" layoutY="220.0" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Historial de acceso" textOverrun="CLIP">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="HOME" styleClass="btnMenu" wrappingWidth="17.714284896850586">
+            <GridPane alignment="CENTER" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnBarrera" mnemonicParsing="false" onAction="#accionBarrera" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Historial de acceso" textOverrun="CLIP">
                      <font>
-                        <Font size="18.0" />
-                     </font></FontAwesomeIcon>
-               </graphic>
-            </Button>
-            <Button fx:id="btnCerrarSerion" layoutX="63.0" layoutY="595.0" mnemonicParsing="false" onAction="#accionCerrarSesion" prefHeight="40.0" prefWidth="175.0" styleClass="btnMenuCerrar" stylesheets="@CssPrincipal.css" text="Cerrar sesión" AnchorPane.leftAnchor="62.5" AnchorPane.rightAnchor="62.5">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="SIGN_OUT" wrappingWidth="21.0" />
-               </graphic>
-            </Button>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="HOME" styleClass="btnMenu" wrappingWidth="17.714284896850586">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </FontAwesomeIcon>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bntResidentes" mnemonicParsing="false" onAction="#accionResidente" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de residentes" textOverrun="CLIP" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="USER" styleClass="btnMenu" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnEncomienda" mnemonicParsing="false" onAction="#accionEncomienda" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de encomiendas" textOverrun="CLIP" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="DROPBOX" styleClass="btnMenu" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnVisita" mnemonicParsing="false" onAction="#accionVisita" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de visitas" textOverrun="CLIP" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="USERS" styleClass="btnMenu" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnNotificacion" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="BELL" styleClass="btnMenu" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnInforme" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="FILE_TEXT" styleClass="btnMenu" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnCerrarSerion" alignment="CENTER" mnemonicParsing="false" onAction="#accionCerrarSesion" prefHeight="40.0" prefWidth="175.0" styleClass="btnMenuCerrar" stylesheets="@CssPrincipal.css" text="Cerrar sesión" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="SIGN_OUT" wrappingWidth="21.0" />
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+            <GridPane layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="300.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="76.0" minHeight="1.0" prefHeight="69.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Circle radius="58.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-width: 5;" GridPane.halignment="CENTER">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#a4bfc6" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <Text fx:id="txtNombreApellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Apellido Portero" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="btnImage" fitHeight="33.0" fitWidth="35.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnImage" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="25.0" y="25.0">
          <image>
             <Image url="@../imagenes/IconoMenuCerrar.png" />
          </image>

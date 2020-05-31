@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -61,9 +62,11 @@ public class VistaPrincipalControlador implements Initializable {
     private ImageView btnImage;
     @FXML
     private Button btnCerrarSerion;
-    TranslateTransition openNav = null;
 
-    TranslateTransition closeNav = null;
+    //Atributos utils
+    private TranslateTransition openNav = null;
+    private TranslateTransition closeNav = null;
+    private RotateTransition rt;
 
     /**
      * Initializes the controller class.
@@ -150,6 +153,8 @@ public class VistaPrincipalControlador implements Initializable {
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
         apVista.getChildren().setAll(panel);
+        rt = new RotateTransition(Duration.millis(300), btnImage);
+
     }
 
     private AnchorPane tamanoPanel(AnchorPane pane) {
@@ -171,14 +176,21 @@ public class VistaPrincipalControlador implements Initializable {
     private void abrirMenu() {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
         btnImage.setImage(image);
+        rotacion();
         openNav.play();
     }
 
     private void cerrarMenu() {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
         btnImage.setImage(image);
+        rotacion();
         closeNav.setToX(-(apMenu.getWidth()));
         closeNav.play();
+    }
+
+    private void rotacion() {
+        rt.setByAngle(360);
+        rt.play();
     }
 
 }
