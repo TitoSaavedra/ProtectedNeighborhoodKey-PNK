@@ -23,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaResidenteControlador">
+<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaResidenteControlador">
    <children>
       <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <stylesheets>
@@ -49,11 +49,11 @@
                   </Text>
                </children>
             </AnchorPane>
-            <JFXTabPane layoutY="138.0" prefHeight="628.0" prefWidth="1200.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+            <JFXTabPane layoutY="138.0" prefHeight="628.0" prefWidth="1200.0" stylesheets="@cssvistas/CssVistaResidente.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
                <tabs>
                   <Tab fx:id="submenuResidente" onSelectionChanged="#accionMenuBusqueda" text="Búsqueda de residente">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1200.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1200.0">
                            <children>
                               <GridPane layoutX="50.0" layoutY="32.0" prefHeight="507.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
                                  <columnConstraints>
@@ -261,11 +261,11 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                    </content>
+                     </content>
                   </Tab>
                   <Tab fx:id="submenuSeguridad" onSelectionChanged="#accionMenuSeguridad" text="Seguridad">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <GridPane layoutX="50.0" layoutY="42.0" prefHeight="507.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
                                  <columnConstraints>
@@ -400,11 +400,11 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                    </content>
+                     </content>
                   </Tab>
                   <Tab fx:id="submenuLista" onSelectionChanged="#accionMenuListaResidentes" text="Lista de residentes">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <GridPane prefHeight="511.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
                                  <columnConstraints>
@@ -460,13 +460,9 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                    </content>
+                     </content>
                   </Tab>
                </tabs>
-               <stylesheets>
-                  <URL value="@CssVistaResidente.css" />
-                  <URL value="@cssvistas/CssVistaResidente.css" />
-               </stylesheets>
             </JFXTabPane>
          </children>
       </AnchorPane>

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" maxHeight="768.0" maxWidth="1200.0" minHeight="768.0" minWidth="1200.0" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaIngresoControlador">
+<AnchorPane id="AnchorPane" maxHeight="768.0" maxWidth="1200.0" minHeight="768.0" minWidth="1200.0" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaIngresoControlador">
    <children>
       <AnchorPane id="AnchorPane" fx:id="pnPanelPrincipal" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
