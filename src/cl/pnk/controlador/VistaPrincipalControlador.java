@@ -92,6 +92,9 @@ public class VistaPrincipalControlador implements Initializable {
         }
     }
 
+    public void inicializarDatos(String nombre){
+        txtNombreApellido.setText(nombre);
+    }
     private void posicionPanel(AnchorPane pane) {
         AnchorPane.setTopAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);

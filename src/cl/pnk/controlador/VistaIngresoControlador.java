@@ -5,19 +5,25 @@
  */
 package cl.pnk.controlador;
 
+import cl.pnk.dal.CuentaDal;
+import cl.pnk.dto.Cuenta;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -35,11 +41,13 @@ public class VistaIngresoControlador implements Initializable {
     private TextField txtIngresoContrasena;
     @FXML
     private AnchorPane pnPanelPrincipal;
-    private double x, y;
     @FXML
     private FontAwesomeIcon btnCerrar;
     @FXML
     private FontAwesomeIcon btnMinimizar;
+    @FXML
+    private Text txtError;
+    private double x, y;
 
     /**
      * Initializes the controller class.
@@ -51,21 +59,22 @@ public class VistaIngresoControlador implements Initializable {
 
     @FXML
     private void btnIngresar(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
-        AnchorPane.setTopAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setBottomAnchor(pane, 0.0);
-        pnPanelPrincipal.getChildren().removeAll();
-        pnPanelPrincipal.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void ingresoRut(ActionEvent event) {
-    }
-
-    @FXML
-    private void ingresoContrasena(ActionEvent event) {
+        ///Hacer bien el login :v preguntar a las personas luego al a cuenta ajsdj
+//        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+//        for (Cuenta cuenta : listaCuenta) {
+//            if (cuenta.getClave().equals(txtIngresoContrasena.getText())) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
+        Pane ventana = (Pane) loader.load();
+        Scene scene = new Scene(ventana);
+        VistaPrincipalControlador controlador = loader.getController();
+        controlador.inicializarDatos(txtIngresoRut.getText().trim());
+        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        windows.setScene(scene);
+////            }else{
+//                txtError.setText("Usuario o Contraseña incorrectos");
+//            }
+//        }
     }
 
     @FXML
