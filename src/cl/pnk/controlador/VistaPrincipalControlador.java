@@ -22,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +32,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -92,9 +96,10 @@ public class VistaPrincipalControlador implements Initializable {
         }
     }
 
-    public void inicializarDatos(String nombre){
+    public void inicializarDatos(String nombre) {
         txtNombreApellido.setText(nombre);
     }
+
     private void posicionPanel(AnchorPane pane) {
         AnchorPane.setTopAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);
@@ -248,6 +253,15 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     @FXML
-    private void accionOpcion(MouseEvent event) {
+    private void accionOpcion(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+       // stage.initModality(Modality.APPLICATION_MODAL);
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Conexión Arduino");
+        stage.setScene(new Scene(root1));
+        stage.show();
+
     }
 }
