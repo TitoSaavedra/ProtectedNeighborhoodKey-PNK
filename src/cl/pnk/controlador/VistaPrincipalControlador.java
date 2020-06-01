@@ -127,18 +127,30 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     @FXML
-    private void accionEncomienda(ActionEvent event) {
+    private void accionEncomienda(ActionEvent event) throws IOException {
         cerrarMenu();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaEncomiendas.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
     }
 
     @FXML
-    private void accionNotificacion(ActionEvent event) {
+    private void accionNotificacion(ActionEvent event) throws IOException {
         cerrarMenu();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaNotificacion.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
     }
 
     @FXML
-    private void accionInforme(ActionEvent event) {
+    private void accionInforme(ActionEvent event) throws IOException {
         cerrarMenu();
+//        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
+//        AnchorPane panel = tamanoPanel(pane);
+//        apVista.getChildren().removeAll();
+//        apVista.getChildren().setAll(panel);
     }
 
     private void prepareSlideMenuAnimation() {

@@ -19,3 +19,6 @@
     -fx-stroke: #ffff00;
     -fx-stroke-width: 3pt;
 }
+.jfx-date-picker{
+    -jfx-default-color: #E3BF3E;
+}
