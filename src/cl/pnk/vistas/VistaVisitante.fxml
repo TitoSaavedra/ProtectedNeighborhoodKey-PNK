@@ -20,14 +20,19 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="1200.0" style="-fx-background-color: #B128EB;" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <AnchorPane layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="1200.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                <children>
-                  <Text fx:id="txtNombreMenu2" fill="WHITE" layoutX="32.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de visita" wrappingWidth="505.13671875">
+                  <Text fx:id="txtNombreMenu" fill="WHITE" layoutX="32.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de visita" wrappingWidth="505.13671875">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtNombreRuta" fill="#ffffff81" layoutX="32.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de visitas/Registro de visita" wrappingWidth="505.13671875">
+                  <Text fill="#ffffff81" layoutX="32.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de visitas/" wrappingWidth="160.13671875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtNombreRuta" fill="#ffffff81" layoutX="192.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de visita" wrappingWidth="311.13671875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -36,7 +41,7 @@
             </AnchorPane>
             <JFXTabPane layoutY="139.0" prefHeight="602.0" prefWidth="1200.0" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
                <tabs>
-                  <Tab text="Registro de visita">
+                  <Tab fx:id="submenuRegistroVista" onSelectionChanged="#accionRegistroVista" text="Registro de visita">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -72,7 +77,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Text>
-                                          <JFXButton fx:id="btnFiltro" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #B128EB;" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
+                                          <JFXButton fx:id="btnFiltro" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
                                              </graphic>
@@ -84,7 +89,7 @@
                                     </GridPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
-                                          <AnchorPane layoutY="14.0" prefHeight="33.0" prefWidth="1100.0" style="-fx-background-color: #B128EB; -fx-border-width: 2; -fx-border-color: c;">
+                                          <AnchorPane layoutY="14.0" prefHeight="33.0" prefWidth="1100.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
                                              <children>
                                                 <Text fill="WHITE" layoutX="467.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del visitante">
                                                    <font>
@@ -173,7 +178,7 @@
                                                 <Font name="Arial Bold" size="17.0" />
                                              </font>
                                           </JFXTextField>
-                                          <JFXButton fx:id="btnImagen" layoutX="326.0" layoutY="335.0" onAction="#accionBuscarImagen" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #B128EB;" text="Buscar Imagén" textFill="WHITE">
+                                          <JFXButton fx:id="btnImagen" layoutX="326.0" layoutY="335.0" onAction="#accionBuscarImagen" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar Imagén" textFill="WHITE">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
                                              </graphic>
@@ -181,7 +186,7 @@
                                                 <Font name="System Bold" size="18.0" />
                                              </font>
                                           </JFXButton>
-                                          <AnchorPane layoutX="305.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #B128EB; -fx-border-width: 2; -fx-border-color: c;">
+                                          <AnchorPane layoutX="305.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
                                              <children>
                                                 <Text fill="WHITE" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección Residente" textAlignment="CENTER" wrappingWidth="207.0283203125">
                                                    <font>
@@ -190,7 +195,7 @@
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="581.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #B128EB; -fx-border-width: 2; -fx-border-color: c;">
+                                          <AnchorPane layoutX="581.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
                                              <children>
                                                 <Text fill="WHITE" layoutX="6.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Residente" textAlignment="CENTER" wrappingWidth="207.0283203125">
                                                    <font>
@@ -199,7 +204,7 @@
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                          <JFXButton fx:id="btnFiltro1" layoutX="828.0" layoutY="125.0" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #B128EB;" text="Buscar" textFill="WHITE">
+                                          <JFXButton fx:id="btnFiltro1" layoutX="828.0" layoutY="125.0" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
                                              </graphic>
@@ -257,7 +262,7 @@
                            </children></AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="Solicitudes de visita">
+                  <Tab fx:id="submenuSolicitudVisita" onSelectionChanged="#accionSolicitudVisita" text="Solicitudes de visita">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -302,7 +307,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Text>
-                                          <JFXButton fx:id="btnFiltro11" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" style="-fx-background-color: #B128EB;" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
+                                          <JFXButton fx:id="btnFiltro11" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
                                              </graphic>

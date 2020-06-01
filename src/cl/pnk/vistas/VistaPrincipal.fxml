@@ -14,30 +14,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaPrincipalControlador">
+<AnchorPane id="AnchorPane" fx:id="apPanelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaPrincipalControlador">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" stylesheets="@cssvistas/CssMenuWindows.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <FontAwesomeIcon fx:id="btnCerrar" glyphName="CLOSE" onMouseClicked="#accionCerrar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="5" />
-                  <FontAwesomeIcon fx:id="btnOpciones" glyphName="GEAR" onMouseClicked="#accionOpcion" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="3" />
-                  <FontAwesomeIcon fx:id="btnMinimizar" glyphName="MINUS" onMouseClicked="#accionMiniminizar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="4" />
-               </children>
-            </GridPane>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="apVista" prefHeight="768.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
       <AnchorPane fx:id="apBarrera" layoutY="725.0" prefHeight="43.0" prefWidth="1200.0" AnchorPane.topAnchor="725.0" />
       <AnchorPane fx:id="apMenu" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
@@ -139,7 +117,7 @@
                         </LinearGradient>
                      </fill>
                   </Circle>
-                  <Text fx:id="txtNombreApellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Apellido Portero" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Text fx:id="txtNombreApellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tito Saaavedra Pastén" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -153,5 +131,27 @@
             <Image url="@../imagenes/IconoMenuCerrar.png" />
          </image>
       </ImageView>
+      <AnchorPane layoutX="10.0" layoutY="10.0" onMouseDragged="#accMover" onMousePressed="#accPresionar" prefHeight="30.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #1D70F0,#38B9E5);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane alignment="CENTER" layoutX="1000.0" layoutY="-1.0" prefHeight="30.0" prefWidth="175.0" stylesheets="@cssvistas/CssMenuWindows.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <FontAwesomeIcon fx:id="btnCerrar" glyphName="CLOSE" onMouseClicked="#accionCerrar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="5" />
+                  <FontAwesomeIcon fx:id="btnOpciones" glyphName="GEAR" onMouseClicked="#accionOpcion" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="3" />
+                  <FontAwesomeIcon fx:id="btnMinimizar" glyphName="MINUS" onMouseClicked="#accionMiniminizar" scaleX="2.0" scaleY="2.0" GridPane.columnIndex="4" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

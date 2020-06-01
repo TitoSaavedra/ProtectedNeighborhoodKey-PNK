@@ -9,8 +9,10 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -21,8 +23,6 @@ import javafx.scene.text.Text;
  */
 public class VistaVisitanteControlaldor implements Initializable {
 
-    @FXML
-    private Text txtNombreMenu2;
     @FXML
     private Text txtNombreRuta;
     @FXML
@@ -45,6 +45,12 @@ public class VistaVisitanteControlaldor implements Initializable {
     private Text txtResultadoBusquedaRut11;
     @FXML
     private JFXButton btnFiltro11;
+    @FXML
+    private Text txtNombreMenu;
+    @FXML
+    private Tab submenuRegistroVista;
+    @FXML
+    private Tab submenuSolicitudVisita;
 
     /**
      * Initializes the controller class.
@@ -61,5 +67,19 @@ public class VistaVisitanteControlaldor implements Initializable {
     @FXML
     private void accionBuscarImagen(ActionEvent event) {
     }
-    
+
+    @FXML
+    private void accionRegistroVista(Event event) {
+         cambioNombreMenuRuta(submenuRegistroVista.getText());
+    }
+
+    @FXML
+    private void accionSolicitudVisita(Event event) {
+         cambioNombreMenuRuta(submenuSolicitudVisita.getText());
+    }
+        
+    private void cambioNombreMenuRuta(String menu){
+        txtNombreMenu.setText(menu);
+        txtNombreRuta.setText(menu);
+    }
 }

@@ -8,11 +8,17 @@ and open the template in the editor.
     Author     : TitoS
 */
 
+.color{
+    -fx-background-color: #E73364;
+}
+.btnEstilo{
+    -fx-background-color: #E73364;
+}
 .jfx-tab-pane .headers-region {
-    -fx-background-color:   #B128EB;
+    -fx-background-color:   #E73364;
 }
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color:    #B128EB;
+    -fx-background-color:    #E73364;
 }
 
 .jfx-tab-pane .tab-selected-line {

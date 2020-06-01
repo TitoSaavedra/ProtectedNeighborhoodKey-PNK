@@ -1,0 +1,21 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.color{
+    -fx-background-color: #E3BF3E;
+}
+.btnEstilo{
+    -fx-background-color: #E3BF3E;
+}
+.jfx-tab-pane .headers-region {
+    -fx-background-color:   #E3BF3E;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color:    #E3BF3E;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: #ffff00;
+    -fx-stroke-width: 3pt;
+}

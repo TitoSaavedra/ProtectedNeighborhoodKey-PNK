@@ -4,22 +4,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 30 may. 2020, 2:39:22
+    Created on : 31 may. 2020, 19:22:43
     Author     : TitoS
 */
 
-
 .color{
-    -fx-background-color: #1E4DEF;
+    -fx-background-color: #5FDF48;
 }
 .btnEstilo{
-    -fx-background-color: #1E4DEF;
+    -fx-background-color: #5FDF48;
 }
 .jfx-tab-pane .headers-region {
-    -fx-background-color:  #1E4DEF;
+    -fx-background-color:   #5FDF48;
 }
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color:   #1E4DEF;
+    -fx-background-color:    #5FDF48;
 }
 
 .jfx-tab-pane .tab-selected-line {

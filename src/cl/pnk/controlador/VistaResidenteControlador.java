@@ -10,9 +10,11 @@ import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -56,6 +58,18 @@ public class VistaResidenteControlador implements Initializable {
     private JFXButton btnImagen13;
     @FXML
     private JFXDatePicker datePicker;
+    @FXML
+    private TextField jtfBusqueda11;
+    @FXML
+    private Text txtResultadoBusquedaRut11;
+    @FXML
+    private JFXButton btnFiltro11;
+    @FXML
+    private Tab submenuResidente;
+    @FXML
+    private Tab submenuSeguridad;
+    @FXML
+    private Tab submenuLista;
 
     /**
      * Initializes the controller class.
@@ -80,5 +94,25 @@ public class VistaResidenteControlador implements Initializable {
     @FXML
     private void accionDesbloquearTarjeta(ActionEvent event) {
     }
+
+    @FXML
+    private void accionMenuBusqueda(Event event) {
+        cambioNombreMenuRuta(submenuResidente.getText());
+    }
+
+    @FXML
+    private void accionMenuSeguridad(Event event) {
+        cambioNombreMenuRuta(submenuSeguridad.getText());
+    }
+
+    @FXML
+    private void accionMenuListaResidentes(Event event) {
+        cambioNombreMenuRuta(submenuLista.getText());
+    }
     
+    
+    private void cambioNombreMenuRuta(String menu){
+        txtNombreMenu.setText(menu);
+        txtNombreRuta.setText(menu);
+    }
 }

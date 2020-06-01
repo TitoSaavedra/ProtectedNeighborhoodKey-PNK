@@ -9,9 +9,11 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -22,8 +24,6 @@ import javafx.scene.text.Text;
  */
 public class VistaBarreraUAControlador implements Initializable {
 
-    @FXML
-    private Text txtNombreMenu2;
     @FXML
     private Text txtNombreRuta;
     @FXML
@@ -38,6 +38,12 @@ public class VistaBarreraUAControlador implements Initializable {
     private Text txtResultadoBusquedaRut11;
     @FXML
     private JFXButton btnFiltro11;
+    @FXML
+    private Text txtNombreMenu;
+    @FXML
+    private Tab submenuUltimosAccesos;
+    @FXML
+    private Tab submenuHistorialAceeso;
 
     /**
      * Initializes the controller class.
@@ -50,5 +56,19 @@ public class VistaBarreraUAControlador implements Initializable {
     @FXML
     private void accionFiltrar(ActionEvent event) {
     }
-    
+
+    @FXML
+    private void accionUltimoAcceso(Event event) {
+        cambioNombreMenuRuta(submenuUltimosAccesos.getText());
+    }
+
+    @FXML
+    private void accionHistorial(Event event) {
+        cambioNombreMenuRuta(submenuHistorialAceeso.getText());
+    }
+        
+    private void cambioNombreMenuRuta(String menu){
+        txtNombreMenu.setText(menu);
+        txtNombreRuta.setText(menu);
+    }
 }
