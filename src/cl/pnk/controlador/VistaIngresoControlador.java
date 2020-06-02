@@ -51,6 +51,8 @@ public class VistaIngresoControlador implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,33 +61,29 @@ public class VistaIngresoControlador implements Initializable {
 
     @FXML
     private void btnIngresar(ActionEvent event) throws IOException {
-        ///Hacer bien el login :v preguntar a las personas luego al a cuenta ajsdj
-        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
-        String txtContra= this.txtIngresoContrasena.getText().trim();
-        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
-        for (int i = 0; i < listaCuenta.size(); i++) {
-            Cuenta cuenta = listaCuenta.get(i);
-             if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
-                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona()==1) {
+//        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+//        String txtContra= this.txtIngresoContrasena.getText().trim();
+//        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
+//        for (int i = 0; i < listaCuenta.size(); i++) {
+//            Cuenta cuenta = listaCuenta.get(i);
+//             if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
+//                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona()==1) {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
                     Pane ventana = (Pane) loader.load();
                     Scene scene = new Scene(ventana);
-                    VistaPrincipalControlador controlador = loader.getController();
-                    String nombreApaternoAmatero = cuenta.getPersona().getNombre()+" "+cuenta.getPersona().getApePaterno()+" "+cuenta.getPersona().getApeMaterno();
-                    controlador.inicializarDatos(nombreApaternoAmatero,cuenta.getFoto());
+//                    VistaPrincipalControlador controlador = loader.getController();
+//                    String nombreApaternoAmatero = cuenta.getPersona().getNombre()+" "+cuenta.getPersona().getApePaterno()+" "+cuenta.getPersona().getApeMaterno();
+//                    controlador.inicializarDatos(nombreApaternoAmatero,cuenta.getFoto());
                     Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     windows.setScene(scene);
-                }else{
-                     txtError.setText("Sistema de uso exclusivo para porteria");
-                     i=listaCuenta.size();
-                }
-            } else {
-                txtError.setText("Usuario o Contraseña incorrectos");
-            }
-        }
-//        for (Cuenta cuenta : listaCuenta) {
-//           
+//                }else{
+//                     txtError.setText("Sistema de uso exclusivo para porteria");
+//                     i=listaCuenta.size();
+//                }
+//            } else {
+//                txtError.setText("Usuario o Contraseña incorrectos");
+//            }
 //        }
     }
 

@@ -6,12 +6,16 @@
 package cl.pnk.utils;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -19,6 +23,11 @@ import javafx.scene.image.WritableImage;
  */
 public class UtilidadesPrograma {
 
+    /**
+     *
+     * @param bf
+     * @return
+     */
     public Image convertirImagen(BufferedImage bf) {
         WritableImage wr = null;
         wr = new WritableImage(bf.getWidth(), bf.getHeight());
@@ -29,5 +38,18 @@ public class UtilidadesPrograma {
             }
         }
         return new ImageView(wr).getImage();
+    }
+
+    public byte[] imagenAByte(Image imagen) {
+        BufferedImage bufferimage = SwingFXUtils.fromFXImage(imagen, null);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bufferimage, "jpg", output);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        byte[] data = output.toByteArray();
+        return data;
     }
 }

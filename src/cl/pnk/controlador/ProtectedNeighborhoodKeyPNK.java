@@ -8,6 +8,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author TitoS
+ */
 public class ProtectedNeighborhoodKeyPNK extends Application {
 
     @Override
@@ -27,6 +31,10 @@ public class ProtectedNeighborhoodKeyPNK extends Application {
         }
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

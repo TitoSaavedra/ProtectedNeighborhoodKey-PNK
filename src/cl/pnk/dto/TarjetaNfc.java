@@ -19,39 +19,76 @@ public class TarjetaNfc {
     private int estado;
     private Date fechaRegistro;
     
+    /**
+     *
+     */
     public TarjetaNfc() {
     }
 
+    /**
+     *
+     * @param uid
+     */
     public TarjetaNfc(String uid) {
         this.uid = uid;
     }
 
+    /**
+     *
+     * @param uid
+     * @param estado
+     * @param fechaRegistro
+     */
     public TarjetaNfc(String uid, int estado, Date fechaRegistro) {
         this.uid = uid;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUid() {
         return uid;
     }
 
+    /**
+     *
+     * @param uid
+     */
     public void setUid(String uid) {
         this.uid = uid;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getEstado() {
         return estado;
     }
 
+    /**
+     *
+     * @param estado
+     */
     public void setEstado(int estado) {
         this.estado = estado;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getFechaRegistro() {
         return fechaRegistro;
     }
 
+    /**
+     *
+     * @param fechaRegistro
+     */
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }

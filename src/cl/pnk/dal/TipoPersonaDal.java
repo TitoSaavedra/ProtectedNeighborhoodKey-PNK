@@ -20,6 +20,10 @@ public class TipoPersonaDal {
 
     private DBUtils dbutils = new DBUtils();
 
+    /**
+     *
+     * @return
+     */
     public List<TipoPersona> obtenerTipoPersona() {
         List<TipoPersona> listaTipoPersona = new ArrayList<>();
         try {

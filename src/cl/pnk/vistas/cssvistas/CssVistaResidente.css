@@ -12,11 +12,9 @@ and open the template in the editor.
     The tab bar
 */
 .color{
-   -fx-background-color: #AA28EB;
-}
-.btnEstilo{
     -fx-background-color: #AA28EB;
 }
+
 .jfx-tab-pane .headers-region {
     -fx-background-color: #AA28EB;
 }
@@ -30,4 +28,19 @@ and open the template in the editor.
 }
 .jfx-date-picker{
     -jfx-default-color: #AA28EB;
+}
+
+.btnEstilo{
+    -fx-background-color: #AA28EB;
+}
+.btnEstilo:hover {
+    -fx-text-fill: black;
+    -fx-background-color:transparent;
+}.btnEstilo:pressed {
+    -fx-text-fill: black;
+    -fx-background-color:#aa28eb;
+}
+
+.btnEstilo:hover .glyph-icon {
+    -fx-fill: black;
 }

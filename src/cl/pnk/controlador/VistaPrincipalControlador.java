@@ -91,6 +91,8 @@ public class VistaPrincipalControlador implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,6 +104,11 @@ public class VistaPrincipalControlador implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param nombre
+     * @param imagenPerfil
+     */
     public void inicializarDatos(String nombre, Image imagenPerfil) {
         this.clImagenPerfil.setFill(new ImagePattern(imagenPerfil));
         txtNombreApellido.setText(nombre);
@@ -162,10 +169,10 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     private void accionInforme(ActionEvent event) throws IOException {
         cerrarMenu();
-//        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
-//        AnchorPane panel = tamanoPanel(pane);
-//        apVista.getChildren().removeAll();
-//        apVista.getChildren().setAll(panel);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
+        AnchorPane panel = tamanoPanel(pane);
+        apVista.getChildren().removeAll();
+        apVista.getChildren().setAll(panel);
     }
 
     private void prepareSlideMenuAnimation() {

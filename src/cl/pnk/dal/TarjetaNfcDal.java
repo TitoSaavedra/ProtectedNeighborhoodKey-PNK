@@ -20,6 +20,10 @@ public class TarjetaNfcDal {
 
     private DBUtils dbutils = new DBUtils();
 
+    /**
+     *
+     * @return
+     */
     public List<TarjetaNfc> obtenerTarjetaNfc() {
         List<TarjetaNfc> listaTarjetasNfc = new ArrayList<>();
         try {

@@ -22,6 +22,11 @@ public class DBUtils {
     private Connection conexion;//importar el java.sql.Connection;
     
     //Metodos
+
+    /**
+     *
+     * @return
+     */
     public boolean conectar(){
         boolean resultado;
         try {
@@ -37,10 +42,17 @@ public class DBUtils {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection getConexion() {
         return conexion;
     }
     
+    /**
+     *
+     */
     public void desconectar(){
         try {
            this.conexion.close(); 

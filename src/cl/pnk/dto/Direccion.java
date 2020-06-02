@@ -15,56 +15,125 @@ public class Direccion  {
 
 
     private Integer idDireccion;
-    private int piso;
-    private int block;
-    private int numero;
+    private String piso;
+    private String block;
+    private String numero;
+    private Persona persona;
 
+    /**
+     *
+     */
     public Direccion() {
     }
 
-    public Direccion(Integer idDireccion) {
-        this.idDireccion = idDireccion;
-    }
-
-    public Direccion(Integer idDireccion, int piso, int block, int numero) {
-        this.idDireccion = idDireccion;
+    public Direccion(String piso, String block, String numero) {
         this.piso = piso;
         this.block = block;
         this.numero = numero;
     }
 
+    public Direccion(String piso, String block, String numero, Persona persona) {
+        this.piso = piso;
+        this.block = block;
+        this.numero = numero;
+        this.persona = persona;
+    }
+
+    /**
+     *
+     * @param idDireccion
+     * @param piso
+     * @param block
+     * @param numero
+     * @param persona
+     */
+    public Direccion(Integer idDireccion, String piso, String block, String numero, Persona persona) {
+        this.idDireccion = idDireccion;
+        this.piso = piso;
+        this.block = block;
+        this.numero = numero;
+        this.persona = persona;
+    }
+
+    /**
+     *
+     * @return
+     */
     public Integer getIdDireccion() {
         return idDireccion;
     }
 
+    /**
+     *
+     * @param idDireccion
+     */
     public void setIdDireccion(Integer idDireccion) {
         this.idDireccion = idDireccion;
     }
 
-    public int getPiso() {
+    /**
+     *
+     * @return
+     */
+    public String getPiso() {
         return piso;
     }
 
-    public void setPiso(int piso) {
+    /**
+     *
+     * @param piso
+     */
+    public void setPiso(String piso) {
         this.piso = piso;
     }
 
-    public int getBlock() {
+    /**
+     *
+     * @return
+     */
+    public String getBlock() {
         return block;
     }
 
-    public void setBlock(int block) {
+    /**
+     *
+     * @param block
+     */
+    public void setBlock(String block) {
         this.block = block;
     }
 
-    public int getNumero() {
+    /**
+     *
+     * @return
+     */
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    /**
+     *
+     * @param numero
+     */
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
+    /**
+     *
+     * @return
+     */
+    public Persona getPersona() {
+        return persona;
+    }
+
+    /**
+     *
+     * @param persona
+     */
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 
     @Override
     public String toString() {

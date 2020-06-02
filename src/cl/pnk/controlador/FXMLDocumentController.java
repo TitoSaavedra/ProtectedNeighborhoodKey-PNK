@@ -36,6 +36,9 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     */
     public void carregarPortas() {
 
         SerialPort[] portNames = SerialPort.getCommPorts();

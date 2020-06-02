@@ -6,19 +6,27 @@
 package cl.pnk.dal;
 
 import cl.pnk.dto.Cuenta;
+import cl.pnk.dto.Direccion;
 import cl.pnk.dto.Persona;
 import cl.pnk.dto.TarjetaNfc;
 import cl.pnk.utils.DBUtils;
 import cl.pnk.utils.UtilidadesPrograma;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
+
 /**
  *
  * @author TitoS
@@ -27,7 +35,33 @@ public class CuentaDal {
 
     private DBUtils dbutils = new DBUtils();
     private UtilidadesPrograma utilsPrograma = new UtilidadesPrograma();
+    private FileInputStream fis;
 
+    //INSERT INTO `cuenta` (`ID_CUENTA`, `CLAVE`, `ESTADO`, `ID_PERSONA`, `UID`)
+    public void ingresarCuenta(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
+        dbutils.conectar();
+        fis = new FileInputStream(archivo);
+        try {
+            String sql = "INSERT INTO cuenta(CLAVE,ESTADO,FOTO,ID_PERSONA)"
+                    + " VALUES(?,?,?,?)";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setString(1, cuenta.getClave());
+            st.setInt(2, 1);
+            st.setBinaryStream(3, (InputStream) fis, (int) archivo.length());
+          st.setInt(4, 3);
+            st.executeUpdate();
+
+        } catch (Exception e) {
+        } finally {
+
+            dbutils.desconectar();
+        }
+    }
+
+    /**
+     *
+     * @return @throws FileNotFoundException
+     */
     public List<Cuenta> getCuentas() throws FileNotFoundException {
         List<Cuenta> listaCuentas = new ArrayList<>();
         byte[] imageBytes;
@@ -44,7 +78,7 @@ public class CuentaDal {
                 cuenta.setClave(rs.getString(2));
                 cuenta.setEstado(rs.getInt(3));
                 imageBytes = rs.getBytes(4);
-                BufferedImage buffImage= ImageIO.read(new ByteArrayInputStream(imageBytes));
+                BufferedImage buffImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
                 image = this.utilsPrograma.convertirImagen(buffImage);
                 cuenta.setFoto(image);
                 //Falta añadir los datos de la persona

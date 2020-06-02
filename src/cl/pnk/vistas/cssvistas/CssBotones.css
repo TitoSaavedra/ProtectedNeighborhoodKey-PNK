@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/06/2020, 11:12:39 PM
+    Author     : TitoS
+*/
+.btnAgregar{
+    -fx-background-color:#00cc00;
+    -fx-text-fill: black;
+}.btnAgregar:hover {
+    -fx-text-fill: white;
+    -fx-background-color:transparent;
+}.btnAgregar:hover .glyph-icon {
+    -fx-fill: white;
+}.btnAgregar:pressed {
+    -fx-text-fill: white;
+    -fx-background-color:#00cc00;
+}
+.btnEliminar{
+    -fx-background-color:#cc0000;
+    -fx-text-fill: black;
+}.btnEliminar:hover {
+    -fx-text-fill: white;
+    -fx-background-color:transparent;
+}.btnEliminar:hover .glyph-icon {
+    -fx-fill: white;
+}.btnEliminar:pressed {
+    -fx-text-fill: white;
+    -fx-background-color:#cc0000;
+}
+.btnModificar{
+    -fx-background-color:#cccc00;
+    -fx-text-fill: black;
+}.btnModificar:hover {
+    -fx-text-fill: white;
+    -fx-background-color:transparent;
+}.btnModificar:hover .glyph-icon {
+    -fx-fill: white;
+}.btnModificar:pressed {
+    -fx-text-fill: white;
+    -fx-background-color:#cccc00;
+}
