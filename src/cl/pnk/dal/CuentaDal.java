@@ -6,7 +6,6 @@
 package cl.pnk.dal;
 
 import cl.pnk.dao.Cuenta;
-import cl.pnk.dao.Direccion;
 import cl.pnk.dao.Persona;
 import cl.pnk.dao.TarjetaNfc;
 import cl.pnk.utils.DBUtils;
@@ -16,16 +15,13 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
-import javax.sql.rowset.serial.SerialBlob;
 
 /**
  *
