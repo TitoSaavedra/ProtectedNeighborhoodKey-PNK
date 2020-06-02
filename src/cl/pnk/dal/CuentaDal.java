@@ -5,10 +5,10 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dto.Cuenta;
-import cl.pnk.dto.Direccion;
-import cl.pnk.dto.Persona;
-import cl.pnk.dto.TarjetaNfc;
+import cl.pnk.dao.Cuenta;
+import cl.pnk.dao.Direccion;
+import cl.pnk.dao.Persona;
+import cl.pnk.dao.TarjetaNfc;
 import cl.pnk.utils.DBUtils;
 import cl.pnk.utils.UtilidadesPrograma;
 import java.awt.image.BufferedImage;

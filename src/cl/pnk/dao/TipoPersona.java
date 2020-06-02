@@ -3,61 +3,59 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.pnk.dto;
+package cl.pnk.dao;
+
 /**
  *
  * @author TitoS
  */
 
-public class Encomienda  {
+public class TipoPersona  {
 
-    private Integer idEncomienda;
+    private Integer idTipoPersona;
     private String nombre;
     private String descripcion;
-    private int estado;
 
     /**
      *
      */
-    public Encomienda() {
+    public TipoPersona() {
     }
 
     /**
      *
-     * @param idEncomienda
+     * @param idTipoPersona
      */
-    public Encomienda(Integer idEncomienda) {
-        this.idEncomienda = idEncomienda;
+    public TipoPersona(Integer idTipoPersona) {
+        this.idTipoPersona = idTipoPersona;
     }
 
     /**
      *
-     * @param idEncomienda
+     * @param idTipoPersona
      * @param nombre
      * @param descripcion
-     * @param estado
      */
-    public Encomienda(Integer idEncomienda, String nombre, String descripcion, int estado) {
-        this.idEncomienda = idEncomienda;
+    public TipoPersona(Integer idTipoPersona, String nombre, String descripcion) {
+        this.idTipoPersona = idTipoPersona;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.estado = estado;
     }
 
     /**
      *
      * @return
      */
-    public Integer getIdEncomienda() {
-        return idEncomienda;
+    public Integer getIdTipoPersona() {
+        return idTipoPersona;
     }
 
     /**
      *
-     * @param idEncomienda
+     * @param idTipoPersona
      */
-    public void setIdEncomienda(Integer idEncomienda) {
-        this.idEncomienda = idEncomienda;
+    public void setIdTipoPersona(Integer idTipoPersona) {
+        this.idTipoPersona = idTipoPersona;
     }
 
     /**
@@ -92,26 +90,9 @@ public class Encomienda  {
         this.descripcion = descripcion;
     }
 
-    /**
-     *
-     * @return
-     */
-    public int getEstado() {
-        return estado;
-    }
-
-    /**
-     *
-     * @param estado
-     */
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-
     @Override
     public String toString() {
-        return "cl.pnk.dto.Encomienda[ idEncomienda=" + idEncomienda + " ]";
+        return "cl.pnk.dto.TipoPersona[ idTipoPersona=" + idTipoPersona + " ]";
     }
     
 }
