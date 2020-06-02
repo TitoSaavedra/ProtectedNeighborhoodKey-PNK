@@ -18,7 +18,6 @@ public class TarjetaNfc {
     private String uid;
     private int estado;
     private Date fechaRegistro;
-   private int idCuenta;
     
     public TarjetaNfc() {
     }
@@ -27,11 +26,10 @@ public class TarjetaNfc {
         this.uid = uid;
     }
 
-    public TarjetaNfc(String uid, int estado, Date fechaRegistro, int idCuenta) {
+    public TarjetaNfc(String uid, int estado, Date fechaRegistro) {
         this.uid = uid;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
-        this.idCuenta = idCuenta;
     }
 
     public String getUid() {
@@ -57,15 +55,6 @@ public class TarjetaNfc {
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
-
-    public int getIdCuenta() {
-        return idCuenta;
-    }
-
-    public void setIdCuenta(int idCuenta) {
-        this.idCuenta = idCuenta;
-    }
-
 
     @Override
     public String toString() {

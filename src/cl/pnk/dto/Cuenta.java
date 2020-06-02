@@ -5,19 +5,19 @@
  */
 package cl.pnk.dto;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
  * @author TitoS
  */
+public class Cuenta {
 
-public class Cuenta  {
-
-  
     private Integer idCuenta;
     private String clave;
     private int estado;
-    private String foto;
+    private Image foto;
     private Persona persona;
     private TarjetaNfc tarjetaNfc;
 
@@ -28,11 +28,21 @@ public class Cuenta  {
         this.idCuenta = idCuenta;
     }
 
-    public Cuenta(Integer idCuenta, String clave, int estado, String foto) {
+    public Cuenta(Integer idCuenta, String clave, int estado, Persona persona, TarjetaNfc tarjetaNfc) {
+        this.idCuenta = idCuenta;
+        this.clave = clave;
+        this.estado = estado;
+        this.persona = persona;
+        this.tarjetaNfc = tarjetaNfc;
+    }
+
+    public Cuenta(Integer idCuenta, String clave, int estado, Image foto, Persona persona, TarjetaNfc tarjetaNfc) {
         this.idCuenta = idCuenta;
         this.clave = clave;
         this.estado = estado;
         this.foto = foto;
+        this.persona = persona;
+        this.tarjetaNfc = tarjetaNfc;
     }
 
     public Integer getIdCuenta() {
@@ -59,11 +69,11 @@ public class Cuenta  {
         this.estado = estado;
     }
 
-    public String getFoto() {
+    public Image getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(Image foto) {
         this.foto = foto;
     }
 
@@ -83,9 +93,12 @@ public class Cuenta  {
         this.tarjetaNfc = tarjetaNfc;
     }
 
+
+
+
     @Override
     public String toString() {
-        return "cl.pnk.dto.Cuenta[ idCuenta=" + idCuenta + " ]";
+        return "Id cuenta"+this.idCuenta+" Rut:"+this.persona.getRut();
     }
-    
+
 }

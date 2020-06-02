@@ -25,12 +25,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -82,6 +86,8 @@ public class VistaPrincipalControlador implements Initializable {
     private TranslateTransition closeNav = null;
     private RotateTransition rt;
     private double x, y;
+    @FXML
+    private Circle clImagenPerfil;
 
     /**
      * Initializes the controller class.
@@ -96,7 +102,8 @@ public class VistaPrincipalControlador implements Initializable {
         }
     }
 
-    public void inicializarDatos(String nombre) {
+    public void inicializarDatos(String nombre, Image imagenPerfil) {
+        this.clImagenPerfil.setFill(new ImagePattern(imagenPerfil));
         txtNombreApellido.setText(nombre);
     }
 
@@ -257,11 +264,21 @@ public class VistaPrincipalControlador implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-       // stage.initModality(Modality.APPLICATION_MODAL);
+        // stage.initModality(Modality.APPLICATION_MODAL);
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Conexión Arduino");
         stage.setScene(new Scene(root1));
         stage.show();
 
+    }
+
+    @FXML
+    private void mouseEntroFotoPerfil(MouseEvent event) {
+        this.clImagenPerfil.setEffect(new DropShadow(+25, 0d, +2d, Color.ANTIQUEWHITE));
+    }
+
+    @FXML
+    private void mouseSalioFotoPerfil(MouseEvent event) {
+        this.clImagenPerfil.setEffect(new DropShadow(+25, 0d, +2d, Color.TRANSPARENT));
     }
 }

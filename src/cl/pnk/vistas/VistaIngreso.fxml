@@ -39,7 +39,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtIngresoRut" layoutX="246.0" layoutY="402.0" prefHeight="39.0" prefWidth="264.0" promptText="Dirección de correo" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="245.0">
+                  <TextField fx:id="txtIngresoCorreo" layoutX="246.0" layoutY="402.0" prefHeight="39.0" prefWidth="264.0" promptText="Dirección de correo" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="245.0">
                      <font>
                         <Font size="18.0" />
                      </font>

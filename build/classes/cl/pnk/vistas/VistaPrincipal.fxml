@@ -107,7 +107,7 @@
                         <RowConstraints maxHeight="82.0" minHeight="1.0" prefHeight="81.0" valignment="BASELINE" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Circle radius="58.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-width: 5;" GridPane.halignment="CENTER">
+                        <Circle fx:id="clImagenPerfil" onMouseEntered="#mouseEntroFotoPerfil" onMouseExited="#mouseSalioFotoPerfil" radius="58.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-width: 5;" GridPane.halignment="CENTER">
                             <fill>
                                 <LinearGradient endX="1.0" endY="1.0">
                                     <stops>

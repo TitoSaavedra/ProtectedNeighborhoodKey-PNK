@@ -12,8 +12,7 @@ package cl.pnk.dto;
  */
 
 public class Persona  {
-
-
+    
     private Integer idPersona;
     private String rut;
     private String nombre;
@@ -23,6 +22,7 @@ public class Persona  {
     private int telefono;
     private String email;
     private int estado;
+    private TipoPersona tipoPersona;
 
     public Persona() {
     }
@@ -31,7 +31,7 @@ public class Persona  {
         this.idPersona = idPersona;
     }
 
-    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, int telefono, String email, int estado) {
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, int telefono, String email, int estado, TipoPersona tipoPersona) {
         this.idPersona = idPersona;
         this.rut = rut;
         this.nombre = nombre;
@@ -41,6 +41,7 @@ public class Persona  {
         this.telefono = telefono;
         this.email = email;
         this.estado = estado;
+        this.tipoPersona = tipoPersona;
     }
 
     public Integer getIdPersona() {
@@ -115,6 +116,13 @@ public class Persona  {
         this.estado = estado;
     }
 
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(TipoPersona tipoPersona) {
+        this.tipoPersona = tipoPersona;
+    }
 
     @Override
     public String toString() {

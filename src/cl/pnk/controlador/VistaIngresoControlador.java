@@ -36,8 +36,6 @@ public class VistaIngresoControlador implements Initializable {
     @FXML
     private Button btnIngresar;
     @FXML
-    private TextField txtIngresoRut;
-    @FXML
     private TextField txtIngresoContrasena;
     @FXML
     private AnchorPane pnPanelPrincipal;
@@ -48,6 +46,8 @@ public class VistaIngresoControlador implements Initializable {
     @FXML
     private Text txtError;
     private double x, y;
+    @FXML
+    private TextField txtIngresoCorreo;
 
     /**
      * Initializes the controller class.
@@ -60,20 +60,32 @@ public class VistaIngresoControlador implements Initializable {
     @FXML
     private void btnIngresar(ActionEvent event) throws IOException {
         ///Hacer bien el login :v preguntar a las personas luego al a cuenta ajsdj
-//        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+        String txtContra= this.txtIngresoContrasena.getText().trim();
+        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
+        for (int i = 0; i < listaCuenta.size(); i++) {
+            Cuenta cuenta = listaCuenta.get(i);
+             if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
+                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona()==1) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
+                    Pane ventana = (Pane) loader.load();
+                    Scene scene = new Scene(ventana);
+                    VistaPrincipalControlador controlador = loader.getController();
+                    String nombreApaternoAmatero = cuenta.getPersona().getNombre()+" "+cuenta.getPersona().getApePaterno()+" "+cuenta.getPersona().getApeMaterno();
+                    controlador.inicializarDatos(nombreApaternoAmatero,cuenta.getFoto());
+                    Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    windows.setScene(scene);
+                }else{
+                     txtError.setText("Sistema de uso exclusivo para porteria");
+                     i=listaCuenta.size();
+                }
+            } else {
+                txtError.setText("Usuario o Contraseña incorrectos");
+            }
+        }
 //        for (Cuenta cuenta : listaCuenta) {
-//            if (cuenta.getClave().equals(txtIngresoContrasena.getText())) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
-        Pane ventana = (Pane) loader.load();
-        Scene scene = new Scene(ventana);
-        VistaPrincipalControlador controlador = loader.getController();
-        controlador.inicializarDatos(txtIngresoRut.getText().trim());
-        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        windows.setScene(scene);
-////            }else{
-//                txtError.setText("Usuario o Contraseña incorrectos");
-//            }
+//           
 //        }
     }
 
