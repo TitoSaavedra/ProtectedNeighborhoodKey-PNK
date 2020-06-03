@@ -202,7 +202,7 @@ public class VistaResidenteControlador implements Initializable {
      * del archivo en imagenPerfilArchivo
      */
     @FXML
-    private void accionBuscarImagen(ActionEvent event) {
+    public void accionBuscarImagen(ActionEvent event) {
         Stage stage = (Stage) this.apPanelPrincipal.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("png y jpg", "*.png", "*.jpg");
@@ -232,7 +232,7 @@ public class VistaResidenteControlador implements Initializable {
      *
      */
     @FXML
-    private void accionMenuBusqueda(Event event) {
+    public void accionMenuBusqueda(Event event) {
         cambioNombreMenuRuta(submenuResidente.getText());
     }
 
@@ -250,7 +250,7 @@ public class VistaResidenteControlador implements Initializable {
      *
      */
     @FXML
-    private void accionMenuListaResidentes(Event event) {
+    public void accionMenuListaResidentes(Event event) {
         cambioNombreMenuRuta(submenuLista.getText());
     }
 
@@ -274,7 +274,7 @@ public class VistaResidenteControlador implements Initializable {
      *
      */
     @FXML
-    private void accionKeyApretadaP1(KeyEvent event) {
+    public void accionKeyApretadaP1(KeyEvent event) {
         this.jtfBusquedaP2.setText(this.jtfBusquedaP1.getText());
     }
 
@@ -283,9 +283,10 @@ public class VistaResidenteControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al precionar el boton de
      * busqueda de rut. inciia el metodo filtrarPorRut();
+     * @throws FileNotFoundException si el File de la imagen esta vacio.
      */
     @FXML
-    private void accionFiltrarP1(ActionEvent event) throws FileNotFoundException {
+    public void accionFiltrarP1(ActionEvent event) throws FileNotFoundException {
         this.filtrarPorRut();
         this.btnImagenPresionado = "no";
     }
@@ -311,7 +312,7 @@ public class VistaResidenteControlador implements Initializable {
      * @see PersonaDal
      */
     @FXML
-    private void accionEliminarResidente(ActionEvent event) {
+    public void accionEliminarResidente(ActionEvent event) {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
@@ -329,10 +330,11 @@ public class VistaResidenteControlador implements Initializable {
      * modificar residente. incia el metodo validarCampos(), Luego busca en la
      * bd al residente, para luego por medio de PersonaDal modificar el
      * residente.
+     * @throws FileNotFoundException si el File de la imagen esta vacio.
      * @see PersonaDal
      */
     @FXML
-    private void accionModificarrResidente(ActionEvent event) throws FileNotFoundException {
+    public void accionModificarrResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
@@ -348,10 +350,10 @@ public class VistaResidenteControlador implements Initializable {
      * @param event Evento de accion que se genera al precionar el boton de
      * agregar residente. incia el metodo validarCampos(), luego inicia el
      * metodo ingresarResidente enviado el rut rescatado del textField rut
-     *
+     * @throws FileNotFoundException si el File de la imagen esta vacio.
      */
     @FXML
-    private void accionAgregarResidente(ActionEvent event) throws IOException {
+    public void accionAgregarResidente(ActionEvent event) throws IOException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             this.ingresarResidente(rut);
@@ -363,7 +365,7 @@ public class VistaResidenteControlador implements Initializable {
      * Este metodo desabilita los botonoes eliminar residente y modificar
      * residente tambien habilita el ingresar residente
      */
-    private void desabhilitarModElim() {
+    public void desabhilitarModElim() {
         this.btnAgregar.setDisable(false);
         this.btnModificar.setDisable(true);
         this.btnEliminar.setDisable(true);
@@ -373,7 +375,7 @@ public class VistaResidenteControlador implements Initializable {
      * Este metodo habilita los botonoes eliminar residente y modificar
      * residente tambien desahabilita el ingresar residente
      */
-    private void habilitarModElim() {
+    public void habilitarModElim() {
         this.btnAgregar.setDisable(true);
         this.btnModificar.setDisable(false);
         this.btnEliminar.setDisable(false);
@@ -387,6 +389,7 @@ public class VistaResidenteControlador implements Initializable {
      * Cuenta Dal Finalizando modifica la direccion del residente mediante
      * DireccionDal
      *
+     * @throws FileNotFoundException si el File de la imagen esta vacio.
      * @param residente este es un objeto de la clase Persona, contiene todos
      * los datos de la persona
      * @see Persona
@@ -394,7 +397,7 @@ public class VistaResidenteControlador implements Initializable {
      * @see CuentaDal
      * @see DireccionDal
      */
-    private void modificarResidente(Persona residente) throws FileNotFoundException {
+    public void modificarResidente(Persona residente) throws FileNotFoundException {
         String nombre = this.jtxtNombre.getText();
         String segNombre = this.jtxtSegNombre.getText();
         String apePaterno = this.jtxtApellidoPaterno.getText();
@@ -426,14 +429,15 @@ public class VistaResidenteControlador implements Initializable {
      * Luego modifica la cuenta del residente mediante Cuenta Dal Finalizando
      * modifica la direccion del residente mediante DireccionDal
      *
-     * @param residente este es un objeto de la clase Persona, contiene todos
-     * los datos de la persona
+     * @param rut es el rut de la ersona que se desea ingresar
+     * @throws FileNotFoundException si el File de la imagen esta vacio.
+     *
      * @see Persona
      * @see PersonaDal
      * @see CuentaDal
      * @see DireccionDal
      */
-    private void ingresarResidente(String rut) throws FileNotFoundException {
+    public void ingresarResidente(String rut) throws FileNotFoundException {
         int idPersona = 0;
         String nombre = this.jtxtNombre.getText();
         String segNombre = this.jtxtSegNombre.getText();
@@ -470,7 +474,7 @@ public class VistaResidenteControlador implements Initializable {
      *
      * @see TablaResidenteDal
      */
-    private void mostrarDatosTabla() {
+    public void mostrarDatosTabla() {
         ObservableList<TablaResidente> listaTablaResidentes = new TablaResidenteDal().obtenerTablaResidentes();
         this.rowRut.setCellValueFactory(new PropertyValueFactory<>("rut"));
         this.rowNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -483,22 +487,23 @@ public class VistaResidenteControlador implements Initializable {
     }
 
     /**
-     * Este metodo asigna un texto a un imput txt
+     * Este metodo asigna un texto a un input txt
      *
      * @param jfXTextField es el JFXTextField que se le quiere cambiar el texto
      * @param texto es la cadena de texto que se le quiere asignar
      */
-    private void asignarValorJTextField(JFXTextField jfXTextField, String texto) {
+    public void asignarValorJTextField(JFXTextField jfXTextField, String texto) {
         jfXTextField.setText(texto);
     }
 
     /**
-     * Este metodo valida la información del los input text
+     * Este metodo a un texto a un input password
      *
-     * @param jfXTextField es el JFXTextField que se le quiere cambiar el texto
+     * @param jFXPasswordField es el JFXPasswordField que se le asignara el
+     * password
      * @param texto es la cadena de texto que se le quiere asignar
      */
-    private void asignarValorJPasswordField(JFXPasswordField jFXPasswordField, String texto) {
+    public void asignarValorJPasswordField(JFXPasswordField jFXPasswordField, String texto) {
         jFXPasswordField.setText(texto);
     }
 
@@ -508,7 +513,7 @@ public class VistaResidenteControlador implements Initializable {
      * @param mensaje es la cadena de texto que se le quiere asignar
      * @param texto es el jTextField que se le quere asignar el mensaje
      */
-    private void mostrarAdvertencia(Text texto, String mensaje) {
+    public void mostrarAdvertencia(Text texto, String mensaje) {
         texto.setText(mensaje);
         texto.setVisible(true);
     }
@@ -518,14 +523,14 @@ public class VistaResidenteControlador implements Initializable {
      *
      * @param texto es el jTextField que se quiere ocultar
      */
-    private void ocultarAdvertencia(Text texto) {
+    public void ocultarAdvertencia(Text texto) {
         texto.setVisible(false);
     }
 
     /**
      * Este metodo oculta todos los textos de validación
      */
-    private void desabilitarTodosTextoError() {
+    public void desabilitarTodosTextoError() {
         this.txtErrorRut.setVisible(false);
         this.txtErrorNombre.setVisible(false);
         this.txtErrorSegNombre.setVisible(false);
@@ -547,15 +552,19 @@ public class VistaResidenteControlador implements Initializable {
      * @param texto es el jtextField que se queire habilitar o deshabilitar
      * @param op booleano que indica si habilitar o deshabilitar
      */
-    private void deshabilitarHabilitarTextoError(Text texto, boolean op) {
+    public void deshabilitarHabilitarTextoError(Text texto, boolean op) {
         texto.setVisible(op);
     }
 
     /**
-     * Este metodo valida la información del los input text
+     * Este metodo valida la información del los input text y muestra los
+     * mensaes de error para cada input text
      *
+     * @return validacion true = Validacion buena todos los campos llenos ||
+     * false = validacion mala faltan campos por llenar o la repetircion de
+     * contraseñas esta mala
      */
-    private boolean validarCampos() {
+    public boolean validarCampos() {
         boolean validacion = false;
         int val = 1;
         String rut = this.jtxtRut.getText().trim();
@@ -689,7 +698,13 @@ public class VistaResidenteControlador implements Initializable {
         return validacion;
     }
 
-    private void resetCampos(String rut) {
+    /**
+     * Este metodo resetea la todos los campos del formulario y asigna el rut en
+     * el jtxtRut
+     *
+     * @param rut Rut que se obtiene del jtxtFiltrarRut
+     */
+    public void resetCampos(String rut) {
         this.asignarValorJTextField(this.jtxtRut, rut);
         this.asignarValorJTextField(this.jtxtNombre, "");
         this.asignarValorJTextField(this.jtxtSegNombre, "");
@@ -708,7 +723,7 @@ public class VistaResidenteControlador implements Initializable {
      * Este metodo resetea la imagen de usuario en la imagen clImagenVista Solo
      * resetea la imagen visual, no la de la bd
      */
-    private void resetImagenUsuario() {
+    public void resetImagenUsuario() {
         Image perfilPrederminado = new Image(imagenReset.toURI().toString());
         this.clImagenVista.setFill(new ImagePattern(perfilPrederminado));
     }
@@ -719,8 +734,9 @@ public class VistaResidenteControlador implements Initializable {
      *
      * @param texto es el texto de confirmacion
      * @param op es un booleano que indica ocultar o esconder el texto
+     * @param color es la opcion de color que se le aplicara al texto
      */
-    private void textoConfirmacion(String texto, boolean op, int color) {
+    public void textoConfirmacion(String texto, boolean op, int color) {
         this.txtConfirmacionAccion.setVisible(op);
         this.txtConfirmacionAccion.setText(texto);
         switch (color) {
@@ -741,11 +757,12 @@ public class VistaResidenteControlador implements Initializable {
      * Este metodo es para filtrar la tabla, dependiendo el texto que se le
      * ingrese
      *
-     * @param event Evento de accion que se genera al precionar las teclas en el jtxtField Filtrar Rut
+     * @param event Evento de accion que se genera al precionar las teclas en el
+     * jtxtField Filtrar Rut
      * @see TablaResidenteDal
      */
     @FXML
-    private void accionFiltrarTabla(KeyEvent event) {
+    public void accionFiltrarTabla(KeyEvent event) {
         String text = this.jtxBusquedaFiltrada.getText().trim();
         ObservableList<TablaResidente> listaTablaResidentes = new TablaResidenteDal().obtenerTablaResidentesFiltrada(text);
         this.rowRut.setCellValueFactory(new PropertyValueFactory<>("rut"));
@@ -759,13 +776,16 @@ public class VistaResidenteControlador implements Initializable {
     }
 
     /**
-     * Este metodo detecta si se hace doble clic en alguna fila, para mandar el residente
-     * a la vista de visualisar residente
+     * Este metodo detecta si se hace doble clic en alguna fila, para mandar el
+     * residente a la vista de visualisar residente
+     *
+     * @throws FileNotFoundException si no encuentra el archivo de imagen, por
+     * le metodo filtrar por rut.
      * @param event evento que detecta el clic
      * @see TablaResidenteDal
      */
     @FXML
-    private void tvMouseCliqueado(MouseEvent event) throws FileNotFoundException {
+    public void tvMouseCliqueado(MouseEvent event) throws FileNotFoundException {
         if (event.getClickCount() == 2 && !event.isConsumed()) {
             event.consume();
             this.resetImagenUsuario();
@@ -782,12 +802,13 @@ public class VistaResidenteControlador implements Initializable {
      * Este metodo muestra la información del residente obteniendo el rut de
      * jtfBusquedaP1.
      *
+     * @throws FileNotFoundException Por si el archivo de imagen esta nulo
      * @see Persona
      * @see PersonaDal
      * @see CuentaDal
      * @see DireccionDal
      */
-    private void filtrarPorRut() throws FileNotFoundException {
+    public void filtrarPorRut() throws FileNotFoundException {
         String rut = this.jtfBusquedaP1.getText().trim();
         this.textoConfirmacion("", false, 2);
         this.desabilitarTodosTextoError();

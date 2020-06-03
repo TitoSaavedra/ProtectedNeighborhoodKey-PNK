@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package cl.pnk.dao;
+
 /**
+ * Clase de tipo Encomienda, de la tabla Encomienda
  *
  * @author TitoS
  */
 
-public class Encomienda  {
+public class Encomienda {
 
     private Integer idEncomienda;
     private String nombre;
@@ -19,11 +21,9 @@ public class Encomienda  {
     public Encomienda() {
     }
 
-
     public Encomienda(Integer idEncomienda) {
         this.idEncomienda = idEncomienda;
     }
-
 
     public Encomienda(Integer idEncomienda, String nombre, String descripcion, int estado) {
         this.idEncomienda = idEncomienda;
@@ -32,11 +32,9 @@ public class Encomienda  {
         this.estado = estado;
     }
 
-
     public Integer getIdEncomienda() {
         return idEncomienda;
     }
-
 
     public void setIdEncomienda(Integer idEncomienda) {
         this.idEncomienda = idEncomienda;
@@ -46,17 +44,14 @@ public class Encomienda  {
         return nombre;
     }
 
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
     public String getDescripcion() {
         return descripcion;
     }
 
-  
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -69,10 +64,9 @@ public class Encomienda  {
         this.estado = estado;
     }
 
-
     @Override
     public String toString() {
         return "cl.pnk.dto.Encomienda[ idEncomienda=" + idEncomienda + " ]";
     }
-    
+
 }

@@ -67,10 +67,11 @@ public class VistaIngresoControlador implements Initializable {
      * @param event Evento de accion que se genera al apretar el boton.
      * Aqui se verifica la información de el rut y contraseña y se comparan con las cuentas de la BD
      * Para posteriormente dar el ingreso y enviarlo a la vista principal del programa
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaPrincipalControlador
      */
     @FXML
-    private void btnIngresar(ActionEvent event) throws IOException {
+    public void btnIngresar(ActionEvent event) throws IOException {
         List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
         String txtContra = this.txtIngresoContrasena.getText().trim();
         String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();

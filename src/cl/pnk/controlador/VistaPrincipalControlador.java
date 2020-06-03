@@ -102,8 +102,8 @@ public class VistaPrincipalControlador implements Initializable {
     }
 
     /**
-     * Metodo que inicializa la imagen de perfil de la cuenta portero y cambia el nombre
-     * que se muestra en el menu deslizante
+     * Metodo que inicializa la imagen de perfil de la cuenta portero y cambia
+     * el nombre que se muestra en el menu deslizante
      *
      * @param nombre Nombre que viene de la vista de loggin
      * @param imagenPerfil imagen que viene de la vista de loggin
@@ -125,10 +125,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaBarreraUA.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaBarreraUAControlador
      */
     @FXML
-    private void accionBarrera(ActionEvent event) throws IOException {
+    public void accionBarrera(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -141,10 +142,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaVisitante.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaVisitanteControlaldor
      */
     @FXML
-    private void accionVisita(ActionEvent event) throws IOException {
+    public void accionVisita(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaVisitante.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -157,10 +159,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaVisitante.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaResidenteControlador
      */
     @FXML
-    private void accionResidente(ActionEvent event) throws IOException {
+    public void accionResidente(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaResidente.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -173,10 +176,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaEncomiendas.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaEncomiendasControlador
      */
     @FXML
-    private void accionEncomienda(ActionEvent event) throws IOException {
+    public void accionEncomienda(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaEncomiendas.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -189,10 +193,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaNotificacion.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaNotificacionControlador
      */
     @FXML
-    private void accionNotificacion(ActionEvent event) throws IOException {
+    public void accionNotificacion(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaNotificacion.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -205,10 +210,12 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaInforme.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaInformeControlador
      */
     @FXML
-    private void accionInforme(ActionEvent event) throws IOException {
+    public void accionInforme(ActionEvent event) throws IOException {
         cerrarMenu();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
         AnchorPane panel = tamanoPanel(pane);
@@ -219,7 +226,7 @@ public class VistaPrincipalControlador implements Initializable {
     /**
      * Este metódo le inserta una animación a la barra de navegación deslizante
      */
-    private void accionAnimacionMenuDeslizante() {
+    public void accionAnimacionMenuDeslizante() {
         openNav = new TranslateTransition(new Duration(350), apMenu);
         openNav.setToX(0);
         closeNav = new TranslateTransition(new Duration(350), apMenu);
@@ -241,9 +248,10 @@ public class VistaPrincipalControlador implements Initializable {
      * Este metodo carga el inicio de la aplicación Aqui se carga y se muestra
      * el archivo VistaBarreraUA.fxml, en el contenedor apVista
      *
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaBarreraUAControlador
      */
-    private void inicioApp() throws IOException {
+    public void inicioApp() throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -257,8 +265,9 @@ public class VistaPrincipalControlador implements Initializable {
      * contenedor apVista
      *
      * @param pane Es el AnchorPane que se le quiere cambiar la posición
+     * @return pane Retorna el AnchorPane con el cambio de posicion hecho
      */
-    private AnchorPane tamanoPanel(AnchorPane pane) {
+    public AnchorPane tamanoPanel(AnchorPane pane) {
         AnchorPane.setTopAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);
         AnchorPane.setLeftAnchor(pane, 0.0);
@@ -274,10 +283,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaIngreso.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaIngresoControlador
      */
     @FXML
-    private void accionCerrarSesion(ActionEvent event) throws IOException {
+    public void accionCerrarSesion(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaIngreso.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apPanelPrincipal.getChildren().removeAll();
@@ -288,7 +298,7 @@ public class VistaPrincipalControlador implements Initializable {
      * Este metodo abre el menu deslizante y le cambia le icono al boton Tambien
      * reproduce la animación del clic en el boton de menu deslizante
      */
-    private void abrirMenu() {
+    public void abrirMenu() {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenuCerrar.png").toString(), true);
         btnImage.setImage(image);
         rotacion();
@@ -300,7 +310,7 @@ public class VistaPrincipalControlador implements Initializable {
      * Este metodo cierra el menu deslizante y le cambia le icono al boton
      * Tambien reproduce la animación del clic en el boton de menu deslizante
      */
-    private void cerrarMenu() {
+    public void cerrarMenu() {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
         btnImage.setImage(image);
         rotacion();
@@ -313,7 +323,7 @@ public class VistaPrincipalControlador implements Initializable {
      * Este metodo hace que RotateTransition sea reproducido y le añade una
      * rotación de 360 grados
      */
-    private void rotacion() {
+    public void rotacion() {
         rt.setByAngle(360);
         rt.play();
     }
@@ -325,7 +335,7 @@ public class VistaPrincipalControlador implements Initializable {
      * se asigna la posision X e Y nuevas de la ventana de PNK
      */
     @FXML
-    private void accMover(MouseEvent event) {
+    public void accMover(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
@@ -339,7 +349,7 @@ public class VistaPrincipalControlador implements Initializable {
      * Aqui se asigna la posision X e Y actuales
      */
     @FXML
-    private void accPresionar(MouseEvent event) {
+    public void accPresionar(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
     }
@@ -351,7 +361,7 @@ public class VistaPrincipalControlador implements Initializable {
      * cerrar. Aqui se cierra la aplicación PNK
      */
     @FXML
-    private void accionCerrar(MouseEvent event) {
+    public void accionCerrar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -363,7 +373,7 @@ public class VistaPrincipalControlador implements Initializable {
      * miniminizar. Aqui se miniminiza la aplicación PNK
      */
     @FXML
-    private void accionMiniminizar(MouseEvent event) {
+    public void accionMiniminizar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
@@ -373,10 +383,11 @@ public class VistaPrincipalControlador implements Initializable {
      *
      * @param event Evento de accion que se genera al hacer clic en el boton
      * pocioon. Aqui se genera una nueva ventana con la vista VistaArduino.fxml
+     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaArduinoControlador
      */
     @FXML
-    private void accionOpcion(MouseEvent event) throws IOException {
+    public void accionOpcion(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cl/pnk/vistas/VistaArduino.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -390,21 +401,23 @@ public class VistaPrincipalControlador implements Initializable {
 
     /**
      * Este metodo se inicia al pasar el mouse por encima de la imagen de perfil
-     *
      * le añade el efecto blur por al rededor.
+     *
+     * @param event Evento de accion que se genera la pasar el mouse por ensima.
      */
     @FXML
-    private void mouseEntroFotoPerfil(MouseEvent event) {
+    public void mouseEntroFotoPerfil(MouseEvent event) {
         this.clImagenPerfil.setEffect(new DropShadow(+25, 0d, +2d, Color.ANTIQUEWHITE));
     }
 
     /**
      * Este metodo se inicia al salir el mouse por encima de la imagen de perfil
-     *
      * le quita el efecto blur por al rededor.
+     *
+     * @param event Evento de accion que se genera la quitar el mouse de ensima.
      */
     @FXML
-    private void mouseSalioFotoPerfil(MouseEvent event) {
+    public void mouseSalioFotoPerfil(MouseEvent event) {
         this.clImagenPerfil.setEffect(new DropShadow(+25, 0d, +2d, Color.TRANSPARENT));
     }
 }

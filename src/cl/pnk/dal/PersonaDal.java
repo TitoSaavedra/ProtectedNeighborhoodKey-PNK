@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que conecta la clase Persona con la base de datos
  *
  * @author TitoS
  */
@@ -92,7 +93,7 @@ public class PersonaDal {
     }
 
     /**
-     * Metodo que obtiene una persona de la base de datos filtrada por rut
+     *Metodo que obtiene una persona de la base de datos filtrada por rut
      *
      * @param rut texto que contiene el rut a filtrar
      * @return persona persona encontrada en la bd

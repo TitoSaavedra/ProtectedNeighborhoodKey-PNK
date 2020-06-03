@@ -71,7 +71,7 @@ public class VistaArduinoControlador implements Initializable {
      * @see VistaInformeControlador
      */
     @FXML
-    private void conectar(ActionEvent event) {
+    public void conectar(ActionEvent event) {
         if (btnConectar.getText().equals("Conectar")) {
             puertaCom = SerialPort.getCommPort(cbPuertas.getSelectionModel().getSelectedItem().toString());
             puertaCom.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
@@ -98,7 +98,7 @@ public class VistaArduinoControlador implements Initializable {
      */
 
     @FXML
-    private void prenderLed(ActionEvent event) {
+    public void prenderLed(ActionEvent event) {
         PrintWriter output = new PrintWriter(puertaCom.getOutputStream());
         if (led == 0) {
             output.print("1");
