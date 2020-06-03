@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dao/Persona.java</file>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dao/TablaResidente.java</file>
             <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dal/CuentaDal.java</file>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/controlador/VistaIngresoControlador.java</file>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dal/PersonaDal.java</file>
+            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/utils/DBUtils.java</file>
             <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/controlador/VistaResidenteControlador.java</file>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dal/DireccionDal.java</file>
-            <file>file:/C:/Users/TitoS/Documents/Materiales%20PKN/App%20PNK/ProtectedNeighborhoodKey-PNK/src/cl/pnk/dal/TablaResidenteDal.java</file>
         </group>
     </open-files>
 </project-private>

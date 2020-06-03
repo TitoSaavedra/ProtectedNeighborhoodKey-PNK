@@ -32,7 +32,7 @@ import javafx.stage.Stage;
  * @author TitoS
  */
 public class VistaIngresoControlador implements Initializable {
-
+    
     @FXML
     private Button btnIngresar;
     @FXML
@@ -51,6 +51,7 @@ public class VistaIngresoControlador implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -58,58 +59,58 @@ public class VistaIngresoControlador implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     @FXML
     private void btnIngresar(ActionEvent event) throws IOException {
-//        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
-//        String txtContra= this.txtIngresoContrasena.getText().trim();
-//        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
-//        for (int i = 0; i < listaCuenta.size(); i++) {
-//            Cuenta cuenta = listaCuenta.get(i);
-//             if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
-//                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona()==1) {
+        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+        String txtContra = this.txtIngresoContrasena.getText().trim();
+        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
+        for (int i = 0; i < listaCuenta.size(); i++) {
+            Cuenta cuenta = listaCuenta.get(i);
+            if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
+                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona() == 1) {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
                     Pane ventana = (Pane) loader.load();
                     Scene scene = new Scene(ventana);
                     VistaPrincipalControlador controlador = loader.getController();
-//                    String nombreApaternoAmatero = cuenta.getPersona().getNombre()+" "+cuenta.getPersona().getApePaterno()+" "+cuenta.getPersona().getApeMaterno();
-//                    controlador.inicializarDatos(nombreApaternoAmatero,cuenta.getFoto());
+                    String nombreApaternoAmatero = cuenta.getPersona().getNombre() + " " + cuenta.getPersona().getApePaterno() + " " + cuenta.getPersona().getApeMaterno();
+                    controlador.inicializarDatos(nombreApaternoAmatero, cuenta.getFoto());
                     Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     windows.setScene(scene);
-//                }else{
-//                     txtError.setText("Sistema de uso exclusivo para porteria");
-//                     i=listaCuenta.size();
-//                }
-//            } else {
-//                txtError.setText("Usuario o Contraseña incorrectos");
-//            }
-//        }
+                } else {
+                    txtError.setText("Sistema de uso exclusivo para porteria");
+                    i = listaCuenta.size();
+                }
+            } else {
+                txtError.setText("Usuario o Contraseña incorrectos");
+            }
+        }
     }
-
+    
     @FXML
     private void accMover(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
-
+    
     @FXML
     private void accPresionar(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
     }
-
+    
     @FXML
     private void accionCerrar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
+    
     @FXML
     private void accionMiniminizar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
-
+    
 }

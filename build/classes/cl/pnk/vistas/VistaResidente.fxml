@@ -557,7 +557,7 @@
                                     <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TableView fx:id="tvTablaResidentes" prefHeight="486.0" prefWidth="1100.0" GridPane.rowIndex="1">
+                                    <TableView fx:id="tvTablaResidentes" onMouseClicked="#tvMouseCliqueado" prefHeight="486.0" prefWidth="1100.0" GridPane.rowIndex="1">
                                        <columns>
                                           <TableColumn fx:id="rowRut" prefWidth="157.1" text="Rut" />
                                           <TableColumn fx:id="rowNombre" prefWidth="157.1" text="Nombre" />
@@ -577,7 +577,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <TextField fx:id="jtfBusquedaP3" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut">
+                                          <TextField fx:id="jtxBusquedaFiltrada" onKeyReleased="#accionFiltrarTabla" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese Filtro">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -585,14 +585,6 @@
                                                 <Font name="Arial Bold" size="18.0" />
                                              </font>
                                           </TextField>
-                                          <JFXButton onAction="#accionFiltrarP3" prefHeight="39.0" prefWidth="167.0" ripplerFill="WHITE" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaResidente.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                             </graphic>
-                                             <font>
-                                                <Font name="System Bold" size="18.0" />
-                                             </font>
-                                          </JFXButton>
                                        </children>
                                     </GridPane>
                                  </children>

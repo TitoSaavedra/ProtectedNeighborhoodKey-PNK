@@ -44,7 +44,7 @@ public class CuentaDal {
             st.setString(1, cuenta.getClave());
             st.setInt(2, 1);
             st.setBinaryStream(3, (InputStream) fis, (int) archivo.length());
-          st.setInt(4, 3);
+            st.setInt(4, idPersona);
             st.executeUpdate();
 
         } catch (Exception e) {
@@ -63,8 +63,7 @@ public class CuentaDal {
         byte[] imageBytes;
         Image image;
         try {
-            boolean res = this.dbutils.conectar();
-            System.out.println(res);
+            this.dbutils.conectar();
             String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta WHERE Estado = 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
@@ -99,6 +98,78 @@ public class CuentaDal {
             this.dbutils.desconectar();
         }
         return listaCuentas;
+    }
+//UPDATE `cuenta` SET `CLAVE` = 'QQqq', `FOTO` =
+
+    public  void modificarCuentaConFoto(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
+        dbutils.conectar();
+        FileInputStream in = new FileInputStream(archivo);
+        try {
+            String sql = "UPDATE `cuenta` SET `CLAVE` = ?, `FOTO` = ? WHERE `cuenta`.`ID_CUENTA` = " + idPersona + ";";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setString(1, cuenta.getClave());
+            st.setBinaryStream(2, in, (int) archivo.length());
+            st.executeUpdate();
+            dbutils.getConexion().commit();
+        } catch (Exception e) {
+        } finally {
+
+            dbutils.desconectar();
+        }
+    }
+    
+     public void modificarCuentaSinFoto(Cuenta cuenta, int idPersona) {
+        dbutils.conectar();
+        try {
+            String sql = "UPDATE `cuenta` SET `CLAVE` = ? WHERE `cuenta`.`ID_CUENTA` = " + idPersona + ";";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setString(1, cuenta.getClave());
+            st.executeUpdate();
+        } catch (Exception e) {
+        } finally {
+
+            dbutils.desconectar();
+        }
+    }
+
+    public Cuenta getCuenta(int id) throws FileNotFoundException {
+        Cuenta cuenta = new Cuenta();
+        byte[] imageBytes;
+        Image image;
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_PERSONA = '" + id + "';";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                cuenta.setIdCuenta(rs.getInt(1));
+                cuenta.setClave(rs.getString(2));
+                cuenta.setEstado(rs.getInt(3));
+                imageBytes = rs.getBytes(4);
+                BufferedImage buffImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+                image = this.utilsPrograma.convertirImagen(buffImage);
+                cuenta.setFoto(image);
+                //Falta añadir los datos de la persona
+                List<Persona> listaPersonas = new PersonaDal().obtenerPersonas();
+                for (Persona persona : listaPersonas) {
+                    if (persona.getIdPersona() == rs.getInt(5)) {
+                        cuenta.setPersona(persona);
+                    }
+                }
+                List<TarjetaNfc> tarjetasNfc = new TarjetaNfcDal().obtenerTarjetaNfc();
+                for (TarjetaNfc tarjetaNfc : tarjetasNfc) {
+                    if (tarjetaNfc.getUid().equals(rs.getString(6))) {
+                        cuenta.setTarjetaNfc(tarjetaNfc);
+                    }
+                }
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return cuenta;
     }
 
 }

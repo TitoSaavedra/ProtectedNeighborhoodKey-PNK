@@ -27,8 +27,8 @@ public class VistaArduinoControlador implements Initializable {
     @FXML
     private ComboBox cbPuertas;
     @FXML
-    private Button btnLigarLed;
-
+    private Button btnAccion;
+    
     private SerialPort puertaCom;
     private int led = 0;
 
@@ -39,13 +39,8 @@ public class VistaArduinoControlador implements Initializable {
 
     }
 
-    /**
-     *
-     */
     public void cargarPuertasCom() {
-
         SerialPort[] portNames = SerialPort.getCommPorts();
-
         for (SerialPort portName : portNames) {
             cbPuertas.getItems().add(portName.getSystemPortName());
         }
@@ -71,7 +66,7 @@ public class VistaArduinoControlador implements Initializable {
     }
 
     @FXML
-    private void ligarLed(ActionEvent event) {
+    private void prenderLed(ActionEvent event) {
         PrintWriter output = new PrintWriter(puertaCom.getOutputStream());
         if (led == 0) {
             output.print("1");

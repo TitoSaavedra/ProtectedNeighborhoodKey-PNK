@@ -26,6 +26,10 @@ public class Cuenta {
     public Cuenta() {
     }
 
+    public Cuenta(String clave) {
+        this.clave = clave;
+    }
+
     /**
      *
      * @param idCuenta
@@ -38,8 +42,6 @@ public class Cuenta {
         this.clave = clave;
         this.foto = foto;
     }
-
-
 
     /**
      *
@@ -171,12 +173,9 @@ public class Cuenta {
         this.tarjetaNfc = tarjetaNfc;
     }
 
-
-
-
     @Override
     public String toString() {
-        return "Id cuenta"+this.idCuenta+" Rut:"+this.persona.getRut();
+        return "Id cuenta" + this.idCuenta + " Rut:" + this.persona.getRut();
     }
 
 }

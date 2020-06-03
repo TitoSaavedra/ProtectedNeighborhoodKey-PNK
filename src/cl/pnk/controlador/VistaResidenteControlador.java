@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,6 +36,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -82,8 +82,6 @@ public class VistaResidenteControlador implements Initializable {
     private TextField jtfBusquedaP2;
     @FXML
     private TableView<TablaResidente> tvTablaResidentes;
-    @FXML
-    private TextField jtfBusquedaP3;
     @FXML
     private Text txtResultadoBusquedaRutP1;
     @FXML
@@ -164,11 +162,15 @@ public class VistaResidenteControlador implements Initializable {
     private Text txtErrorNumeroCasa;
     @FXML
     private Text txtConfirmacionAccion;
-
-    private File imagenPerfilArchivo = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
+    @FXML
+    private TextField jtxBusquedaFiltrada;
+    //Utilidades varias
+    private final UtilidadesPrograma utilidadesPrograma = new UtilidadesPrograma();
+    //Archivos de imagen y validador
+    private  File imagenPerfilArchivo = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
     private Image imagenPerfil = null;
-    private UtilidadesPrograma utilidadesPrograma = new UtilidadesPrograma();
-    private File imagenReset = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
+    private final File imagenReset = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
+    String btnImagenPresionado = "no";
 
     /**
      * Initializes the controller class.
@@ -190,13 +192,14 @@ public class VistaResidenteControlador implements Initializable {
     private void accionBuscarImagen(ActionEvent event) {
         Stage stage = (Stage) this.apPanelPrincipal.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All Images", "*.*");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("png y jpg", "*.png", "*.jpg");
         fileChooser.getExtensionFilters().add(extFilter);
         this.imagenPerfilArchivo = fileChooser.showOpenDialog(stage);
         if (this.imagenPerfilArchivo != null) {
             this.imagenPerfil = new Image(this.imagenPerfilArchivo.toURI().toString());
             this.clImagenVista.setFill(new ImagePattern(imagenPerfil));
         }
+        this.btnImagenPresionado = "si";
     }
 
     @FXML
@@ -234,52 +237,8 @@ public class VistaResidenteControlador implements Initializable {
 
     @FXML
     private void accionFiltrarP1(ActionEvent event) throws FileNotFoundException {
-        String rut = this.jtfBusquedaP1.getText().trim();
-        this.textoConfirmacion("", false, 2);
-        this.desabilitarTodosTextoError();
-        this.resetImagenUsuario();
-        if (this.utilidadesPrograma.validarRut(rut)) {
-            this.ocultarAdvertencia(this.txtResultadoBusquedaRutP1);
-            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
-            if (persona.getRut() != null) {
-                Direccion direccionPersona = new DireccionDal().obtenerDireccionRut(rut);
-                List<Cuenta> cuentas = new CuentaDal().getCuentas();
-                Cuenta cuentaRial = new Cuenta();
-                for (int i = 0; i < cuentas.size(); i++) {
-                    Cuenta cuenta = cuentas.get(i);
-                    if (cuenta.getPersona().getRut().equals(rut)) {
-                        cuentaRial = cuenta;
-                        i = cuentas.size();
-                    }
-                }
-                this.habilitarModElim();
-                this.asignarValorJTextField(this.jtxtRut, rut);
-                this.asignarValorJTextField(this.jtxtNombre, persona.getNombre());
-                this.asignarValorJTextField(this.jtxtSegNombre, persona.getSegNombre());
-                this.asignarValorJTextField(this.jtxtApellidoPaterno, persona.getApePaterno());
-                this.asignarValorJTextField(this.jtxtApellidoMaterno, persona.getApeMaterno());
-                this.asignarValorJTextField(this.jtxtTelefono, persona.getTelefono());
-                this.asignarValorJTextField(this.jtxtCorreo, persona.getEmail());
-                this.asignarValorJTextField(this.jtxtClave, cuentaRial.getClave());
-                this.asignarValorJPasswordField(this.jtxtRepitaClave, cuentaRial.getClave());
-                this.asignarValorJTextField(this.jtxtPiso, direccionPersona.getPiso());
-                this.asignarValorJTextField(this.jtxtBlock, direccionPersona.getBlock());
-                this.asignarValorJTextField(this.jtxtNumeroCasa, direccionPersona.getNumero());
-                this.clImagenVista.setFill(new ImagePattern(cuentaRial.getFoto()));
-            } else {
-                this.desabhilitarModElim();
-                this.resetCampos(rut);
-                this.resetImagenUsuario();
-                this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "No existe el residente");
-            }
-
-        } else {
-            this.desabhilitarModElim();
-            this.resetCampos("");
-            this.resetImagenUsuario();
-            this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "Rut no valido");
-        }
-
+        this.filtrarPorRut();
+        this.btnImagenPresionado = "no";
     }
 
     @FXML
@@ -292,23 +251,23 @@ public class VistaResidenteControlador implements Initializable {
     }
 
     @FXML
-    private void accionFiltrarP3(ActionEvent event) {
-    }
-
-    @FXML
     private void accionEliminarResidente(ActionEvent event) {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
             new PersonaDal().eliminarPersona(persona);
-            this.textoConfirmacion("Residente Eliminado", true, 2);
+            this.textoConfirmacion("Residente Eliminado", true, 1);
+            mostrarDatosTabla();
         }
     }
 
     @FXML
-    private void accionModificarrResidente(ActionEvent event) {
+    private void accionModificarrResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
+            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            this.modificarResidente(persona);
+            mostrarDatosTabla();
         }
     }
 
@@ -317,6 +276,7 @@ public class VistaResidenteControlador implements Initializable {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             this.ingresarResidente(rut);
+            mostrarDatosTabla();
         }
     }
 
@@ -332,10 +292,35 @@ public class VistaResidenteControlador implements Initializable {
         this.btnEliminar.setDisable(false);
     }
 
+    private void modificarResidente(Persona residente) throws FileNotFoundException {
+        String nombre = this.jtxtNombre.getText();
+        String segNombre = this.jtxtSegNombre.getText();
+        String apePaterno = this.jtxtApellidoPaterno.getText();
+        String apeMaterno = this.jtxtApellidoMaterno.getText();
+        String telefono = this.jtxtTelefono.getText();
+        String email = this.jtxtCorreo.getText();
+        residente.setNombre(nombre);
+        residente.setSegNombre(segNombre);
+        residente.setApePaterno(apePaterno);
+        residente.setApeMaterno(apeMaterno);
+        residente.setTelefono(telefono);
+        residente.setEmail(email);
+        new PersonaDal().modificarPersona(residente);
+        Cuenta cuenta = new Cuenta(this.jtxtClave.getText());
+        if (this.btnImagenPresionado.equals("si")) {
+            new CuentaDal().modificarCuentaConFoto(cuenta, imagenPerfilArchivo, residente.getIdPersona());
+        } else {
+            new CuentaDal().modificarCuentaSinFoto(cuenta, residente.getIdPersona());
+        }
+        this.textoConfirmacion("Residente Modificado", true, 2);
+        resetCampos("");
+        resetImagenUsuario();
+    }
+
     private void ingresarResidente(String rut) throws FileNotFoundException {
         int idPersona = 0;
         String nombre = this.jtxtNombre.getText();
-        String segNombre = this.jtxtNombre.getText();
+        String segNombre = this.jtxtSegNombre.getText();
         String apePaterno = this.jtxtApellidoPaterno.getText();
         String apeMaterno = this.jtxtApellidoMaterno.getText();
         String telefono = this.jtxtTelefono.getText();
@@ -343,17 +328,20 @@ public class VistaResidenteControlador implements Initializable {
         int estado = 1;
         Persona persona = new Persona(idPersona, rut, nombre, segNombre, apePaterno, apeMaterno, telefono, email, estado);
         new PersonaDal().ingresarPersona(persona);
-        int ultimoIdPersona = new PersonaDal().obtenerUltimoIdPersona();
+        Persona ultimaPersona = new PersonaDal().obtenerUltimaPersona();
         int idDireccion = 0;
         String piso = this.jtxtPiso.getText();
         String block = this.jtxtBlock.getText();
         String numero = this.jtxtNumeroCasa.getText();
-        Persona personaDir = new PersonaDal().obtenerPersonaId(ultimoIdPersona);
-        Direccion direccion = new Direccion(piso, block, numero, personaDir);
+        Direccion direccion = new Direccion(piso, block, numero, ultimaPersona);
         new DireccionDal().ingresarDireccion(direccion);
         String clave = this.jtxtClave.getText();
         Cuenta cuenta = new Cuenta(clave, this.imagenPerfil);
-        new CuentaDal().ingresarCuenta(cuenta, imagenPerfilArchivo, ultimoIdPersona);
+        if (imagenPerfilArchivo == null) {
+            new CuentaDal().ingresarCuenta(cuenta, imagenReset, ultimaPersona.getIdPersona());
+        } else {
+            new CuentaDal().ingresarCuenta(cuenta, imagenPerfilArchivo, ultimaPersona.getIdPersona());
+        }
         this.btnEliminar.setDisable(false);
         this.btnModificar.setDisable(false);
         this.btnAgregar.setDisable(true);
@@ -493,7 +481,15 @@ public class VistaResidenteControlador implements Initializable {
             validacion = true;
         }
         String claveRepetir = this.jtxtRepitaClave.getText().trim();
-        if (clave.equals("") || clave == null) {
+        if (claveRepetir.equals("") || claveRepetir == null) {
+            this.deshabilitarHabilitarTextoError(this.txtErrorReingreso, true);
+            validacion = false;
+            val--;
+        } else {
+            this.deshabilitarHabilitarTextoError(this.txtErrorReingreso, false);
+            validacion = true;
+        }
+        if (!(claveRepetir.equals(clave))) {
             this.deshabilitarHabilitarTextoError(this.txtErrorReingreso, true);
             validacion = false;
             val--;
@@ -552,7 +548,7 @@ public class VistaResidenteControlador implements Initializable {
     }
 
     private void resetImagenUsuario() {
-        Image perfilPrederminado = new Image(imagenPerfilArchivo.toURI().toString());
+        Image perfilPrederminado = new Image(imagenReset.toURI().toString());
         this.clImagenVista.setFill(new ImagePattern(perfilPrederminado));
     }
 
@@ -571,5 +567,77 @@ public class VistaResidenteControlador implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void accionFiltrarTabla(KeyEvent event) {
+        String text = this.jtxBusquedaFiltrada.getText().trim();
+        ObservableList<TablaResidente> listaTablaResidentes = new TablaResidenteDal().obtenerTablaResidentesFiltrada(text);
+        this.rowRut.setCellValueFactory(new PropertyValueFactory<>("rut"));
+        this.rowNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        this.rowApPaterno.setCellValueFactory(new PropertyValueFactory<>("apPaterno"));
+        this.rowApMaterno.setCellValueFactory(new PropertyValueFactory<>("apMaterno"));
+        this.rowDireccion.setCellValueFactory(new PropertyValueFactory<>("dir"));
+        this.rowTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        this.rowCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        this.tvTablaResidentes.setItems(listaTablaResidentes);
+    }
+
+    @FXML
+    private void tvMouseCliqueado(MouseEvent event) throws FileNotFoundException {
+        if (event.getClickCount() == 2 && !event.isConsumed()) {
+            event.consume();
+            this.resetImagenUsuario();
+            this.btnImagenPresionado = "no";
+            String rut = String.valueOf(this.tvTablaResidentes.getSelectionModel().getSelectedItem().getRut());
+            this.jtfBusquedaP1.setText(rut);
+            this.filtrarPorRut();
+            this.jfxTabPane.getSelectionModel().select(this.submenuResidente);
+        }
+
+    }
+
+    private void filtrarPorRut() throws FileNotFoundException {
+        String rut = this.jtfBusquedaP1.getText().trim();
+        this.textoConfirmacion("", false, 2);
+        this.desabilitarTodosTextoError();
+        this.resetImagenUsuario();
+        if (this.utilidadesPrograma.validarRut(rut)) {
+            this.ocultarAdvertencia(this.txtResultadoBusquedaRutP1);
+            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            if (persona.getRut() != null) {
+                Direccion direccionPersona = new DireccionDal().obtenerDireccionRut(rut);
+                Cuenta cuenta = new CuentaDal().getCuenta(persona.getIdPersona());
+                this.habilitarModElim();
+                this.asignarValorJTextField(this.jtxtRut, rut);
+                this.asignarValorJTextField(this.jtxtNombre, persona.getNombre());
+                this.asignarValorJTextField(this.jtxtSegNombre, persona.getSegNombre());
+                this.asignarValorJTextField(this.jtxtApellidoPaterno, persona.getApePaterno());
+                this.asignarValorJTextField(this.jtxtApellidoMaterno, persona.getApeMaterno());
+                this.asignarValorJTextField(this.jtxtTelefono, persona.getTelefono());
+                this.asignarValorJTextField(this.jtxtCorreo, persona.getEmail());
+                this.asignarValorJTextField(this.jtxtClave, cuenta.getClave());
+                this.asignarValorJPasswordField(this.jtxtRepitaClave, cuenta.getClave());
+                this.asignarValorJTextField(this.jtxtPiso, direccionPersona.getPiso());
+                this.asignarValorJTextField(this.jtxtBlock, direccionPersona.getBlock());
+                this.asignarValorJTextField(this.jtxtNumeroCasa, direccionPersona.getNumero());
+                if (cuenta.getFoto() != null) {
+                    this.clImagenVista.setFill(new ImagePattern(cuenta.getFoto()));
+                } else {
+                    this.resetImagenUsuario();
+                }
+
+            } else {
+                this.desabhilitarModElim();
+                this.resetCampos(rut);
+                this.resetImagenUsuario();
+                this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "No existe el residente");
+            }
+        } else {
+            this.desabhilitarModElim();
+            this.resetCampos("");
+            this.resetImagenUsuario();
+            this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "Rut no valido");
+        }
     }
 }
