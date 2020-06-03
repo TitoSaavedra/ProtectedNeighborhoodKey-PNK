@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pnk.controlador.VistaArduinoControlador">
+    <children>
+        <Button fx:id="btnConectar" layoutX="126.0" layoutY="88.0" onAction="#conectar" text="Conectar" />
+      <ComboBox fx:id="cbPuertas" layoutX="83.0" layoutY="41.0" prefWidth="150.0" />
+      <Button fx:id="btnLigarLed" layoutX="83.0" layoutY="136.0" mnemonicParsing="false" onAction="#ligarLed" prefHeight="25.0" prefWidth="150.0" text="Accion" />
+      <Text layoutX="99.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conexión con Arduino" />
+    </children>
+</AnchorPane>

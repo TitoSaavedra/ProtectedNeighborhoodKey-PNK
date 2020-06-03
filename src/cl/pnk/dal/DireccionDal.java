@@ -67,4 +67,29 @@ public class DireccionDal {
         }
         return listaDirecciones;
     }
+    
+    //SELECT ID_DIRECCION,PISO,BLOCK,NUMERO,direccion.ID_PERSONA FROM direccion, persona WHERE persona.ESTADO=1 AND persona.ID_TIPO_PERSONA=2 AND direccion.ID_PERSONA = persona.ID_PERSONA AND persona.RUT='a' LIMIT 1;
+    //ID_DIRECCION,PISO,BLOCK,NUMERO,direccion.ID_PERSONA
+    public Direccion obtenerDireccionRut(String rut) {
+        Direccion direccion = new Direccion();
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT * FROM direccion, persona WHERE persona.ESTADO=1 AND persona.ID_TIPO_PERSONA=2 AND direccion.ID_PERSONA = persona.ID_PERSONA AND persona.RUT='"+ rut +"' LIMIT 1;";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                direccion.setIdDireccion(rs.getInt(1));
+                direccion.setPiso(rs.getString(2));
+                direccion.setBlock(rs.getString(3));
+                direccion.setNumero(rs.getString(4));
+                direccion.setPersona(new PersonaDal().obtenerPersonaId(rs.getInt(5)));
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return direccion;
+    }
 }

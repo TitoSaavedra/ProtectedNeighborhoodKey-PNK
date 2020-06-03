@@ -19,7 +19,7 @@ public class Persona  {
     private String segNombre;
     private String apePaterno;
     private String apeMaterno;
-    private int telefono;
+    private String telefono;
     private String email;
     private int estado;
     private TipoPersona tipoPersona;
@@ -38,7 +38,7 @@ public class Persona  {
         this.idPersona = idPersona;
     }
 
-    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, int telefono, String email, int estado) {
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email, int estado) {
         this.idPersona = idPersona;
         this.rut = rut;
         this.nombre = nombre;
@@ -63,7 +63,7 @@ public class Persona  {
      * @param estado
      * @param tipoPersona
      */
-    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, int telefono, String email, int estado, TipoPersona tipoPersona) {
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email, int estado, TipoPersona tipoPersona) {
         this.idPersona = idPersona;
         this.rut = rut;
         this.nombre = nombre;
@@ -176,7 +176,7 @@ public class Persona  {
      *
      * @return
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
@@ -184,7 +184,7 @@ public class Persona  {
      *
      * @param telefono
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

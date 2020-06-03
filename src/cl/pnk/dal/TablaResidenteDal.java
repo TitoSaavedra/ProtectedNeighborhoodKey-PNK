@@ -24,7 +24,7 @@ public class TablaResidenteDal {
         ObservableList<TablaResidente> listaTablaResidentes = FXCollections.observableArrayList();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT persona.RUT, persona.NOMBRE,persona.APE_PATERNO,persona.APE_MATERNO, CONCAT(direccion.PISO,' ', direccion.BLOCK,' ', direccion.NUMERO),persona.TELEFONO,persona.EMAIL FROM persona,direccion WHERE direccion.ID_PERSONA = persona.ID_PERSONA;";
+            String sql = "SELECT persona.RUT, persona.NOMBRE,persona.APE_PATERNO,persona.APE_MATERNO, CONCAT(direccion.PISO,' ', direccion.BLOCK,' ', direccion.NUMERO),persona.TELEFONO,persona.EMAIL FROM persona,direccion WHERE direccion.ID_PERSONA = persona.ID_PERSONA AND persona.ID_TIPO_PERSONA='2' AND persona.ESTADO=1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {

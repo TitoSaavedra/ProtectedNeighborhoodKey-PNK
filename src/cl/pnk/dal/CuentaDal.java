@@ -65,7 +65,7 @@ public class CuentaDal {
         try {
             boolean res = this.dbutils.conectar();
             System.out.println(res);
-            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta;";
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta WHERE Estado = 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {

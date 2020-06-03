@@ -17,75 +17,71 @@ import javafx.scene.control.ComboBox;
 
 /**
  *
- * @author Samuelson
+ * @author TitoS
  */
-public class FXMLDocumentController implements Initializable {
+public class VistaArduinoControlador implements Initializable {
 
-    @FXML
-    private ComboBox cbPortas;
     @FXML
     private Button btnConectar;
 
-    private SerialPort porta;
+    @FXML
+    private ComboBox cbPuertas;
+    @FXML
+    private Button btnLigarLed;
+
+    private SerialPort puertaCom;
     private int led = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        carregarPortas();
+        cargarPuertasCom();
 
     }
 
     /**
      *
      */
-    public void carregarPortas() {
+    public void cargarPuertasCom() {
 
         SerialPort[] portNames = SerialPort.getCommPorts();
 
         for (SerialPort portName : portNames) {
-            cbPortas.getItems().add(portName.getSystemPortName());
+            cbPuertas.getItems().add(portName.getSystemPortName());
         }
 
     }
 
     @FXML
     private void conectar(ActionEvent event) {
-
         if (btnConectar.getText().equals("Conectar")) {
-
-            porta = SerialPort.getCommPort(cbPortas.getSelectionModel().getSelectedItem().toString());
-            porta.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
-
-            if (porta.openPort()) {
+            puertaCom = SerialPort.getCommPort(cbPuertas.getSelectionModel().getSelectedItem().toString());
+            puertaCom.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
+            if (puertaCom.openPort()) {
                 btnConectar.setText("Desconectar");
-                cbPortas.setDisable(true);
+                cbPuertas.setDisable(true);
             }
 
         } else {
-
-            porta.closePort();
-            cbPortas.setDisable(false);
+            puertaCom.closePort();
+            cbPuertas.setDisable(false);
             btnConectar.setText("Conectar");
 
         }
     }
-    
+
     @FXML
     private void ligarLed(ActionEvent event) {
-
-       PrintWriter output = new PrintWriter(porta.getOutputStream());
-       
-       if(led == 0){
-           output.print("1");
-           output.flush();
-           led = 1;
-       }else{
-           output.print("0");
-           output.flush();
-           led = 0;
-       }
-       
+        PrintWriter output = new PrintWriter(puertaCom.getOutputStream());
+        if (led == 0) {
+            output.print("1");
+            output.flush();
+            led = 1;
+        } else {
+            output.print("0");
+            output.flush();
+            led = 0;
+        }
     }
 
 }
