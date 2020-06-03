@@ -24,6 +24,7 @@ import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 
 /**
+ * Clase que conecta la clase Cuenta con la base de datos
  *
  * @author TitoS
  */
@@ -33,7 +34,13 @@ public class CuentaDal {
     private UtilidadesPrograma utilsPrograma = new UtilidadesPrograma();
     private FileInputStream fis;
 
-    //INSERT INTO `cuenta` (`ID_CUENTA`, `CLAVE`, `ESTADO`, `ID_PERSONA`, `UID`)
+    /**
+     *
+     * @param cuenta cuenta de la persona
+     * @param archivo es el archivo que contiene la imagen de la cuenta
+     * @param idPersona es el id de la persona
+     * @throws FileNotFoundException Si el archivo esta nulo
+     */
     public void ingresarCuenta(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
         dbutils.conectar();
         fis = new FileInputStream(archivo);
@@ -48,15 +55,17 @@ public class CuentaDal {
             st.executeUpdate();
 
         } catch (Exception e) {
+            e.toString();
         } finally {
-
             dbutils.desconectar();
         }
     }
 
     /**
+     * Metodo que envia todas las cuentas de la base de datos una lista
      *
-     * @return @throws FileNotFoundException
+     * @throws FileNotFoundException si alguna cuenta no tiene una foto lista
+     * @return Cuentas esta es la lista de las cuentas de la bd
      */
     public List<Cuenta> getCuentas() throws FileNotFoundException {
         List<Cuenta> listaCuentas = new ArrayList<>();
@@ -99,9 +108,16 @@ public class CuentaDal {
         }
         return listaCuentas;
     }
-//UPDATE `cuenta` SET `CLAVE` = 'QQqq', `FOTO` =
 
-    public  void modificarCuentaConFoto(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
+    /**
+     * Metodo que modifica una cuenta con archivo de imagen
+     *
+     * @param cuenta la cuenta a modificar
+     * @param archivo la imagen a modificar
+     * @param idPersona id de persona a modificar
+     * @throws FileNotFoundException si la imagen esta nula
+     */
+    public void modificarCuentaConFoto(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
         dbutils.conectar();
         FileInputStream in = new FileInputStream(archivo);
         try {
@@ -117,8 +133,14 @@ public class CuentaDal {
             dbutils.desconectar();
         }
     }
-    
-     public void modificarCuentaSinFoto(Cuenta cuenta, int idPersona) {
+
+    /**
+     * Metodo que modifica una cuenta sin foto
+     *
+     * @param cuenta objeto cuenta a modificar
+     * @param idPersona id de la persona de la cuenta a modificar
+     */
+    public void modificarCuentaSinFoto(Cuenta cuenta, int idPersona) {
         dbutils.conectar();
         try {
             String sql = "UPDATE `cuenta` SET `CLAVE` = ? WHERE `cuenta`.`ID_CUENTA` = " + idPersona + ";";
@@ -132,6 +154,13 @@ public class CuentaDal {
         }
     }
 
+    /**
+     * * Metodo que busca una cuenta por id
+     *
+     * @param id id de la cuenta a buscar
+     * @return cuenta encontrada
+     * @throws FileNotFoundException si la cuenta el la bd tiene la imagen nula
+     */
     public Cuenta getCuenta(int id) throws FileNotFoundException {
         Cuenta cuenta = new Cuenta();
         byte[] imageBytes;

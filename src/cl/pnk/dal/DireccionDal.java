@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que conecta la clase Direccion con la base de datos
  *
  * @author TitoS
  */
@@ -20,6 +21,11 @@ public class DireccionDal {
 
     private DBUtils dbutils = new DBUtils();
 
+    /**
+     * Metodo que ingresa una dirección
+     *
+     * @param direccion Objeto clase direccion que se desea ingresar
+     */
     public void ingresarDireccion(Direccion direccion) {
         dbutils.conectar();
         try {
@@ -40,8 +46,9 @@ public class DireccionDal {
     }
 
     /**
+     * Metodo que devuelve todas las direcciones de la bd
      *
-     * @return
+     * @return listaDirecciones coleccion de direcciones
      */
     public List<Direccion> obtenerDirecciones() {
         List<Direccion> listaDirecciones = new ArrayList<>();
@@ -67,14 +74,18 @@ public class DireccionDal {
         }
         return listaDirecciones;
     }
-    
-    //SELECT ID_DIRECCION,PISO,BLOCK,NUMERO,direccion.ID_PERSONA FROM direccion, persona WHERE persona.ESTADO=1 AND persona.ID_TIPO_PERSONA=2 AND direccion.ID_PERSONA = persona.ID_PERSONA AND persona.RUT='a' LIMIT 1;
-    //ID_DIRECCION,PISO,BLOCK,NUMERO,direccion.ID_PERSONA
+
+    /**
+     * Metodo que devuelve una direccion filtrada por rut
+     *
+     * @param rut cadena de texto que es un rut
+     * @return direccion de la bd filtrada
+     */
     public Direccion obtenerDireccionRut(String rut) {
         Direccion direccion = new Direccion();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT * FROM direccion, persona WHERE persona.ESTADO=1 AND persona.ID_TIPO_PERSONA=2 AND direccion.ID_PERSONA = persona.ID_PERSONA AND persona.RUT='"+ rut +"' LIMIT 1;";
+            String sql = "SELECT * FROM direccion, persona WHERE persona.ESTADO=1 AND persona.ID_TIPO_PERSONA=2 AND direccion.ID_PERSONA = persona.ID_PERSONA AND persona.RUT='" + rut + "' LIMIT 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {

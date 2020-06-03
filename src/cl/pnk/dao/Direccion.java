@@ -7,10 +7,10 @@ package cl.pnk.dao;
 
 
 /**
+ * Clase de tipo Direccion, de la tabla Direccion
  *
  * @author TitoS
  */
-
 public class Direccion  {
 
 
@@ -20,9 +20,7 @@ public class Direccion  {
     private String numero;
     private Persona persona;
 
-    /**
-     *
-     */
+   
     public Direccion() {
     }
 
@@ -32,6 +30,7 @@ public class Direccion  {
         this.numero = numero;
     }
 
+ 
     public Direccion(String piso, String block, String numero, Persona persona) {
         this.piso = piso;
         this.block = block;
@@ -39,14 +38,7 @@ public class Direccion  {
         this.persona = persona;
     }
 
-    /**
-     *
-     * @param idDireccion
-     * @param piso
-     * @param block
-     * @param numero
-     * @param persona
-     */
+
     public Direccion(Integer idDireccion, String piso, String block, String numero, Persona persona) {
         this.idDireccion = idDireccion;
         this.piso = piso;
@@ -55,82 +47,48 @@ public class Direccion  {
         this.persona = persona;
     }
 
-    /**
-     *
-     * @return
-     */
+  
     public Integer getIdDireccion() {
         return idDireccion;
     }
 
-    /**
-     *
-     * @param idDireccion
-     */
+  
     public void setIdDireccion(Integer idDireccion) {
         this.idDireccion = idDireccion;
     }
 
-    /**
-     *
-     * @return
-     */
+ 
     public String getPiso() {
         return piso;
     }
 
-    /**
-     *
-     * @param piso
-     */
     public void setPiso(String piso) {
         this.piso = piso;
     }
 
-    /**
-     *
-     * @return
-     */
+  
     public String getBlock() {
         return block;
     }
 
-    /**
-     *
-     * @param block
-     */
+
     public void setBlock(String block) {
         this.block = block;
     }
 
-    /**
-     *
-     * @return
-     */
+ 
     public String getNumero() {
         return numero;
     }
 
-    /**
-     *
-     * @param numero
-     */
     public void setNumero(String numero) {
         this.numero = numero;
     }
 
-    /**
-     *
-     * @return
-     */
     public Persona getPersona() {
         return persona;
     }
 
-    /**
-     *
-     * @param persona
-     */
     public void setPersona(Persona persona) {
         this.persona = persona;
     }

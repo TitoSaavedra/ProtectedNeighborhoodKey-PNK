@@ -9,55 +9,51 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
+ * Clase de conexion de la bd
  *
- * @author adminclases
+ * @author TitoS
  */
 public class DBUtils {
+
     //Atributos
-    private final String usuario="root";
-    private final String password="";
-    private final String servidor="localhost";
-    private final String baseDatos="pnk";
-    
-    private Connection conexion;//importar el java.sql.Connection;
-    
-    //Metodos
+    private final String usuario = "root";
+    private final String password = "";
+    private final String servidor = "localhost";
+    private final String baseDatos = "pnk";
+    private Connection conexion;
 
     /**
+     * Conecta con la base de datos
      *
-     * @return
+     * @return el resultado de la conexion, falso o verdadero
      */
-    public boolean conectar(){
+    public boolean conectar() {
         boolean resultado;
         try {
             //1 agregar class Driver del motor
             Class.forName("com.mysql.jdbc.Driver");
             //2 Utilizar DriverManager
             //api del conexion:motor://servidor:puerto/basedatos
-            String url = "jdbc:mysql://"+servidor+":3306/"+baseDatos;
-            this.conexion=DriverManager.getConnection(url, usuario, password);
-            return resultado=true;
+            String url = "jdbc:mysql://" + servidor + ":3306/" + baseDatos;
+            this.conexion = DriverManager.getConnection(url, usuario, password);
+            return resultado = true;
         } catch (Exception e) {
-            return resultado=false;
+            return resultado = false;
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public Connection getConexion() {
         return conexion;
     }
-    
+
     /**
-     *
+     * Metodo para cerrar la conexion
      */
-    public void desconectar(){
+    public void desconectar() {
         try {
-           this.conexion.close(); 
+            this.conexion.close();
         } catch (Exception e) {
         }
-        
+
     }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que conecta TarjetaNfc con la BD
  *
  * @author TitoS
  */
@@ -21,8 +22,9 @@ public class TarjetaNfcDal {
     private DBUtils dbutils = new DBUtils();
 
     /**
-     *
-     * @return
+     * metodo que retorna todas las tarjetas nfc registradas en la bd
+     * 
+     * @return listaTarjetasNfc Coleccion de TarjetaNfc
      */
     public List<TarjetaNfc> obtenerTarjetaNfc() {
         List<TarjetaNfc> listaTarjetasNfc = new ArrayList<>();

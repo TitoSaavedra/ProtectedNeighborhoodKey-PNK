@@ -6,86 +6,53 @@
 package cl.pnk.dao;
 
 /**
+ * Clase de tipo TipoPersona, de la tabla TipoPersona
  *
  * @author TitoS
  */
-
 public class TipoPersona  {
 
     private Integer idTipoPersona;
     private String nombre;
     private String descripcion;
 
-    /**
-     *
-     */
+ 
     public TipoPersona() {
     }
 
-    /**
-     *
-     * @param idTipoPersona
-     */
     public TipoPersona(Integer idTipoPersona) {
         this.idTipoPersona = idTipoPersona;
     }
 
-    /**
-     *
-     * @param idTipoPersona
-     * @param nombre
-     * @param descripcion
-     */
+
     public TipoPersona(Integer idTipoPersona, String nombre, String descripcion) {
         this.idTipoPersona = idTipoPersona;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getIdTipoPersona() {
         return idTipoPersona;
     }
 
-    /**
-     *
-     * @param idTipoPersona
-     */
     public void setIdTipoPersona(Integer idTipoPersona) {
         this.idTipoPersona = idTipoPersona;
     }
 
-    /**
-     *
-     * @return
-     */
+   
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     *
-     * @param nombre
-     */
+   
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getDescripcion() {
         return descripcion;
     }
 
-    /**
-     *
-     * @param descripcion
-     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }

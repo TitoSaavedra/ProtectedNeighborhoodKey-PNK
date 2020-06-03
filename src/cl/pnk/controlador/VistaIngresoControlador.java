@@ -27,12 +27,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXML Controller class Esta clase controla las acciones del archivo FXML
+ * VistaIngreso.fxml
  *
  * @author TitoS
  */
 public class VistaIngresoControlador implements Initializable {
-    
+
     @FXML
     private Button btnIngresar;
     @FXML
@@ -52,14 +53,22 @@ public class VistaIngresoControlador implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param url
-     * @param rb
+     * @param url es propio de java
+     * @param rb es un archivo propio de java, que contiene los datos de
+     * localización especificos
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
+    /**
+     * Este metodo se inicia al apretar el boton ingresar
+     * @param event Evento de accion que se genera al apretar el boton.
+     * Aqui se verifica la información de el rut y contraseña y se comparan con las cuentas de la BD
+     * Para posteriormente dar el ingreso y enviarlo a la vista principal del programa
+     * @see VistaPrincipalControlador
+     */
     @FXML
     private void btnIngresar(ActionEvent event) throws IOException {
         List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
@@ -87,30 +96,30 @@ public class VistaIngresoControlador implements Initializable {
             }
         }
     }
-    
+
     @FXML
     private void accMover(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
-    
+
     @FXML
     private void accPresionar(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
     }
-    
+
     @FXML
     private void accionCerrar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    
+
     @FXML
     private void accionMiniminizar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
-    
+
 }

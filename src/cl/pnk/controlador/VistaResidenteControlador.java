@@ -46,7 +46,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXML Controller class Esta clase controla las acciones del archivo FXML
+ * VistaResidente.fxml
  *
  * @author TitoS
  */
@@ -167,7 +168,7 @@ public class VistaResidenteControlador implements Initializable {
     //Utilidades varias
     private final UtilidadesPrograma utilidadesPrograma = new UtilidadesPrograma();
     //Archivos de imagen y validador
-    private  File imagenPerfilArchivo = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
+    private File imagenPerfilArchivo = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
     private Image imagenPerfil = null;
     private final File imagenReset = new File("src/cl/pnk/imagenes/ImagenPerfilPredeterminada.png");
     String btnImagenPresionado = "no";
@@ -175,8 +176,9 @@ public class VistaResidenteControlador implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param url
-     * @param rb
+     * @param url es propio de java
+     * @param rb es un archivo propio de java, que contiene los datos de
+     * localización especificos
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -188,6 +190,17 @@ public class VistaResidenteControlador implements Initializable {
         this.desabhilitarModElim();
     }
 
+    /**
+     * Este metodo se inicia al apretar el boton Buscar imagen
+     *
+     * @param event Evento de accion que se genera al apretar el boton buscar
+     * imagen. Aqui se carga y se muestra la ventana para buscar archivos dentro
+     * de windows, y esta filtrada para que solo se muestren archivos .png y
+     * .jpg
+     *
+     * Al seleccionar el archivo se guarda la imagen en imagenPerfil y la ruta
+     * del archivo en imagenPerfilArchivo
+     */
     @FXML
     private void accionBuscarImagen(ActionEvent event) {
         Stage stage = (Stage) this.apPanelPrincipal.getScene().getWindow();
@@ -210,6 +223,14 @@ public class VistaResidenteControlador implements Initializable {
     private void accionDesbloquearTarjeta(ActionEvent event) {
     }
 
+    /**
+     * Este metodo se inicia al apretar el boton MenuBusqueda
+     *
+     * @param event Evento de accion que se genera al apretar el Menu Busqueda.
+     * Aqui se cambian los titulos de los textos que indican en menu que esta en
+     * pantalla mediante el metodo cambioNombreMenuRuta
+     *
+     */
     @FXML
     private void accionMenuBusqueda(Event event) {
         cambioNombreMenuRuta(submenuResidente.getText());
@@ -220,21 +241,49 @@ public class VistaResidenteControlador implements Initializable {
         cambioNombreMenuRuta(submenuSeguridad.getText());
     }
 
+    /**
+     * Este metodo se inicia al apretar el boton Menu lista residentes
+     *
+     * @param event Evento de accion que se genera al apretar el Menu lista
+     * residentes. Aqui se cambian los titulos de los textos que indican en menu
+     * que esta en pantalla mediante el metodo cambioNombreMenuRuta
+     *
+     */
     @FXML
     private void accionMenuListaResidentes(Event event) {
         cambioNombreMenuRuta(submenuLista.getText());
     }
 
+    /**
+     * Este metodo es para cambiar el nombre de la ruta y el nombre del menu de
+     * los titulos presentes en la pantalla
+     *
+     * @param menu Es el texto que se le asignara a la ruta y nombre del menu
+     *
+     */
     private void cambioNombreMenuRuta(String menu) {
         txtNombreMenu.setText(menu);
         txtNombreRuta.setText(menu);
     }
 
+    /**
+     * Este metodo se inicia al presionar una tecla en KeyApretadaP1
+     *
+     * @param event Evento de accion que se genera al precionar una tecla en el
+     * jtxfield rut. Ingresa el mismo rut en el jtxfiel rut de la otra ventana
+     *
+     */
     @FXML
     private void accionKeyApretadaP1(KeyEvent event) {
         this.jtfBusquedaP2.setText(this.jtfBusquedaP1.getText());
     }
 
+    /**
+     * Este metodo se inicia al presionar al precionar el boton busqueda
+     *
+     * @param event Evento de accion que se genera al precionar el boton de
+     * busqueda de rut. inciia el metodo filtrarPorRut();
+     */
     @FXML
     private void accionFiltrarP1(ActionEvent event) throws FileNotFoundException {
         this.filtrarPorRut();
@@ -250,6 +299,17 @@ public class VistaResidenteControlador implements Initializable {
     private void accionFiltrarP2(ActionEvent event) {
     }
 
+    /**
+     * Este metodo se inicia al presionar al precionar el boton eliminar
+     * residente
+     *
+     * @param event Evento de accion que se genera al precionar el boton de
+     * eliminar residente. inciia el metodo validarCampos(), Luego busca en la
+     * bd al residente, para luego por medio de PersonaDal eliminar el
+     * residente.
+     *
+     * @see PersonaDal
+     */
     @FXML
     private void accionEliminarResidente(ActionEvent event) {
         if (validarCampos()) {
@@ -261,6 +321,16 @@ public class VistaResidenteControlador implements Initializable {
         }
     }
 
+    /**
+     * Este metodo se inicia al presionar al precionar el boton modificar
+     * residente
+     *
+     * @param event Evento de accion que se genera al precionar el boton de
+     * modificar residente. incia el metodo validarCampos(), Luego busca en la
+     * bd al residente, para luego por medio de PersonaDal modificar el
+     * residente.
+     * @see PersonaDal
+     */
     @FXML
     private void accionModificarrResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
@@ -271,6 +341,15 @@ public class VistaResidenteControlador implements Initializable {
         }
     }
 
+    /**
+     * Este metodo se inicia al presionar al precionar el boton agregar
+     * residente
+     *
+     * @param event Evento de accion que se genera al precionar el boton de
+     * agregar residente. incia el metodo validarCampos(), luego inicia el
+     * metodo ingresarResidente enviado el rut rescatado del textField rut
+     *
+     */
     @FXML
     private void accionAgregarResidente(ActionEvent event) throws IOException {
         if (validarCampos()) {
@@ -280,18 +359,41 @@ public class VistaResidenteControlador implements Initializable {
         }
     }
 
+    /**
+     * Este metodo desabilita los botonoes eliminar residente y modificar
+     * residente tambien habilita el ingresar residente
+     */
     private void desabhilitarModElim() {
         this.btnAgregar.setDisable(false);
         this.btnModificar.setDisable(true);
         this.btnEliminar.setDisable(true);
     }
 
+    /**
+     * Este metodo habilita los botonoes eliminar residente y modificar
+     * residente tambien desahabilita el ingresar residente
+     */
     private void habilitarModElim() {
         this.btnAgregar.setDisable(true);
         this.btnModificar.setDisable(false);
         this.btnEliminar.setDisable(false);
     }
 
+    /**
+     * Este metodo modifica el residente.
+     *
+     * Este metodo mofifica al residente, crea un residente y lo modifica
+     * mendiante PersonaDal Luego modifica la cuenta del residente mediante
+     * Cuenta Dal Finalizando modifica la direccion del residente mediante
+     * DireccionDal
+     *
+     * @param residente este es un objeto de la clase Persona, contiene todos
+     * los datos de la persona
+     * @see Persona
+     * @see PersonaDal
+     * @see CuentaDal
+     * @see DireccionDal
+     */
     private void modificarResidente(Persona residente) throws FileNotFoundException {
         String nombre = this.jtxtNombre.getText();
         String segNombre = this.jtxtSegNombre.getText();
@@ -317,6 +419,20 @@ public class VistaResidenteControlador implements Initializable {
         resetImagenUsuario();
     }
 
+    /**
+     * Este metodo ingresar Residente.
+     *
+     * Este metodo ingresar Residente, crea un residente mendiante PersonaDal
+     * Luego modifica la cuenta del residente mediante Cuenta Dal Finalizando
+     * modifica la direccion del residente mediante DireccionDal
+     *
+     * @param residente este es un objeto de la clase Persona, contiene todos
+     * los datos de la persona
+     * @see Persona
+     * @see PersonaDal
+     * @see CuentaDal
+     * @see DireccionDal
+     */
     private void ingresarResidente(String rut) throws FileNotFoundException {
         int idPersona = 0;
         String nombre = this.jtxtNombre.getText();
@@ -349,6 +465,11 @@ public class VistaResidenteControlador implements Initializable {
         mostrarDatosTabla();
     }
 
+    /**
+     * Este metodo Muestra los datos en la tabla .
+     *
+     * @see TablaResidenteDal
+     */
     private void mostrarDatosTabla() {
         ObservableList<TablaResidente> listaTablaResidentes = new TablaResidenteDal().obtenerTablaResidentes();
         this.rowRut.setCellValueFactory(new PropertyValueFactory<>("rut"));
@@ -361,23 +482,49 @@ public class VistaResidenteControlador implements Initializable {
         this.tvTablaResidentes.setItems(listaTablaResidentes);
     }
 
+    /**
+     * Este metodo asigna un texto a un imput txt
+     *
+     * @param jfXTextField es el JFXTextField que se le quiere cambiar el texto
+     * @param texto es la cadena de texto que se le quiere asignar
+     */
     private void asignarValorJTextField(JFXTextField jfXTextField, String texto) {
         jfXTextField.setText(texto);
     }
 
+    /**
+     * Este metodo valida la información del los input text
+     *
+     * @param jfXTextField es el JFXTextField que se le quiere cambiar el texto
+     * @param texto es la cadena de texto que se le quiere asignar
+     */
     private void asignarValorJPasswordField(JFXPasswordField jFXPasswordField, String texto) {
         jFXPasswordField.setText(texto);
     }
 
+    /**
+     * Este metodo le asigna a un texto el mensaje
+     *
+     * @param mensaje es la cadena de texto que se le quiere asignar
+     * @param texto es el jTextField que se le quere asignar el mensaje
+     */
     private void mostrarAdvertencia(Text texto, String mensaje) {
         texto.setText(mensaje);
         texto.setVisible(true);
     }
 
+    /**
+     * Este metodo oculta el textto
+     *
+     * @param texto es el jTextField que se quiere ocultar
+     */
     private void ocultarAdvertencia(Text texto) {
         texto.setVisible(false);
     }
 
+    /**
+     * Este metodo oculta todos los textos de validación
+     */
     private void desabilitarTodosTextoError() {
         this.txtErrorRut.setVisible(false);
         this.txtErrorNombre.setVisible(false);
@@ -394,10 +541,20 @@ public class VistaResidenteControlador implements Initializable {
         this.txtConfirmacionAccion.setVisible(false);
     }
 
+    /**
+     * Este metodo habilita o desabilita un texto de error
+     *
+     * @param texto es el jtextField que se queire habilitar o deshabilitar
+     * @param op booleano que indica si habilitar o deshabilitar
+     */
     private void deshabilitarHabilitarTextoError(Text texto, boolean op) {
         texto.setVisible(op);
     }
 
+    /**
+     * Este metodo valida la información del los input text
+     *
+     */
     private boolean validarCampos() {
         boolean validacion = false;
         int val = 1;
@@ -547,11 +704,22 @@ public class VistaResidenteControlador implements Initializable {
         this.asignarValorJTextField(this.jtxtNumeroCasa, "");
     }
 
+    /**
+     * Este metodo resetea la imagen de usuario en la imagen clImagenVista Solo
+     * resetea la imagen visual, no la de la bd
+     */
     private void resetImagenUsuario() {
         Image perfilPrederminado = new Image(imagenReset.toURI().toString());
         this.clImagenVista.setFill(new ImagePattern(perfilPrederminado));
     }
 
+    /**
+     * Este metodo le le asigna un color y un texto al texto de confirmacion que
+     * se muestra al agregar, eliminar o modficar un Residente
+     *
+     * @param texto es el texto de confirmacion
+     * @param op es un booleano que indica ocultar o esconder el texto
+     */
     private void textoConfirmacion(String texto, boolean op, int color) {
         this.txtConfirmacionAccion.setVisible(op);
         this.txtConfirmacionAccion.setText(texto);
@@ -569,6 +737,13 @@ public class VistaResidenteControlador implements Initializable {
 
     }
 
+    /**
+     * Este metodo es para filtrar la tabla, dependiendo el texto que se le
+     * ingrese
+     *
+     * @param event Evento de accion que se genera al precionar las teclas en el jtxtField Filtrar Rut
+     * @see TablaResidenteDal
+     */
     @FXML
     private void accionFiltrarTabla(KeyEvent event) {
         String text = this.jtxBusquedaFiltrada.getText().trim();
@@ -583,6 +758,12 @@ public class VistaResidenteControlador implements Initializable {
         this.tvTablaResidentes.setItems(listaTablaResidentes);
     }
 
+    /**
+     * Este metodo detecta si se hace doble clic en alguna fila, para mandar el residente
+     * a la vista de visualisar residente
+     * @param event evento que detecta el clic
+     * @see TablaResidenteDal
+     */
     @FXML
     private void tvMouseCliqueado(MouseEvent event) throws FileNotFoundException {
         if (event.getClickCount() == 2 && !event.isConsumed()) {
@@ -597,6 +778,15 @@ public class VistaResidenteControlador implements Initializable {
 
     }
 
+    /**
+     * Este metodo muestra la información del residente obteniendo el rut de
+     * jtfBusquedaP1.
+     *
+     * @see Persona
+     * @see PersonaDal
+     * @see CuentaDal
+     * @see DireccionDal
+     */
     private void filtrarPorRut() throws FileNotFoundException {
         String rut = this.jtfBusquedaP1.getText().trim();
         this.textoConfirmacion("", false, 2);

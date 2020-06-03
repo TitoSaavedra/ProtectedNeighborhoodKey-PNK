@@ -16,15 +16,17 @@ import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
 
 /**
+ * Clase de utilidades varias
  *
  * @author TitoS
  */
 public class UtilidadesPrograma {
 
     /**
+     * Metodo que convierte una BufferedImage en una Image
      *
-     * @param bf
-     * @return
+     * @param bf bufferedimage que se desea convertir
+     * @return Imagen convertida
      */
     public Image convertirImagen(BufferedImage bf) {
         WritableImage wr = null;
@@ -38,6 +40,12 @@ public class UtilidadesPrograma {
         return new ImageView(wr).getImage();
     }
 
+    /**
+     * Metodo que convierte una Imagen a byte o blob para insertar en la bd
+     *
+     * @param imagen imagen que se desea convertir
+     * @return la cadena de bytes de la imagen
+     */
     public byte[] imagenAByte(Image imagen) {
         BufferedImage bufferimage = SwingFXUtils.fromFXImage(imagen, null);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -51,7 +59,13 @@ public class UtilidadesPrograma {
         return data;
     }
 
-    public  boolean validarRut(String rut) {
+    /**
+     * Metodo que valida si un rut chileno es valido
+     *
+     * @param rut cualquier cadena de texto que se quiera validar como rut
+     * @return verdadero si es un rut valido o falso si es un rut erroneo
+     */
+    public boolean validarRut(String rut) {
         boolean validacion = false;
         try {
             rut = rut.toUpperCase();

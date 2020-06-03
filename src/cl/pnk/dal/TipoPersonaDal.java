@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que conecta el TipoPersona con la bd
  *
  * @author TitoS
  */
@@ -21,8 +22,9 @@ public class TipoPersonaDal {
     private DBUtils dbutils = new DBUtils();
 
     /**
+     * Metodo que retorna una coleccion de tipoPersona
      *
-     * @return
+     * @return listaTipoPersona Coleccion de tipos de persona
      */
     public List<TipoPersona> obtenerTipoPersona() {
         List<TipoPersona> listaTipoPersona = new ArrayList<>();

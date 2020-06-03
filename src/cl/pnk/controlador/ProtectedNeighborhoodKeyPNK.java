@@ -9,14 +9,26 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
+ * Esta es la clase de arranque de PNK
  *
  * @author TitoS
  */
 public class ProtectedNeighborhoodKeyPNK extends Application {
 
+    /**
+     *
+     * @param args contiene los comandos para iniciar el programa
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+     /**
+     * Este metodo inicia la ventana o el  primaryStage de PNK cargando la pantalla de login
+     * @see VistaIngresoControlador 
+     */
     @Override
     public void start(Stage primaryStage) {
-
         try {
             primaryStage.setResizable(false);
             FXMLLoader loader = new FXMLLoader();
@@ -29,14 +41,6 @@ public class ProtectedNeighborhoodKeyPNK extends Application {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

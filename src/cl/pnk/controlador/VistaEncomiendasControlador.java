@@ -17,7 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller class Esta clase controla las acciones del archivo FXML
+ * VistaEncomiendas.fxml
  *
  * @author TitoS
  */
@@ -48,8 +49,10 @@ public class VistaEncomiendasControlador implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     *
+     * @param url es propio de java
+     * @param rb es un archivo propio de java, que contiene los datos de
+     * localización especificos
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,7 +65,7 @@ public class VistaEncomiendasControlador implements Initializable {
 
     @FXML
     private void accionRegistroEncomienda(Event event) {
-          cambioNombreMenuRuta(submenuRegistroEncomienda.getText());
+        cambioNombreMenuRuta(submenuRegistroEncomienda.getText());
     }
 
     @FXML

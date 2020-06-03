@@ -21,10 +21,10 @@ public class PersonaDal {
 
     private DBUtils dbutils = new DBUtils();
 
-//INSERT INTO `persona` (`ID_PERSONA`, `RUT`, `NOMBRE`, `SEG_NOMBRE`, `APE_PATERNO`, `APE_MATERNO`, `TELEFONO`, `EMAIL`, `ESTADO`, `ID_TIPO_PERSONA`) VALUES (NULL, '1', '1', '1', '1', '1', '1', '1', '1', '2'); 
     /**
+     * Metodo que ingresa una persona en la bd
      *
-     * @param persona
+     * @param persona Objeto clase persona que se desea ingresar
      */
     public void ingresarPersona(Persona persona) {
         dbutils.conectar();
@@ -51,8 +51,9 @@ public class PersonaDal {
     }
 
     /**
+     * Metodo que retorna todas las personas de la bd
      *
-     * @return
+     * @return listaPersonas Coleccion de personas
      */
     public List<Persona> obtenerPersonas() {
         List<Persona> listaPersonas = new ArrayList<>();
@@ -91,9 +92,10 @@ public class PersonaDal {
     }
 
     /**
+     * Metodo que obtiene una persona de la base de datos filtrada por rut
      *
-     * @param rut
-     * @return
+     * @param rut texto que contiene el rut a filtrar
+     * @return persona persona encontrada en la bd
      */
     public Persona obtenerPersonaRut(String rut) {
         Persona persona = new Persona();
@@ -130,9 +132,10 @@ public class PersonaDal {
     }
 
     /**
+     * Metodo que obtiene una persona de la base de datos filtrada por id
      *
-     * @param ID
-     * @return
+     * @param ID int que contiene el id a filtrar
+     * @return persona persona encontrada en la bd
      */
     public Persona obtenerPersonaId(int ID) {
         Persona persona = new Persona();
@@ -168,6 +171,11 @@ public class PersonaDal {
         return persona;
     }
 
+    /**
+     * Metodo que elimina una persona en la bd
+     *
+     * @param persona objeto tipo persona que se desa eliminar
+     */
     public void eliminarPersona(Persona persona) {
         //UPDATE `persona` SET `ESTADO` = '1' WHERE persona.RUT = '19145130-9' 
         try {
@@ -182,8 +190,12 @@ public class PersonaDal {
             dbutils.desconectar();
         }
     }
-//UPDATE `persona` SET `RUT` = '1-92', `NOMBRE` = 'Alejandroa', `SEG_NOMBRE` = 'Alejandroa', `APE_PATERNO` = 'De las chacanasa', `APE_MATERNO` = 'Chacanoidesa', `TELEFONO` = '+51680510213a', `EMAIL` = 'hoola@hoka.coma', `ESTADO` = '1', `ID_TIPO_PERSONA` = '1' WHERE `persona`.`ID_PERSONA` = 3;
 
+    /**
+     * Metodo que modifica una persona
+     *
+     * @param persona objeto clase persona que se desea modificar
+     */
     public void modificarPersona(Persona persona) {
         //UPDATE `persona` SET `ESTADO` = '1' WHERE persona.RUT = '19145130-9' 
         try {
@@ -199,6 +211,12 @@ public class PersonaDal {
         }
     }
 
+    /**
+     * Metodo que obtiene la ultima persona registrada en la bd
+     *
+     * @return persona objeto tipo persona que se obtiene despues de hacer la
+     * consulta
+     */
     public Persona obtenerUltimaPersona() {
         // SELECT * FROM persona ORDER BY ID_PERSONA DESC LIMIT 1 
         Persona persona = new Persona();

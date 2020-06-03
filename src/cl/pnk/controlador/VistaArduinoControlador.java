@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 /**
+ * FXML Controller class Esta clase controla las acciones del archivo FXML
+ * VistaArduino.fxml
  *
  * @author TitoS
  */
@@ -28,10 +30,18 @@ public class VistaArduinoControlador implements Initializable {
     private ComboBox cbPuertas;
     @FXML
     private Button btnAccion;
-    
+
     private SerialPort puertaCom;
     private int led = 0;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url es propio de java
+     * @param rb es un archivo propio de java, que contiene los datos de
+     * localización especificos Tambien inicia el metodo para cargar las puertas
+     * com
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -39,6 +49,12 @@ public class VistaArduinoControlador implements Initializable {
 
     }
 
+    /**
+     * Este metodo se inicia al inicio Carga las puertas de comunicación serial
+     * conectadas al equipo.
+     * Y los carga en la lista cbPuertas
+     *
+     */
     public void cargarPuertasCom() {
         SerialPort[] portNames = SerialPort.getCommPorts();
         for (SerialPort portName : portNames) {
@@ -47,6 +63,13 @@ public class VistaArduinoControlador implements Initializable {
 
     }
 
+    /**
+     * Este metodo se inicia al apretar el boton conectar
+     *
+     * @param event Evento de accion que se genera al apretar el boton conectar.
+     * Este metodo conecta java con el arduino por medio del puerto seleccionado en la lista cbPuertas
+     * @see VistaInformeControlador
+     */
     @FXML
     private void conectar(ActionEvent event) {
         if (btnConectar.getText().equals("Conectar")) {
@@ -64,6 +87,15 @@ public class VistaArduinoControlador implements Initializable {
 
         }
     }
+    
+    /**
+     * Este metodo se inicia al apretar el boton prender led
+     *
+     * @param event Evento de accion que se genera al apretar el boton prender led.
+     * Este metodo envia la información al arduino para que encianda el led
+     * Este metodo sera el mismo que enviara la accion de abrir/cerrar puerta
+     * @see VistaInformeControlador
+     */
 
     @FXML
     private void prenderLed(ActionEvent event) {

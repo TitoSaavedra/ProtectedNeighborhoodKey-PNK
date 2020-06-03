@@ -17,7 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller class 
+ * Esta clase controla las acciones del archivo FXML
+ * VistaBarreraUA.fxml
  *
  * @author TitoS
  */
@@ -46,8 +48,10 @@ public class VistaBarreraUAControlador implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     *
+     * @param url es propio de java
+     * @param rb es un archivo propio de java, que contiene los datos de
+     * localización especificos
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

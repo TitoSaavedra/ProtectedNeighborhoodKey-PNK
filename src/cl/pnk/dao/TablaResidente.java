@@ -6,6 +6,8 @@
 package cl.pnk.dao;
 
 /**
+ * Clase de tipo TablaResidente,que sirve para llenar los datos del JXFTableView
+ * de tipo Tabla residente
  *
  * @author TitoS
  */
