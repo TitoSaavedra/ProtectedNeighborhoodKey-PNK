@@ -5,7 +5,7 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dao.Direccion;
+import cl.pnk.dto.Direccion;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

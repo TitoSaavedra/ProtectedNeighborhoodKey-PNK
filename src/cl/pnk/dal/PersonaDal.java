@@ -5,8 +5,8 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dao.Persona;
-import cl.pnk.dao.TipoPersona;
+import cl.pnk.dto.Persona;
+import cl.pnk.dto.TipoPersona;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

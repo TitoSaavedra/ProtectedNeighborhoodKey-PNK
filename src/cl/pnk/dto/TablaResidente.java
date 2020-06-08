@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.pnk.dao;
+package cl.pnk.dto;
 
 /**
  * Clase de tipo TablaResidente,que sirve para llenar los datos del JXFTableView

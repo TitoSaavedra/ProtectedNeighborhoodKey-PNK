@@ -5,7 +5,7 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dao.TablaResidente;
+import cl.pnk.dto.TablaResidente;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

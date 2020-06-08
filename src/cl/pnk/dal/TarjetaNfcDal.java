@@ -5,7 +5,7 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dao.TarjetaNfc;
+import cl.pnk.dto.TarjetaNfc;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
