@@ -64,38 +64,45 @@ public class VistaIngresoControlador implements Initializable {
 
     /**
      * Este metodo se inicia al apretar el boton ingresar
-     * @param event Evento de accion que se genera al apretar el boton.
-     * Aqui se verifica la información de el rut y contraseña y se comparan con las cuentas de la BD
-     * Para posteriormente dar el ingreso y enviarlo a la vista principal del programa
+     *
+     * @param event Evento de accion que se genera al apretar el boton. Aqui se
+     * verifica la información de el rut y contraseña y se comparan con las
+     * cuentas de la BD Para posteriormente dar el ingreso y enviarlo a la vista
+     * principal del programa
      * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaPrincipalControlador
      */
     @FXML
     public void btnIngresar(ActionEvent event) throws IOException {
-        List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
-        String txtContra = this.txtIngresoContrasena.getText().trim();
-        String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
-        for (int i = 0; i < listaCuenta.size(); i++) {
-            Cuenta cuenta = listaCuenta.get(i);
-            if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
-                if (cuenta.getPersona().getTipoPersona().getIdTipoPersona() == 1) {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
-                    Pane ventana = (Pane) loader.load();
-                    Scene scene = new Scene(ventana);
-                    VistaPrincipalControlador controlador = loader.getController();
-                    String nombreApaternoAmatero = cuenta.getPersona().getNombre() + " " + cuenta.getPersona().getApePaterno() + " " + cuenta.getPersona().getApeMaterno();
-                    controlador.inicializarDatos(nombreApaternoAmatero, cuenta.getFoto());
-                    Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    windows.setScene(scene);
+        try {
+            List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
+            String txtContra = this.txtIngresoContrasena.getText().trim();
+            String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
+            for (int i = 0; i < listaCuenta.size(); i++) {
+                Cuenta cuenta = listaCuenta.get(i);
+                if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
+                    if (cuenta.getPersona().getTipoPersona().getIdTipoPersona() == 1) {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
+                        Pane ventana = (Pane) loader.load();
+                        Scene scene = new Scene(ventana);
+                        VistaPrincipalControlador controlador = loader.getController();
+                        String nombreApaternoAmatero = cuenta.getPersona().getNombre() + " " + cuenta.getPersona().getApePaterno() + " " + cuenta.getPersona().getApeMaterno();
+                        controlador.inicializarDatos(nombreApaternoAmatero, cuenta.getFoto());
+                        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        windows.setScene(scene);
+                    } else {
+                        txtError.setText("Sistema de uso exclusivo para porteria");
+                        i = listaCuenta.size();
+                    }
                 } else {
-                    txtError.setText("Sistema de uso exclusivo para porteria");
-                    i = listaCuenta.size();
+                    txtError.setText("Usuario o Contraseña incorrectos");
                 }
-            } else {
-                txtError.setText("Usuario o Contraseña incorrectos");
             }
+        } catch (Exception e) {
+            txtError.setText("No hay conección con la base de datos");
         }
+
     }
 
     @FXML

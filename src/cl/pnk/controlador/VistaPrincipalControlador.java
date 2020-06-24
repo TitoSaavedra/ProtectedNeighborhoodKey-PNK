@@ -75,14 +75,15 @@ public class VistaPrincipalControlador implements Initializable {
     private FontAwesomeIcon btnOpciones;
     @FXML
     private FontAwesomeIcon btnMinimizar;
+    @FXML
+    private Circle clImagenPerfil;
 
     //Atributos utils
     private TranslateTransition openNav = null;
     private TranslateTransition closeNav = null;
     private RotateTransition rt;
     private double x, y;
-    @FXML
-    private Circle clImagenPerfil;
+    
 
     /**
      * Initializes the controller class.
