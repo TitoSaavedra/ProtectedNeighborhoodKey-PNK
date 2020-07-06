@@ -23,7 +23,7 @@ public class TarjetaNfcDal {
 
     /**
      * metodo que retorna todas las tarjetas nfc registradas en la bd
-     * 
+     *
      * @return listaTarjetasNfc Coleccion de TarjetaNfc
      */
     public List<TarjetaNfc> obtenerTarjetaNfc() {
@@ -47,6 +47,28 @@ public class TarjetaNfcDal {
             this.dbutils.desconectar();
         }
         return listaTarjetasNfc;
+    }
+
+    public TarjetaNfc obtenerTarjetaNfcId(String uid) {
+        TarjetaNfc tarjetaNfc = new TarjetaNfc();
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT UID,ESTADO,FECHA_REGISTRO FROM tarjeta_nfc WHERE UID = ?;";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setString(1, uid);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                tarjetaNfc.setUid(rs.getString(1));
+                tarjetaNfc.setEstado(rs.getInt(2));
+                tarjetaNfc.setFechaRegistro(rs.getDate(3));
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return tarjetaNfc;
     }
 
 }

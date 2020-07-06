@@ -21,13 +21,56 @@ public class Persona {
     private String telefono;
     private String email;
     private int estado;
-    private TipoPersona tipoPersona;
+    private int tipoPersona;
 
     public Persona() {
     }
 
-    public Persona(Integer idPersona) {
+    public Persona(Integer idPersona, String rut) {
         this.idPersona = idPersona;
+        this.rut = rut;
+    }
+
+    public Persona(Integer idPersona, String rut, String nombre) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+    }
+
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.segNombre = segNombre;
+    }
+
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.segNombre = segNombre;
+        this.apePaterno = apePaterno;
+    }
+
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.segNombre = segNombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.telefono = telefono;
+    }
+
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.segNombre = segNombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.telefono = telefono;
+        this.email = email;
     }
 
     public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email, int estado) {
@@ -42,7 +85,7 @@ public class Persona {
         this.estado = estado;
     }
 
-    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email, int estado, TipoPersona tipoPersona) {
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, String telefono, String email, int estado, int tipoPersona) {
         this.idPersona = idPersona;
         this.rut = rut;
         this.nombre = nombre;
@@ -127,13 +170,14 @@ public class Persona {
         this.estado = estado;
     }
 
-    public TipoPersona getTipoPersona() {
+    public int getTipoPersona() {
         return tipoPersona;
     }
 
-    public void setTipoPersona(TipoPersona tipoPersona) {
+    public void setTipoPersona(int tipoPersona) {
         this.tipoPersona = tipoPersona;
     }
+
 
     @Override
     public String toString() {

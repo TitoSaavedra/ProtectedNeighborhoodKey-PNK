@@ -75,32 +75,29 @@ public class VistaIngresoControlador implements Initializable {
     @FXML
     public void btnIngresar(ActionEvent event) throws IOException {
         try {
-            List<Cuenta> listaCuenta = new CuentaDal().getCuentas();
             String txtContra = this.txtIngresoContrasena.getText().trim();
             String txtEmail = this.txtIngresoCorreo.getText().toLowerCase().trim();
-            for (int i = 0; i < listaCuenta.size(); i++) {
-                Cuenta cuenta = listaCuenta.get(i);
-                if (cuenta.getClave().equals(txtContra) && cuenta.getPersona().getEmail().toLowerCase().equals(txtEmail)) {
-                    if (cuenta.getPersona().getTipoPersona().getIdTipoPersona() == 1) {
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
-                        Pane ventana = (Pane) loader.load();
-                        Scene scene = new Scene(ventana);
-                        VistaPrincipalControlador controlador = loader.getController();
-                        String nombreApaternoAmatero = cuenta.getPersona().getNombre() + " " + cuenta.getPersona().getApePaterno() + " " + cuenta.getPersona().getApeMaterno();
-                        controlador.inicializarDatos(nombreApaternoAmatero, cuenta.getFoto());
-                        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        windows.setScene(scene);
-                    } else {
-                        txtError.setText("Sistema de uso exclusivo para porteria");
-                        i = listaCuenta.size();
-                    }
+            int idCuenta = new CuentaDal().cuentaLogin(txtEmail, txtContra);
+            if (idCuenta != 0) {
+                Cuenta cuenta = new CuentaDal().getCuenta(idCuenta);
+                if (cuenta.getPersona().getTipoPersona() == 1) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/cl/pnk/vistas/VistaPrincipal.fxml"));
+                    Pane ventana = (Pane) loader.load();
+                    Scene scene = new Scene(ventana);
+                    VistaPrincipalControlador controlador = loader.getController();
+                    String nombreApaternoAmatero = cuenta.getPersona().getNombre() + " " + cuenta.getPersona().getApePaterno() + " " + cuenta.getPersona().getApeMaterno();
+                    controlador.inicializarDatos(nombreApaternoAmatero, cuenta.getFoto());
+                    Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    windows.setScene(scene);
                 } else {
-                    txtError.setText("Usuario o Contraseña incorrectos");
+                    this.txtError.setText("Sistema de uso exclusivo para porteros");
                 }
+            } else {
+                this.txtError.setText("Correo y/o Contraseña no conciden");
             }
         } catch (Exception e) {
-            txtError.setText("No hay conección con la base de datos");
+            this.txtError.setText("No hay conección con la base de datos");
         }
 
     }

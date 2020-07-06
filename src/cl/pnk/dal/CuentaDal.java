@@ -45,7 +45,7 @@ public class CuentaDal {
         dbutils.conectar();
         fis = new FileInputStream(archivo);
         try {
-            String sql = "INSERT INTO cuenta(CLAVE,ESTADO,FOTO,ID_PERSONA)"
+            String sql = "INSERT INTO cuenta(CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA)"
                     + " VALUES(?,?,?,?)";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.setString(1, cuenta.getClave());
@@ -73,7 +73,7 @@ public class CuentaDal {
         Image image;
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta WHERE Estado = 1;";
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA,UID FROM cuenta WHERE ESTADO_CUENTA = 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -107,6 +107,26 @@ public class CuentaDal {
             this.dbutils.desconectar();
         }
         return listaCuentas;
+    }
+
+    public int cuentaLogin(String email, String clave) {
+        int idCuenta = 0;
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT cuenta.ID_CUENTA FROM cuenta,persona WHERE cuenta.CLAVE = ? AND persona.EMAIL = ? AND cuenta.ESTADO_CUENTA=1 AND persona.ESTADO_PERSONA=1;";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setString(1, clave);
+            st.setString(2, email);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                idCuenta = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return idCuenta;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return idCuenta;
     }
 
     /**
@@ -167,7 +187,7 @@ public class CuentaDal {
         Image image;
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_PERSONA = '" + id + "';";
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_CUENTA = '" + id + "';";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -179,18 +199,10 @@ public class CuentaDal {
                 image = this.utilsPrograma.convertirImagen(buffImage);
                 cuenta.setFoto(image);
                 //Falta añadir los datos de la persona
-                List<Persona> listaPersonas = new PersonaDal().obtenerPersonas();
-                for (Persona persona : listaPersonas) {
-                    if (persona.getIdPersona() == rs.getInt(5)) {
-                        cuenta.setPersona(persona);
-                    }
-                }
-                List<TarjetaNfc> tarjetasNfc = new TarjetaNfcDal().obtenerTarjetaNfc();
-                for (TarjetaNfc tarjetaNfc : tarjetasNfc) {
-                    if (tarjetaNfc.getUid().equals(rs.getString(6))) {
-                        cuenta.setTarjetaNfc(tarjetaNfc);
-                    }
-                }
+                Persona persona = new PersonaDal().obtenerPersonaId(rs.getInt(5));
+                cuenta.setPersona(persona);
+                TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(5));
+                cuenta.setTarjetaNfc(tarjetaNfc);
             }
             rs.close();
         } catch (Exception e) {

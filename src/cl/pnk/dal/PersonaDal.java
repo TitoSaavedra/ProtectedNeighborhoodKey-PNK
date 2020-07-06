@@ -30,7 +30,7 @@ public class PersonaDal {
     public void ingresarPersona(Persona persona) {
         dbutils.conectar();
         try {
-            String sql = "INSERT INTO persona(ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO,ID_TIPO_PERSONA)"
+            String sql = "INSERT INTO persona(ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA)"
                     + " VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.setInt(1, 0);
@@ -60,7 +60,7 @@ public class PersonaDal {
         List<Persona> listaPersonas = new ArrayList<>();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO,ID_TIPO_PERSONA FROM persona Where persona.estado = 1;";
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona Where persona.ESTADO_PERSONA = 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -74,13 +74,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                int idTipoPersona = rs.getInt(10);
-                List<TipoPersona> tipoPersonas = new TipoPersonaDal().obtenerTipoPersona();
-                for (TipoPersona tipoPersona : tipoPersonas) {
-                    if (idTipoPersona == tipoPersona.getIdTipoPersona()) {
-                        persona.setTipoPersona(tipoPersona);
-                    }
-                }
+                persona.setIdPersona(rs.getInt(10));
                 listaPersonas.add(persona);
             }
             rs.close();
@@ -93,7 +87,7 @@ public class PersonaDal {
     }
 
     /**
-     *Metodo que obtiene una persona de la base de datos filtrada por rut
+     * Metodo que obtiene una persona de la base de datos filtrada por rut
      *
      * @param rut texto que contiene el rut a filtrar
      * @return persona persona encontrada en la bd
@@ -102,7 +96,7 @@ public class PersonaDal {
         Persona persona = new Persona();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO,ID_TIPO_PERSONA FROM persona WHERE persona.RUT='" + rut + "' And persona.estado = 1 AND persona.ID_TIPO_PERSONA=2;";
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona WHERE persona.RUT='" + rut + "' And persona.ESTADO_PERSONA = 1 AND persona.ID_TIPO_PERSONA=2;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -115,13 +109,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                int idTipoPersona = rs.getInt(10);
-                List<TipoPersona> tipoPersonas = new TipoPersonaDal().obtenerTipoPersona();
-                for (TipoPersona tipoPersona : tipoPersonas) {
-                    if (idTipoPersona == tipoPersona.getIdTipoPersona()) {
-                        persona.setTipoPersona(tipoPersona);
-                    }
-                }
+                persona.setIdPersona(rs.getInt(10));
             }
             rs.close();
         } catch (Exception e) {
@@ -142,7 +130,7 @@ public class PersonaDal {
         Persona persona = new Persona();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO,ID_TIPO_PERSONA FROM persona WHERE ID_PERSONA = '" + ID + "' AND persona.estado = 1;";
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona WHERE ID_PERSONA = '" + ID + "' AND persona.ESTADO_PERSONA = 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -155,13 +143,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                int idTipoPersona = rs.getInt(10);
-                List<TipoPersona> tipoPersonas = new TipoPersonaDal().obtenerTipoPersona();
-                for (TipoPersona tipoPersona : tipoPersonas) {
-                    if (idTipoPersona == tipoPersona.getIdTipoPersona()) {
-                        persona.setTipoPersona(tipoPersona);
-                    }
-                }
+                persona.setTipoPersona(rs.getInt(10));
             }
             rs.close();
         } catch (Exception e) {
@@ -178,10 +160,9 @@ public class PersonaDal {
      * @param persona objeto tipo persona que se desa eliminar
      */
     public void eliminarPersona(Persona persona) {
-        //UPDATE `persona` SET `ESTADO` = '1' WHERE persona.RUT = '19145130-9' 
         try {
             dbutils.conectar();
-            String sql = "UPDATE persona SET ESTADO = '2' WHERE persona.RUT = '" + persona.getRut() + "';";
+            String sql = "UPDATE persona SET ESTADO_PERSONA = '2' WHERE persona.RUT = '" + persona.getRut() + "';";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.executeUpdate();
             st.close();
@@ -223,7 +204,7 @@ public class PersonaDal {
         Persona persona = new Persona();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO,ID_PERSONA FROM persona ORDER BY ID_PERSONA DESC LIMIT 1;";
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_PERSONA FROM persona ORDER BY ID_PERSONA DESC LIMIT 1;";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -236,13 +217,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                int idTipoPersona = rs.getInt(10);
-                List<TipoPersona> tipoPersonas = new TipoPersonaDal().obtenerTipoPersona();
-                for (TipoPersona tipoPersona : tipoPersonas) {
-                    if (idTipoPersona == tipoPersona.getIdTipoPersona()) {
-                        persona.setTipoPersona(tipoPersona);
-                    }
-                }
+                persona.setIdPersona(rs.getInt(10));
             }
             rs.close();
         } catch (Exception e) {
