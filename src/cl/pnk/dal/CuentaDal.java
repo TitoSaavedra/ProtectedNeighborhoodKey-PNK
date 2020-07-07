@@ -42,9 +42,9 @@ public class CuentaDal {
      * @throws FileNotFoundException Si el archivo esta nulo
      */
     public void ingresarCuenta(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
-        dbutils.conectar();
         fis = new FileInputStream(archivo);
         try {
+            dbutils.conectar();
             String sql = "INSERT INTO cuenta(CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA)"
                     + " VALUES(?,?,?,?)";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
@@ -54,6 +54,20 @@ public class CuentaDal {
             st.setInt(4, idPersona);
             st.executeUpdate();
 
+        } catch (Exception e) {
+            e.toString();
+        } finally {
+            dbutils.desconectar();
+        }
+    }
+
+    public void eliminarCuenta(int idCuenta) {
+        try {
+            dbutils.conectar();
+            String sql = "UPDATE `cuenta` SET `ESTADO_CUENTA` = '2' WHERE `cuenta`.`ID_CUENTA` = ?";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setInt(1, idCuenta);
+            st.executeUpdate();
         } catch (Exception e) {
             e.toString();
         } finally {
@@ -134,17 +148,17 @@ public class CuentaDal {
      *
      * @param cuenta la cuenta a modificar
      * @param archivo la imagen a modificar
-     * @param idPersona id de persona a modificar
      * @throws FileNotFoundException si la imagen esta nula
      */
-    public void modificarCuentaConFoto(Cuenta cuenta, File archivo, int idPersona) throws FileNotFoundException {
+    public void modificarCuentaConFoto(Cuenta cuenta, File archivo) throws FileNotFoundException {
         dbutils.conectar();
         FileInputStream in = new FileInputStream(archivo);
         try {
-            String sql = "UPDATE `cuenta` SET `CLAVE` = ?, `FOTO` = ? WHERE `cuenta`.`ID_CUENTA` = " + idPersona + ";";
+            String sql = "UPDATE cuenta SET CLAVE = ?, FOTO = ? WHERE cuenta.ID_CUENTA = ? ;";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.setString(1, cuenta.getClave());
             st.setBinaryStream(2, in, (int) archivo.length());
+            st.setInt(3, cuenta.getIdCuenta());
             st.executeUpdate();
             dbutils.getConexion().commit();
         } catch (Exception e) {
@@ -158,14 +172,14 @@ public class CuentaDal {
      * Metodo que modifica una cuenta sin foto
      *
      * @param cuenta objeto cuenta a modificar
-     * @param idPersona id de la persona de la cuenta a modificar
      */
-    public void modificarCuentaSinFoto(Cuenta cuenta, int idPersona) {
+    public void modificarCuentaSinFoto(Cuenta cuenta) {
         dbutils.conectar();
         try {
-            String sql = "UPDATE `cuenta` SET `CLAVE` = ? WHERE `cuenta`.`ID_CUENTA` = " + idPersona + ";";
+            String sql = "UPDATE cuenta SET CLAVE = ? WHERE cuenta.ID_CUENTA = ? ;";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.setString(1, cuenta.getClave());
+            st.setInt(2, cuenta.getIdCuenta());
             st.executeUpdate();
         } catch (Exception e) {
         } finally {
@@ -177,17 +191,17 @@ public class CuentaDal {
     /**
      * * Metodo que busca una cuenta por id
      *
-     * @param id id de la cuenta a buscar
+     * @param idCuenta id de la cuenta a buscar
      * @return cuenta encontrada
      * @throws FileNotFoundException si la cuenta el la bd tiene la imagen nula
      */
-    public Cuenta getCuenta(int id) throws FileNotFoundException {
+    public Cuenta getCuenta(int idCuenta) throws FileNotFoundException {
         Cuenta cuenta = new Cuenta();
         byte[] imageBytes;
         Image image;
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_CUENTA = '" + id + "';";
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_CUENTA = '" + idCuenta + "';";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {
@@ -212,5 +226,35 @@ public class CuentaDal {
         }
         return cuenta;
     }
-
+    public Cuenta getCuentaPersona(int idPersona) throws FileNotFoundException {
+        Cuenta cuenta = new Cuenta();
+        byte[] imageBytes;
+        Image image;
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,FOTO,ID_PERSONA,UID FROM cuenta WHERE ID_PERSONA = '" + idPersona + "';";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                cuenta.setIdCuenta(rs.getInt(1));
+                cuenta.setClave(rs.getString(2));
+                cuenta.setEstado(rs.getInt(3));
+                imageBytes = rs.getBytes(4);
+                BufferedImage buffImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+                image = this.utilsPrograma.convertirImagen(buffImage);
+                cuenta.setFoto(image);
+                //Falta añadir los datos de la persona
+                Persona persona = new PersonaDal().obtenerPersonaId(rs.getInt(5));
+                cuenta.setPersona(persona);
+                TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(5));
+                cuenta.setTarjetaNfc(tarjetaNfc);
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return cuenta;
+    }
 }

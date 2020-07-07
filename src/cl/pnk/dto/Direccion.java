@@ -18,46 +18,40 @@ public class Direccion  {
     private String piso;
     private String block;
     private String numero;
-    private Persona persona;
 
-   
     public Direccion() {
     }
 
-    public Direccion(String piso, String block, String numero) {
-        this.piso = piso;
-        this.block = block;
-        this.numero = numero;
+    public Direccion(Integer idDireccion) {
+        this.idDireccion = idDireccion;
     }
 
- 
-    public Direccion(String piso, String block, String numero, Persona persona) {
+    public Direccion(Integer idDireccion, String piso) {
+        this.idDireccion = idDireccion;
         this.piso = piso;
-        this.block = block;
-        this.numero = numero;
-        this.persona = persona;
     }
 
+    public Direccion(Integer idDireccion, String piso, String block) {
+        this.idDireccion = idDireccion;
+        this.piso = piso;
+        this.block = block;
+    }
 
-    public Direccion(Integer idDireccion, String piso, String block, String numero, Persona persona) {
+    public Direccion(Integer idDireccion, String piso, String block, String numero) {
         this.idDireccion = idDireccion;
         this.piso = piso;
         this.block = block;
         this.numero = numero;
-        this.persona = persona;
     }
 
-  
     public Integer getIdDireccion() {
         return idDireccion;
     }
 
-  
     public void setIdDireccion(Integer idDireccion) {
         this.idDireccion = idDireccion;
     }
 
- 
     public String getPiso() {
         return piso;
     }
@@ -66,17 +60,14 @@ public class Direccion  {
         this.piso = piso;
     }
 
-  
     public String getBlock() {
         return block;
     }
-
 
     public void setBlock(String block) {
         this.block = block;
     }
 
- 
     public String getNumero() {
         return numero;
     }
@@ -85,17 +76,9 @@ public class Direccion  {
         this.numero = numero;
     }
 
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
     @Override
     public String toString() {
-        return "cl.pnk.dto.Direccion[ idDireccion=" + idDireccion + " ]";
+        return "Direccion{" + "idDireccion=" + idDireccion + ", piso=" + piso + ", block=" + block + ", numero=" + numero + '}';
     }
-    
+
 }

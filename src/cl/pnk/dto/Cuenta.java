@@ -38,6 +38,12 @@ public class Cuenta {
         this.foto = foto;
     }
 
+    public Cuenta(String clave, Image foto, TarjetaNfc tarjetaNfc) {
+        this.clave = clave;
+        this.foto = foto;
+        this.tarjetaNfc = tarjetaNfc;
+    }
+
     public Cuenta(Integer idCuenta, String clave, int estado, Persona persona, TarjetaNfc tarjetaNfc) {
         this.idCuenta = idCuenta;
         this.clave = clave;

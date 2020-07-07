@@ -74,7 +74,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                persona.setIdPersona(rs.getInt(10));
+                persona.setTipoPersona(rs.getInt(10));
                 listaPersonas.add(persona);
             }
             rs.close();
@@ -109,7 +109,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                persona.setIdPersona(rs.getInt(10));
+                persona.setTipoPersona(rs.getInt(10));
             }
             rs.close();
         } catch (Exception e) {
@@ -217,7 +217,7 @@ public class PersonaDal {
                 persona.setTelefono(rs.getString(7));
                 persona.setEmail(rs.getString(8));
                 persona.setEstado(rs.getInt(9));
-                persona.setIdPersona(rs.getInt(10));
+                persona.setTipoPersona(rs.getInt(10));
             }
             rs.close();
         } catch (Exception e) {

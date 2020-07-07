@@ -178,10 +178,12 @@ public class Persona {
         this.tipoPersona = tipoPersona;
     }
 
-
     @Override
     public String toString() {
-        return "cl.pnk.dto.Persona[ idPersona=" + idPersona + " ]";
+        return "Persona{" + "idPersona=" + idPersona + ", rut=" + rut + ", nombre=" + nombre + ", segNombre=" + segNombre + ", apePaterno=" + apePaterno + ", apeMaterno=" + apeMaterno + ", telefono=" + telefono + ", email=" + email + ", estado=" + estado + ", tipoPersona=" + tipoPersona + '}';
     }
+
+
+   
 
 }

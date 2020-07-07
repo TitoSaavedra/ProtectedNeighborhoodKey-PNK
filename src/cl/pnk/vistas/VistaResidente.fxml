@@ -211,11 +211,6 @@
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <JFXTextField fx:id="jtxtClave" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese la clave" GridPane.columnIndex="3" GridPane.rowIndex="7">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="17.0" />
-                                                   </font>
-                                                </JFXTextField>
                                                 <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Reingrese clave:" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
@@ -321,6 +316,11 @@
                                                    </font>
                                                 </Text>
                                                 <JFXPasswordField fx:id="jtxtRepitaClave" promptText="Repita la clave" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </JFXPasswordField>
+                                                <JFXPasswordField fx:id="jtxtClave" promptText="Ingrese la clave" GridPane.columnIndex="3" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>

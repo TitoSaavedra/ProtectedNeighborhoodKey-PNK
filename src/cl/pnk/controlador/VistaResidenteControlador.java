@@ -7,12 +7,15 @@ package cl.pnk.controlador;
 
 import cl.pnk.dal.CuentaDal;
 import cl.pnk.dal.DireccionDal;
+import cl.pnk.dal.DireccionPersonaDal;
 import cl.pnk.dal.PersonaDal;
 import cl.pnk.dal.TablaResidenteDal;
 import cl.pnk.dto.Cuenta;
 import cl.pnk.dto.Direccion;
+import cl.pnk.dto.DireccionPersona;
 import cl.pnk.dto.Persona;
 import cl.pnk.dto.TablaResidente;
+import cl.pnk.dto.TarjetaNfc;
 import cl.pnk.utils.UtilidadesPrograma;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -100,7 +103,7 @@ public class VistaResidenteControlador implements Initializable {
     @FXML
     private JFXTextField jtxtCorreo;
     @FXML
-    private JFXTextField jtxtClave;
+    private JFXPasswordField jtxtClave;
     @FXML
     private JFXPasswordField jtxtRepitaClave;
     @FXML
@@ -312,11 +315,13 @@ public class VistaResidenteControlador implements Initializable {
      * @see PersonaDal
      */
     @FXML
-    public void accionEliminarResidente(ActionEvent event) {
+    public void accionEliminarResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
             new PersonaDal().eliminarPersona(persona);
+            new CuentaDal().eliminarCuenta(cuenta.getIdCuenta());
             this.textoConfirmacion("Residente Eliminado", true, 1);
             mostrarDatosTabla();
         }
@@ -404,6 +409,9 @@ public class VistaResidenteControlador implements Initializable {
         String apeMaterno = this.jtxtApellidoMaterno.getText();
         String telefono = this.jtxtTelefono.getText();
         String email = this.jtxtCorreo.getText();
+        String piso = this.jtxtPiso.getText();
+        String block = this.jtxtBlock.getText();
+        String numero = this.jtxtNumeroCasa.getText();
         residente.setNombre(nombre);
         residente.setSegNombre(segNombre);
         residente.setApePaterno(apePaterno);
@@ -411,12 +419,16 @@ public class VistaResidenteControlador implements Initializable {
         residente.setTelefono(telefono);
         residente.setEmail(email);
         new PersonaDal().modificarPersona(residente);
-        Cuenta cuenta = new Cuenta(this.jtxtClave.getText());
+        Cuenta cuenta = new CuentaDal().getCuentaPersona(residente.getIdPersona());
+        cuenta.setClave(this.jtxtRepitaClave.getText());
         if (this.btnImagenPresionado.equals("si")) {
-            new CuentaDal().modificarCuentaConFoto(cuenta, imagenPerfilArchivo, residente.getIdPersona());
+            new CuentaDal().modificarCuentaConFoto(cuenta, imagenPerfilArchivo);
         } else {
-            new CuentaDal().modificarCuentaSinFoto(cuenta, residente.getIdPersona());
+            new CuentaDal().modificarCuentaSinFoto(cuenta);
         }
+        DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(residente.getIdPersona());
+        Direccion direccion = new Direccion(direccionPersona.getIdDireccion(), piso, block, numero);
+        new DireccionDal().modificarDireccion(direccion);
         this.textoConfirmacion("Residente Modificado", true, 2);
         resetCampos("");
         resetImagenUsuario();
@@ -449,12 +461,14 @@ public class VistaResidenteControlador implements Initializable {
         Persona persona = new Persona(idPersona, rut, nombre, segNombre, apePaterno, apeMaterno, telefono, email, estado);
         new PersonaDal().ingresarPersona(persona);
         Persona ultimaPersona = new PersonaDal().obtenerUltimaPersona();
-        int idDireccion = 0;
         String piso = this.jtxtPiso.getText();
         String block = this.jtxtBlock.getText();
         String numero = this.jtxtNumeroCasa.getText();
-        Direccion direccion = new Direccion(piso, block, numero, ultimaPersona);
+        Direccion direccion = new Direccion(0, piso, block, numero);
         new DireccionDal().ingresarDireccion(direccion);
+        Direccion ultimaDireccion = new DireccionDal().obtenerUltimaDireccion();
+        DireccionPersona direccionPersona = new DireccionPersona(ultimaDireccion.getIdDireccion(), ultimaPersona.getIdPersona());
+        new DireccionPersonaDal().ingresarDireccionPersona(direccionPersona);
         String clave = this.jtxtClave.getText();
         Cuenta cuenta = new Cuenta(clave, this.imagenPerfil);
         if (imagenPerfilArchivo == null) {
@@ -712,7 +726,7 @@ public class VistaResidenteControlador implements Initializable {
         this.asignarValorJTextField(this.jtxtApellidoMaterno, "");
         this.asignarValorJTextField(this.jtxtTelefono, "");
         this.asignarValorJTextField(this.jtxtCorreo, "");
-        this.asignarValorJTextField(this.jtxtClave, "");
+        this.asignarValorJPasswordField(this.jtxtClave, "");
         this.asignarValorJPasswordField(this.jtxtRepitaClave, "");
         this.asignarValorJTextField(this.jtxtPiso, "");
         this.asignarValorJTextField(this.jtxtBlock, "");
@@ -748,9 +762,7 @@ public class VistaResidenteControlador implements Initializable {
                 break;
             default:
                 this.txtConfirmacionAccion.setFill(Color.web("#FF0000"));
-
         }
-
     }
 
     /**
@@ -817,8 +829,9 @@ public class VistaResidenteControlador implements Initializable {
             this.ocultarAdvertencia(this.txtResultadoBusquedaRutP1);
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
             if (persona.getRut() != null) {
-                Direccion direccionPersona = new DireccionDal().obtenerDireccionRut(rut);
-                Cuenta cuenta = new CuentaDal().getCuenta(persona.getIdPersona());
+                Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
+                DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(persona.getIdPersona());
+                Direccion direccion = new DireccionDal().obtenerDireccion(direccionPersona.getIdDireccion());
                 this.habilitarModElim();
                 this.asignarValorJTextField(this.jtxtRut, rut);
                 this.asignarValorJTextField(this.jtxtNombre, persona.getNombre());
@@ -827,11 +840,11 @@ public class VistaResidenteControlador implements Initializable {
                 this.asignarValorJTextField(this.jtxtApellidoMaterno, persona.getApeMaterno());
                 this.asignarValorJTextField(this.jtxtTelefono, persona.getTelefono());
                 this.asignarValorJTextField(this.jtxtCorreo, persona.getEmail());
-                this.asignarValorJTextField(this.jtxtClave, cuenta.getClave());
+                this.asignarValorJPasswordField(this.jtxtClave, cuenta.getClave());
                 this.asignarValorJPasswordField(this.jtxtRepitaClave, cuenta.getClave());
-                this.asignarValorJTextField(this.jtxtPiso, direccionPersona.getPiso());
-                this.asignarValorJTextField(this.jtxtBlock, direccionPersona.getBlock());
-                this.asignarValorJTextField(this.jtxtNumeroCasa, direccionPersona.getNumero());
+                this.asignarValorJTextField(this.jtxtPiso, direccion.getPiso());
+                this.asignarValorJTextField(this.jtxtBlock, direccion.getBlock());
+                this.asignarValorJTextField(this.jtxtNumeroCasa, direccion.getNumero());
                 if (cuenta.getFoto() != null) {
                     this.clImagenVista.setFill(new ImagePattern(cuenta.getFoto()));
                 } else {
