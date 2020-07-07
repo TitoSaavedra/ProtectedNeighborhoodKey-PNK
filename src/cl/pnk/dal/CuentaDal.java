@@ -127,7 +127,7 @@ public class CuentaDal {
         int idCuenta = 0;
         try {
             this.dbutils.conectar();
-            String sql = "SELECT cuenta.ID_CUENTA FROM cuenta,persona WHERE cuenta.CLAVE = ? AND persona.EMAIL = ? AND cuenta.ESTADO_CUENTA=1 AND persona.ESTADO_PERSONA=1;";
+            String sql = "SELECT cuenta.ID_CUENTA FROM cuenta,persona WHERE cuenta.CLAVE = ? AND persona.EMAIL = ? AND cuenta.ESTADO_CUENTA=1 AND persona.ESTADO_PERSONA=1 AND cuenta.ID_PERSONA = persona.ID_PERSONA;";
             PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
             st.setString(1, clave);
             st.setString(2, email);

@@ -228,4 +228,32 @@ public class PersonaDal {
         return persona;
     }
 
+    public Persona obtenerPersonaCorreo(String correo) {
+        Persona persona = new Persona();
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona WHERE EMAIL = ? AND persona.ESTADO_PERSONA = 1;";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            sq.setString(1, correo);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                persona.setIdPersona(rs.getInt(1));
+                persona.setRut(rs.getString(2));
+                persona.setNombre(rs.getString(3));
+                persona.setSegNombre(rs.getString(4));
+                persona.setApePaterno(rs.getString(5));
+                persona.setApeMaterno(rs.getString(6));
+                persona.setTelefono(rs.getString(7));
+                persona.setEmail(rs.getString(8));
+                persona.setEstado(rs.getInt(9));
+                persona.setTipoPersona(rs.getInt(10));
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return persona;
+    }
 }

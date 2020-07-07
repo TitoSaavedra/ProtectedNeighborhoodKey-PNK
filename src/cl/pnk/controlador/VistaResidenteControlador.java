@@ -343,8 +343,10 @@ public class VistaResidenteControlador implements Initializable {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
             Persona persona = new PersonaDal().obtenerPersonaRut(rut);
-            this.modificarResidente(persona);
-            mostrarDatosTabla();
+            if (validarModificiarCorreo(this.jtxtCorreo.getText().trim().toLowerCase(), persona)) {
+                this.modificarResidente(persona);
+                mostrarDatosTabla();
+            }
         }
     }
 
@@ -360,9 +362,11 @@ public class VistaResidenteControlador implements Initializable {
     @FXML
     public void accionAgregarResidente(ActionEvent event) throws IOException {
         if (validarCampos()) {
-            String rut = this.jtxtRut.getText();
-            this.ingresarResidente(rut);
-            mostrarDatosTabla();
+            if (validarIngresoCorreo(this.jtxtCorreo.getText().trim().toLowerCase())) {
+                String rut = this.jtxtRut.getText();
+                this.ingresarResidente(rut);
+                mostrarDatosTabla();
+            }
         }
     }
 
@@ -799,13 +803,16 @@ public class VistaResidenteControlador implements Initializable {
     @FXML
     public void tvMouseCliqueado(MouseEvent event) throws FileNotFoundException {
         if (event.getClickCount() == 2 && !event.isConsumed()) {
-            event.consume();
-            this.resetImagenUsuario();
-            this.btnImagenPresionado = "no";
-            String rut = String.valueOf(this.tvTablaResidentes.getSelectionModel().getSelectedItem().getRut());
-            this.jtfBusquedaP1.setText(rut);
-            this.filtrarPorRut();
-            this.jfxTabPane.getSelectionModel().select(this.submenuResidente);
+            try {
+                event.consume();
+                this.resetImagenUsuario();
+                this.btnImagenPresionado = "no";
+                String rut = String.valueOf(this.tvTablaResidentes.getSelectionModel().getSelectedItem().getRut());
+                this.jtfBusquedaP1.setText(rut);
+                this.filtrarPorRut();
+                this.jfxTabPane.getSelectionModel().select(this.submenuResidente);
+            } catch (Exception e) {
+            }
         }
 
     }
@@ -862,6 +869,38 @@ public class VistaResidenteControlador implements Initializable {
             this.resetCampos("");
             this.resetImagenUsuario();
             this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "Rut no valido");
+        }
+    }
+
+    public boolean validarIngresoCorreo(String Email) {
+        Persona persona = new PersonaDal().obtenerPersonaCorreo(Email);
+        if (persona.getEmail() == null) {
+            this.txtErrorCorreo.setText("");
+            this.txtErrorCorreo.setVisible(false);
+            return true;
+        } else {
+            this.txtErrorCorreo.setText("Este correo ya esta registrado");
+            this.txtErrorCorreo.setVisible(true);
+            return false;
+        }
+    }
+
+    public boolean validarModificiarCorreo(String Email, Persona residente) {
+        if (residente.getEmail().toLowerCase().equals(Email)) {
+            this.txtErrorCorreo.setText("");
+            this.txtErrorCorreo.setVisible(false);
+            return true;
+        } else {
+            Persona persona = new PersonaDal().obtenerPersonaCorreo(Email);
+            if (persona.getEmail() == null) {
+                this.txtErrorCorreo.setText("");
+                this.txtErrorCorreo.setVisible(false);
+                return true;
+            } else {
+                this.txtErrorCorreo.setText("Este correo ya esta registrado");
+                this.txtErrorCorreo.setVisible(true);
+                return false;
+            }
         }
     }
 }

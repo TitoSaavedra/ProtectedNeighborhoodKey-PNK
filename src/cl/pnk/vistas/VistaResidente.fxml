@@ -141,7 +141,7 @@
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <JFXTextField fx:id="jtxtRut" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese  el rut" GridPane.rowIndex="1">
+                                                <JFXTextField fx:id="jtxtRut" disable="true" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese  el rut" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Arial Bold" size="17.0" />
                                                    </font>
