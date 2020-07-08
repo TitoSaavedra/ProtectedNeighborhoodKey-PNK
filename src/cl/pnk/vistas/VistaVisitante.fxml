@@ -64,7 +64,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <TextField fx:id="jtfBusqueda" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut">
+                                          <TextField fx:id="jtfBusquedaVisita" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut de la visita">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -77,7 +77,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Text>
-                                          <JFXButton fx:id="btnFiltro" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
+                                          <JFXButton fx:id="btnFiltroVisita" onAction="#accionFiltrarVisita" prefHeight="39.0" prefWidth="167.0" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
                                              </graphic>
@@ -91,170 +91,277 @@
                                        <children>
                                           <AnchorPane layoutY="14.0" prefHeight="33.0" prefWidth="1100.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
                                              <children>
-                                                <Text fill="WHITE" layoutX="467.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del visitante">
+                                                <Text fill="WHITE" layoutX="467.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de la visita">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                          <Text fill="#00000080" layoutX="14.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="14.0" layoutY="95.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese  el rut">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="14.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" AnchorPane.topAnchor="144.705078125">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="14.0" layoutY="165.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el nombre">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="14.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo nombre:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="14.0" layoutY="235.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el sgdo. nombre">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="14.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido paterno:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="14.0" layoutY="305.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el apellido paterno">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="14.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido materno:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="14.0" layoutY="375.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el apellido materno">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="286.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piso" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="286.0" layoutY="139.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el piso" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="288.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Block:" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="286.0" layoutY="209.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el rut" text="Ingrese el block" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <Text fill="#00000080" layoutX="288.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número:" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXTextField layoutX="286.0" layoutY="279.0" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el rut" text="Ingrese número" AnchorPane.leftAnchor="300.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                             </font>
-                                          </JFXTextField>
-                                          <JFXButton fx:id="btnImagen" layoutX="326.0" layoutY="335.0" onAction="#accionBuscarImagen" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar Imagén" textFill="WHITE">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                             </graphic>
-                                             <font>
-                                                <Font name="System Bold" size="18.0" />
-                                             </font>
-                                          </JFXButton>
-                                          <AnchorPane layoutX="305.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
+                                          <GridPane layoutX="24.0" layoutY="45.0" prefHeight="437.0" prefWidth="606.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="0.0" prefWidth="20.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="155.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="206.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
                                              <children>
-                                                <Text fill="WHITE" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección Residente" textAlignment="CENTER" wrappingWidth="207.0283203125">
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut Visita:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <JFXTextField fx:id="jtxtRutVisita" disable="true" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el rut" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="17.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Visita:" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <JFXTextField fx:id="jtxtNombreVisita" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el nombre" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="17.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo nombre Visita:" GridPane.rowIndex="7">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <JFXTextField fx:id="jtxtSegNombreVisita" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el sgdo. nombre" GridPane.rowIndex="8">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="17.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido paterno Visita:" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <JFXTextField fx:id="jtxtApellidoPaternoVisita" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el apellido paterno" GridPane.rowIndex="11">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="17.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido materno Visita:" GridPane.rowIndex="13">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <JFXTextField fx:id="jtxtApellidoMaternoVisita" prefHeight="30.0" prefWidth="225.0" promptText="Ingrese el apellido materno" GridPane.rowIndex="14">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="17.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Text fx:id="txtErrorRut" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta ingresar el rut" visible="false" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtErrorNombre" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta ingresar el nombre" visible="false" GridPane.rowIndex="6">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtErrorSegNombre" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta ingresar el sdo. nombre" visible="false" GridPane.rowIndex="9">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtErrorApPaterno" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta ingresar el ape. paterno" visible="false" GridPane.rowIndex="12">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtErrorApMaterno" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta ingresar el ape. materno" visible="false" GridPane.rowIndex="15">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido paterno:" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido materno:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtRutResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="99999999-9" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtNombreResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApePaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApeMaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Piso:" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Block:" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Número:" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtPisoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtBlockResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtNumeroResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="11">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
                                              </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="581.0" layoutY="68.0" prefHeight="33.0" prefWidth="225.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
+                                          </GridPane>
+                                          <GridPane layoutX="646.0" layoutY="50.0" prefHeight="430.0" prefWidth="453.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="647.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="376.0" minHeight="10.0" prefHeight="370.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
                                              <children>
-                                                <Text fill="WHITE" layoutX="6.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Residente" textAlignment="CENTER" wrappingWidth="207.0283203125">
+                                                <GridPane prefHeight="50.0" prefWidth="453.0">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <TextField fx:id="jtfFiltroResidente" onKeyReleased="#accionFiltroResidentes" prefHeight="36.0" prefWidth="447.0" promptText="Filtro de residentes">
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="18.0" />
+                                                         </font>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                                <TableView fx:id="tvTablaResidentes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tvMouseCliqueado" prefHeight="370.0" prefWidth="454.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                   <columns>
+                                                      <TableColumn fx:id="rowRut" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Rut" />
+                                                      <TableColumn fx:id="rowNombre" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Nombre" />
+                                                      <TableColumn fx:id="rowApPaterno" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Apellido Paterno" />
+                                                      <TableColumn fx:id="rowDireccion" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Dirección" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </GridPane>
+                                          <GridPane layoutX="270.0" layoutY="400.0" prefWidth="370.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <JFXButton fx:id="btnEliminar" onAction="#accionEliminarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnEliminar" stylesheets="@cssvistas/CssBotones.css" text="Eliminar" textFill="WHITE" GridPane.columnIndex="2">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <FontAwesomeIcon glyphName="USER_TIMES" scaleX="0.8" scaleY="0.8" scaleZ="0.8" wrappingWidth="12.142857551574707" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnModificar" onAction="#accionModificarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnModificar" stylesheets="@cssvistas/CssBotones.css" text="Modificar" textFill="WHITE" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <FontAwesomeIcon glyphName="USER" scaleX="0.8" scaleY="0.8" scaleZ="0.8" wrappingWidth="12.142857551574707" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnAgregar" onAction="#accionAgregarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnAgregar" stylesheets="@cssvistas/CssBotones.css" text="Añadir" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                   <graphic>
+                                                      <FontAwesomeIcon glyphName="USER_PLUS" scaleX="0.8" scaleY="0.8" scaleZ="0.8" wrappingWidth="12.142857551574707" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </JFXButton>
+                                             </children>
+                                          </GridPane>
+                                          <AnchorPane layoutX="270.0" layoutY="90.0" prefHeight="30.0" prefWidth="370.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="111.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Residente" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="6.185546875" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="111.94140625" AnchorPane.topAnchor="3.705078125">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                          <JFXButton fx:id="btnFiltro1" layoutX="828.0" layoutY="125.0" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                             </graphic>
-                                             <font>
-                                                <Font name="System Bold" size="18.0" />
-                                             </font>
-                                          </JFXButton>
-                                          <Text fx:id="txtResultadoBusquedaRut1" layoutX="582.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="224.13671875" AnchorPane.leftAnchor="582.0">
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="jtfBusqueda1" layoutX="582.0" layoutY="127.0" prefHeight="36.0" prefWidth="224.0" promptText="Ingrese rut" AnchorPane.leftAnchor="582.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </TextField>
-                                          <Text fill="#00000080" layoutX="582.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fill="#00000080" layoutX="580.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fill="#00000080" layoutX="580.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fill="#00000080" layoutX="580.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piso">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fill="#00000080" layoutX="580.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Block:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fill="#00000080" layoutX="581.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número:">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </Text>
+                                          <AnchorPane layoutX="270.0" layoutY="255.0" prefHeight="30.0" prefWidth="370.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="101.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección residente" textAlignment="CENTER" AnchorPane.bottomAnchor="6.185546875" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="101.9375" AnchorPane.topAnchor="3.705078125">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -268,55 +375,149 @@
                            <children>
                               <GridPane layoutX="50.0" layoutY="27.0" prefHeight="511.0" prefWidth="1100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="525.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="619.0" minWidth="10.0" prefWidth="575.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints maxHeight="167.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TableView prefHeight="454.0" prefWidth="1100.0" GridPane.rowIndex="1">
-                                       <columns>
-                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Nombre" />
-                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Apellidos" />
-                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Dirección" />
-                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Hora de acceso" />
-                                          <TableColumn minWidth="220.0" prefWidth="-1.0" text="Tipo de acceso" />
-                                       </columns>
-                                    </TableView>
-                                    <GridPane prefHeight="76.0" prefWidth="1100.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="374.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="919.0" minWidth="10.0" prefWidth="726.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
+                                    <JFXTabPane GridPane.columnIndex="1">
+                                       <tabs>
+                                          <Tab text="Solicitudes Pendientes">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                   <children>
+                                                      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="73.0" minHeight="45.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <TableView fx:id="tvSolicitudesPendiente" GridPane.rowIndex="1">
+                                                              <columns>
+                                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                              </columns>
+                                                            </TableView>
+                                                            <GridPane>
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="478.0" prefWidth="478.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <JFXButton fx:id="btnFiltroVisitaPendiente" onAction="#accionFiltrarVisita" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                                     <graphic>
+                                                                        <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
+                                                                     </graphic>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="14.0" />
+                                                                     </font>
+                                                                  </JFXButton>
+                                                                  <TextField fx:id="jtfBusquedaVisitaPendiente" prefHeight="36.0" prefWidth="482.0" promptText="Ingrese rut de la visita" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                                     <opaqueInsets>
+                                                                        <Insets />
+                                                                     </opaqueInsets>
+                                                                     <font>
+                                                                        <Font name="Arial Bold" size="18.0" />
+                                                                     </font>
+                                                                  </TextField>
+                                                               </children>
+                                                            </GridPane>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Historial Solicitudes">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <GridPane prefHeight="511.0" prefWidth="577.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <TableView fx:id="tvSolicitudesHistorial" prefHeight="431.0" prefWidth="575.0" GridPane.rowIndex="1">
+                                                              <columns>
+                                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                              </columns>
+                                                            </TableView>
+                                                            <GridPane>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                            </GridPane>
+                                                            <GridPane>
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="478.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="97.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <TextField fx:id="jtfBusquedaVisitaPendiente1" prefHeight="33.0" prefWidth="444.0" promptText="Ingrese rut de la visita">
+                                                                     <opaqueInsets>
+                                                                        <Insets />
+                                                                     </opaqueInsets>
+                                                                     <font>
+                                                                        <Font name="Arial Bold" size="18.0" />
+                                                                     </font>
+                                                                  </TextField>
+                                                                  <JFXButton fx:id="btnFiltroVisitaPendiente1" onAction="#accionFiltrarVisita" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                                     <graphic>
+                                                                        <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
+                                                                     </graphic>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="14.0" />
+                                                                     </font>
+                                                                  </JFXButton>
+                                                               </children>
+                                                            </GridPane>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="jtfBusqueda11" prefHeight="36.0" prefWidth="318.0" promptText="Ingrese rut">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                          </TextField>
-                                          <Text fx:id="txtResultadoBusquedaRut11" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="375.13671875" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXButton fx:id="btnFiltro11" onAction="#accionFiltrar" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                             </graphic>
-                                             <font>
-                                                <Font name="System Bold" size="18.0" />
-                                             </font>
-                                          </JFXButton>
+                                          <AnchorPane prefHeight="37.0" prefWidth="525.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="175.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del residente">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutY="247.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="192.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visita" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="6.185546875" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="191.9619140625" AnchorPane.topAnchor="3.705078125">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
                                        </children>
-                                    </GridPane>
+                                    </AnchorPane>
                                  </children>
                               </GridPane>
                            </children>

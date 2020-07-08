@@ -5,7 +5,6 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dto.Direccion;
 import cl.pnk.dto.DireccionPersona;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;

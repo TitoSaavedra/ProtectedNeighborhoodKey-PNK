@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -37,6 +38,8 @@ public class ProtectedNeighborhoodKeyPNK extends Application {
             Scene scene = new Scene(ventana);
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
+            primaryStage.getIcons().add(new Image("/cl/pnk/imagenes/IconoApp.png"));
+            primaryStage.setTitle("Protected Neighborhood Key");
             primaryStage.show();
         } catch (IOException e) {
             System.out.println(e.getMessage());

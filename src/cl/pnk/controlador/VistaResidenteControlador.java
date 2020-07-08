@@ -15,7 +15,6 @@ import cl.pnk.dto.Direccion;
 import cl.pnk.dto.DireccionPersona;
 import cl.pnk.dto.Persona;
 import cl.pnk.dto.TablaResidente;
-import cl.pnk.dto.TarjetaNfc;
 import cl.pnk.utils.UtilidadesPrograma;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -814,7 +813,6 @@ public class VistaResidenteControlador implements Initializable {
             } catch (Exception e) {
             }
         }
-
     }
 
     /**
