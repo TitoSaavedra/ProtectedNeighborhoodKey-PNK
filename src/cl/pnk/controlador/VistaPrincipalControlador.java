@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -87,6 +88,12 @@ public class VistaPrincipalControlador implements Initializable {
     private boolean stageLoaded = false;
     private String btnStilo1 = getClass().getResource("/cl/pnk/vistas/CssPrincipal.css").toExternalForm();
     private String btnStilo2 = getClass().getResource("/cl/pnk/vistas/CssPrincipalAlt.css").toExternalForm();
+    @FXML
+    private Circle clImagenPerfilBienvenida;
+    @FXML
+    private Text txtMensajeBienvenida;
+    @FXML
+    private AnchorPane apPanelBienvenida;
 
     /**
      * Initializes the controller class.
@@ -100,9 +107,28 @@ public class VistaPrincipalControlador implements Initializable {
         accionAnimacionMenuDeslizante();
         try {
             inicioApp();
+            fadeOut();
         } catch (IOException ex) {
             Logger.getLogger(VistaPrincipalControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void fadeOut() {
+        this.clImagenPerfilBienvenida.setEffect(new DropShadow(+60, 0d, +2d, Color.ANTIQUEWHITE));
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setOnFinished(e -> terminoTransicion());
+        fadeTransition.delayProperty().setValue(Duration.millis(2000));
+        fadeTransition.setDuration(Duration.millis(1000));
+        fadeTransition.setNode(this.apPanelBienvenida);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
+        
+    }
+
+    private void terminoTransicion() {
+        this.apPanelBienvenida.setDisable(true);
+        this.apPanelBienvenida.setVisible(false);
     }
 
     /**
@@ -115,6 +141,8 @@ public class VistaPrincipalControlador implements Initializable {
     public void inicializarDatos(String nombre, Image imagenPerfil) {
         this.clImagenPerfil.setFill(new ImagePattern(imagenPerfil));
         txtNombreApellido.setText(nombre);
+        this.txtMensajeBienvenida.setText("Bienvenido " + nombre);
+        this.clImagenPerfilBienvenida.setFill(new ImagePattern(imagenPerfil));
     }
 
     private void posicionPanel(AnchorPane pane) {
@@ -332,7 +360,7 @@ public class VistaPrincipalControlador implements Initializable {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
         btnImage.setImage(image);
         rotacion();
-        closeNav.setToX(-(apMenu.getWidth()+20));
+        closeNav.setToX(-(apMenu.getWidth() + 20));
         closeNav.play();
 
     }

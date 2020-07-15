@@ -5,7 +5,6 @@
  */
 package cl.pnk.dal;
 
-import cl.pnk.dto.Encomienda;
 import cl.pnk.dto.SolicitudEncomienda;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
