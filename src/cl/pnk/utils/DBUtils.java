@@ -31,7 +31,7 @@ public class DBUtils {
         boolean resultado;
         try {
             //1 agregar class Driver del motor
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //2 Utilizar DriverManager
             //api del conexion:motor://servidor:puerto/basedatos
             String url = "jdbc:mysql://" + servidor + ":3306/" + baseDatos;
