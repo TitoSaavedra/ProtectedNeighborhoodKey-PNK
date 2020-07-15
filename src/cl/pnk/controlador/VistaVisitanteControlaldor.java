@@ -355,11 +355,12 @@ public class VistaVisitanteControlaldor implements Initializable {
     }
 
     @FXML
-    private void accionModificarVisita(ActionEvent event) {
+    private void accionModificarVisita(ActionEvent event) throws FileNotFoundException {
         if (this.validarCampos(2)) {
             String rutVisita = this.jtxtRutVisita.getText();
             this.modificarVisita(rutVisita);
             this.resetCamposVistaVisita();
+            resetCamposVisita();
         }
     }
 
@@ -372,8 +373,9 @@ public class VistaVisitanteControlaldor implements Initializable {
             } else {
                 this.ingresarVisita(rutVisita, 2);
             }
+            resetCamposVisita();
             mostrarDatosTabla();
-        }
+        }   
     }
 
     @FXML
@@ -652,6 +654,25 @@ public class VistaVisitanteControlaldor implements Initializable {
         } else {
             estadoBotonesSolicitudVisita(1);
         }
+    }
+
+    private void resetCamposVisita() throws FileNotFoundException {
+        String reset = "";
+        this.jtxtRutVisita.setText(reset);
+        this.jtxtNombreVisita.setText(reset);
+        this.jtxtSegNombreVisita.setText(reset);
+        this.jtxtApellidoPaternoVisita.setText(reset);
+        this.jtxtApellidoMaternoVisita.setText(reset);
+        this.btnModificar.setDisable(true);
+        this.btnAgregar.setDisable(false);
+        this.txtRutResidente.setText(reset);
+        this.txtNombreResidente.setText(reset);
+        this.txtApePaternoResidente.setText(reset);
+        this.txtApeMaternoResidente.setText(reset);
+        this.txtPisoResidente.setText(reset);
+        this.txtBlockResidente.setText(reset);
+        this.txtNumeroResidente.setText(reset);
+        mostrarDatosTablaVisitas();
     }
 
     private void resetCamposVisitaHistorial() {
