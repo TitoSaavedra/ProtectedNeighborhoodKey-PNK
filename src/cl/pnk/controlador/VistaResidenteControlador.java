@@ -310,6 +310,7 @@ public class VistaResidenteControlador implements Initializable {
      * eliminar residente. inciia el metodo validarCampos(), Luego busca en la
      * bd al residente, para luego por medio de PersonaDal eliminar el
      * residente.
+     * @throws java.io.FileNotFoundException
      *
      * @see PersonaDal
      */
@@ -810,7 +811,8 @@ public class VistaResidenteControlador implements Initializable {
                 this.jtfBusquedaP1.setText(rut);
                 this.filtrarPorRut();
                 this.jfxTabPane.getSelectionModel().select(this.submenuResidente);
-            } catch (Exception e) {
+            } catch (FileNotFoundException e) {
+                System.out.println(e.toString());
             }
         }
     }
@@ -834,7 +836,7 @@ public class VistaResidenteControlador implements Initializable {
             this.ocultarAdvertencia(this.txtResultadoBusquedaRutP1);
             Persona persona = new PersonaDal().obtenerPersonaRut(rut,"2");
             if (persona.getRut() != null) {
-                if (persona.getTipoPersona() == 1) {
+                if (persona.getTipoPersona() == 2) {
                     Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
                     DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(persona.getIdPersona());
                     Direccion direccion = new DireccionDal().obtenerDireccion(direccionPersona.getIdDireccion());

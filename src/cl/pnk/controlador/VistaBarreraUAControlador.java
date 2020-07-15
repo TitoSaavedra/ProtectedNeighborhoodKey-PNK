@@ -13,7 +13,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 /**
@@ -28,12 +32,6 @@ public class VistaBarreraUAControlador implements Initializable {
     @FXML
     private Text txtNombreRuta;
     @FXML
-    private TextField jtfBusqueda1;
-    @FXML
-    private Text txtResultadoBusquedaRut1;
-    @FXML
-    private JFXButton btnFiltro1;
-    @FXML
     private TextField jtfBusqueda11;
     @FXML
     private Text txtResultadoBusquedaRut11;
@@ -45,6 +43,22 @@ public class VistaBarreraUAControlador implements Initializable {
     private Tab submenuUltimosAccesos;
     @FXML
     private Tab submenuHistorialAceeso;
+    @FXML
+    private TableView<?> tvRegistroAcceso;
+    @FXML
+    private TextField jtfBusqueda111;
+    @FXML
+    private Text txtRutResidente;
+    @FXML
+    private Text txtNombreResidente;
+    @FXML
+    private Text txtApellidoPaternoResidente;
+    @FXML
+    private Text txtTelefonoResidente;
+    @FXML
+    private Text txtDireccionResidente;
+    @FXML
+    private Circle clImagenPerfil;
 
     /**
      * Initializes the controller class.
@@ -75,5 +89,13 @@ public class VistaBarreraUAControlador implements Initializable {
     private void cambioNombreMenuRuta(String menu){
         txtNombreMenu.setText(menu);
         txtNombreRuta.setText(menu);
+    }
+
+    @FXML
+    private void accionTvCliqueado(MouseEvent event) {
+    }
+
+    @FXML
+    private void accionFiltrarTvAcceso(KeyEvent event) {
     }
 }

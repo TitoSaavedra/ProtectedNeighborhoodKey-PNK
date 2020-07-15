@@ -1,11 +1,11 @@
 
 package cl.pnk.utils;
 import com.sun.javafx.scene.control.skin.TableViewSkin;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import javafx.collections.ListChangeListener;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class GUIUtils {
     private static Method columnToFitMethod;

@@ -112,11 +112,11 @@ public class PersonaDal {
      * @param rut texto que contiene el rut a filtrar
      * @return persona persona encontrada en la bd
      */
-    public Persona obtenerPersonaRut(String rut, String idPersona) {
+    public Persona obtenerPersonaRut(String rut, String tipoPersona) {
         Persona persona = new Persona();
         try {
             this.dbutils.conectar();
-            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona WHERE persona.RUT='" + rut + "' And persona.ESTADO_PERSONA = 1 AND persona.ID_TIPO_PERSONA='" + idPersona + "';";
+            String sql = "SELECT ID_PERSONA,RUT,NOMBRE,SEG_NOMBRE,APE_PATERNO,APE_MATERNO,TELEFONO,EMAIL,ESTADO_PERSONA,ID_TIPO_PERSONA FROM persona WHERE persona.RUT='" + rut + "' And persona.ESTADO_PERSONA = 1 AND persona.ID_TIPO_PERSONA='" + tipoPersona + "';";
             PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
             ResultSet rs = sq.executeQuery();
             while (rs.next()) {

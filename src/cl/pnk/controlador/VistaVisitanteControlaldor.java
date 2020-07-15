@@ -19,7 +19,6 @@ import cl.pnk.dto.Persona;
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.dto.TablaResidente;
 import cl.pnk.dto.TablaSolicitudesVisita;
-import cl.pnk.utils.GUIUtils;
 import cl.pnk.utils.UtilidadesPrograma;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
@@ -375,7 +374,7 @@ public class VistaVisitanteControlaldor implements Initializable {
             }
             resetCamposVisita();
             mostrarDatosTabla();
-        }   
+        }
     }
 
     @FXML

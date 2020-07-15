@@ -2,7 +2,6 @@ package cl.pnk.dal;
 
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.utils.DBUtils;
-import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

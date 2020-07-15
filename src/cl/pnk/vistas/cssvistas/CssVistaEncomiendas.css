@@ -22,3 +22,7 @@
 .jfx-date-picker{
     -jfx-default-color: #E3BF3E;
 }
+
+.jfxradiobutton{
+    -jfx-selected-color:#E3BF3E;
+}

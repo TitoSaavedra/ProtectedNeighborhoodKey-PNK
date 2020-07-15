@@ -66,7 +66,8 @@ public class Encomienda {
 
     @Override
     public String toString() {
-        return "cl.pnk.dto.Encomienda[ idEncomienda=" + idEncomienda + " ]";
+        return "Encomienda{" + "idEncomienda=" + idEncomienda + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado + '}';
     }
 
+  
 }
