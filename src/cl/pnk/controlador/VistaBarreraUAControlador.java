@@ -46,7 +46,6 @@ public class VistaBarreraUAControlador implements Initializable {
     private Tab submenuUltimosAccesos;
     @FXML
     private TableView<TablaAcceso> tvRegistroAcceso;
-    @FXML
     private TextField jtfBusqueda111;
     @FXML
     private Text txtRutResidente;
@@ -70,6 +69,8 @@ public class VistaBarreraUAControlador implements Initializable {
     private TableColumn<TablaAcceso, String> rowFechaAcceso;
     @FXML
     private TableColumn<TablaAcceso, String> rowTipoAcceso;
+    @FXML
+    private TextField jtfFiltroAcceso;
 
     /**
      * Initializes the controller class.
