@@ -11,6 +11,7 @@ package cl.pnk.dto;
  */
 public class TablaSolicitudesVisita {
 
+    int idVisita;
     String rutVisita;
     String nombreApPaternoVisita;
     String rutResidente;
@@ -21,7 +22,8 @@ public class TablaSolicitudesVisita {
     public TablaSolicitudesVisita() {
     }
 
-    public TablaSolicitudesVisita(String rutVisita, String nombreApPaternoVisita, String rutResidente, String nombreApPaternoResidente, String direccionResidente, String fechaVisita) {
+    public TablaSolicitudesVisita(int idVisita, String rutVisita, String nombreApPaternoVisita, String rutResidente, String nombreApPaternoResidente, String direccionResidente, String fechaVisita) {
+        this.idVisita = idVisita;
         this.rutVisita = rutVisita;
         this.nombreApPaternoVisita = nombreApPaternoVisita;
         this.rutResidente = rutResidente;
@@ -30,6 +32,16 @@ public class TablaSolicitudesVisita {
         this.fechaVisita = fechaVisita;
     }
 
+
+
+    public int getIdVisita() {
+        return idVisita;
+    }
+
+    public void setIdVisita(int idVisita) {
+        this.idVisita = idVisita;
+    }
+    
     public String getRutVisita() {
         return rutVisita;
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
@@ -72,9 +73,9 @@
                                                 <Font name="Arial Bold" size="18.0" />
                                              </font>
                                           </TextField>
-                                          <Text fx:id="txtResultadoBusquedaRut" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="375.13671875" GridPane.rowIndex="1">
+                                          <Text fx:id="txtResultadoBusquedaRut" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" visible="false" wrappingWidth="375.13671875" GridPane.rowIndex="1">
                                              <font>
-                                                <Font size="13.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Text>
                                           <JFXButton fx:id="btnFiltroVisita" onAction="#accionFiltrarVisita" prefHeight="39.0" prefWidth="167.0" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
@@ -89,6 +90,11 @@
                                     </GridPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
+                                          <Text fx:id="txtConfirmacionAccion" strokeType="OUTSIDE" strokeWidth="0.0" text="TextoConfirmacionAccion" textAlignment="CENTER" visible="false" x="345.0" y="455.0">
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Text>
                                           <AnchorPane layoutY="14.0" prefHeight="33.0" prefWidth="1100.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css">
                                              <children>
                                                 <Text fill="WHITE" layoutX="467.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de la visita">
@@ -102,8 +108,8 @@
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="0.0" prefWidth="20.0" />
-                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="155.0" />
-                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="206.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="161.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="395.0" minWidth="132.0" prefWidth="200.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
@@ -219,22 +225,22 @@
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtRutResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="99999999-9" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                <Text fx:id="txtRutResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtNombreResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                <Text fx:id="txtNombreResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtApePaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                                <Text fx:id="txtApePaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtApeMaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                                <Text fx:id="txtApeMaternoResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
@@ -254,17 +260,17 @@
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtPisoResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                                                <Text fx:id="txtPisoResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtBlockResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                <Text fx:id="txtBlockResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="10">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="txtNumeroResidente" strokeType="OUTSIDE" strokeWidth="0.0" text="Aaaaaaaaaaaaaa" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                                                <Text fx:id="txtNumeroResidente" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="11">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
@@ -298,12 +304,12 @@
                                                       </TextField>
                                                    </children>
                                                 </GridPane>
-                                                <TableView fx:id="tvTablaResidentes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tvMouseCliqueado" prefHeight="370.0" prefWidth="454.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                <TableView fx:id="tvTablaResidentes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tvMouseCliqueadoTvResidentes" prefHeight="370.0" prefWidth="454.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                                    <columns>
-                                                      <TableColumn fx:id="rowRut" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Rut" />
-                                                      <TableColumn fx:id="rowNombre" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Nombre" />
-                                                      <TableColumn fx:id="rowApPaterno" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Apellido Paterno" />
-                                                      <TableColumn fx:id="rowDireccion" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" text="Dirección" />
+                                                      <TableColumn fx:id="rowRut" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" resizable="false" text="Rut" />
+                                                      <TableColumn fx:id="rowNombre" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" resizable="false" text="Nombre" />
+                                                      <TableColumn fx:id="rowApPaterno" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" resizable="false" text="Apellido Paterno" />
+                                                      <TableColumn fx:id="rowDireccion" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="113.5" resizable="false" text="Dirección" />
                                                    </columns>
                                                 </TableView>
                                              </children>
@@ -312,21 +318,12 @@
                                              <columnConstraints>
                                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
                                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXButton fx:id="btnEliminar" onAction="#accionEliminarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnEliminar" stylesheets="@cssvistas/CssBotones.css" text="Eliminar" textFill="WHITE" GridPane.columnIndex="2">
-                                                   <font>
-                                                      <Font name="System Bold" size="14.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <FontAwesomeIcon glyphName="USER_TIMES" scaleX="0.8" scaleY="0.8" scaleZ="0.8" wrappingWidth="12.142857551574707" />
-                                                   </graphic>
-                                                </JFXButton>
-                                                <JFXButton fx:id="btnModificar" onAction="#accionModificarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnModificar" stylesheets="@cssvistas/CssBotones.css" text="Modificar" textFill="WHITE" GridPane.columnIndex="1">
+                                                <JFXButton fx:id="btnModificar" disable="true" onAction="#accionModificarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnModificar" stylesheets="@cssvistas/CssBotones.css" text="Modificar" textFill="WHITE" GridPane.columnIndex="1">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -388,48 +385,22 @@
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
-                                                      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                                          <columnConstraints>
                                                             <ColumnConstraints hgrow="SOMETIMES" />
                                                          </columnConstraints>
                                                          <rowConstraints>
-                                                            <RowConstraints maxHeight="73.0" minHeight="45.0" prefHeight="47.0" vgrow="SOMETIMES" />
                                                             <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
                                                          </rowConstraints>
                                                          <children>
-                                                            <TableView fx:id="tvSolicitudesPendiente" GridPane.rowIndex="1">
-                                                              <columns>
-                                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                                <TableColumn prefWidth="75.0" text="C2" />
-                                                              </columns>
+                                                            <TableView fx:id="tvSolicitudesPendiente" onMouseClicked="#tvMouseCliqueadoTvHistorialVisitas">
+                                                               <columns>
+                                                                  <TableColumn fx:id="rowNombreApellidoVisitante" prefWidth="155.0" resizable="false" text="Nombre Visitante" />
+                                                                  <TableColumn fx:id="rowNombreApellidoResidente" prefWidth="155.0" resizable="false" text="Nombre Residente" />
+                                                                  <TableColumn fx:id="rowDireccionResidente" prefWidth="140.0" resizable="false" text="Dirección Residente" />
+                                                                  <TableColumn fx:id="rowFechaVisita" prefWidth="124.0" resizable="false" text="Fecha Visita" />
+                                                               </columns>
                                                             </TableView>
-                                                            <GridPane>
-                                                              <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="478.0" prefWidth="478.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" />
-                                                              </columnConstraints>
-                                                              <rowConstraints>
-                                                                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
-                                                              </rowConstraints>
-                                                               <children>
-                                                                  <JFXButton fx:id="btnFiltroVisitaPendiente" onAction="#accionFiltrarVisita" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                                     <graphic>
-                                                                        <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                                                     </graphic>
-                                                                     <font>
-                                                                        <Font name="System Bold" size="14.0" />
-                                                                     </font>
-                                                                  </JFXButton>
-                                                                  <TextField fx:id="jtfBusquedaVisitaPendiente" prefHeight="36.0" prefWidth="482.0" promptText="Ingrese rut de la visita" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                                     <opaqueInsets>
-                                                                        <Insets />
-                                                                     </opaqueInsets>
-                                                                     <font>
-                                                                        <Font name="Arial Bold" size="18.0" />
-                                                                     </font>
-                                                                  </TextField>
-                                                               </children>
-                                                            </GridPane>
                                                          </children>
                                                       </GridPane>
                                                    </children>
@@ -449,11 +420,13 @@
                                                           <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <children>
-                                                            <TableView fx:id="tvSolicitudesHistorial" prefHeight="431.0" prefWidth="575.0" GridPane.rowIndex="1">
-                                                              <columns>
-                                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                                <TableColumn prefWidth="75.0" text="C2" />
-                                                              </columns>
+                                                            <TableView fx:id="tvSolicitudesHistorial" onMouseClicked="#tvMouseCliqueadoTvHistorialVisitasB" prefHeight="431.0" prefWidth="575.0" GridPane.rowIndex="1">
+                                                               <columns>
+                                                                  <TableColumn fx:id="rowNombreApellidoVisitanteHistorial" prefWidth="155.0" resizable="false" text="Nombre Visitante" />
+                                                                  <TableColumn fx:id="rowNombreApellidoResidenteHistorial" prefWidth="155.0" resizable="false" text="Nombre Residente" />
+                                                                  <TableColumn fx:id="rowDireccionResidenteHistorial" prefWidth="140.0" resizable="false" text="Dirección Residente" />
+                                                                  <TableColumn fx:id="rowFechaVisitaHistorial" prefWidth="124.0" resizable="false" text="Fecha Visita" />
+                                                               </columns>
                                                             </TableView>
                                                             <GridPane>
                                                                <columnConstraints>
@@ -463,29 +436,27 @@
                                                             </GridPane>
                                                             <GridPane>
                                                                <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="478.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="97.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                                                </columnConstraints>
                                                                <rowConstraints>
                                                                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                                                                </rowConstraints>
                                                                <children>
-                                                                  <TextField fx:id="jtfBusquedaVisitaPendiente1" prefHeight="33.0" prefWidth="444.0" promptText="Ingrese rut de la visita">
-                                                                     <opaqueInsets>
-                                                                        <Insets />
-                                                                     </opaqueInsets>
-                                                                     <font>
-                                                                        <Font name="Arial Bold" size="18.0" />
-                                                                     </font>
-                                                                  </TextField>
-                                                                  <JFXButton fx:id="btnFiltroVisitaPendiente1" onAction="#accionFiltrarVisita" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaVisitas.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                                     <graphic>
-                                                                        <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" text="" wrappingWidth="12.142857551574707" />
-                                                                     </graphic>
-                                                                     <font>
-                                                                        <Font name="System Bold" size="14.0" />
-                                                                     </font>
-                                                                  </JFXButton>
+                                                                  <GridPane>
+                                                                    <columnConstraints>
+                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                     <children>
+                                                                        <JFXRadioButton fx:id="rdAceptadas" onAction="#accionAceptadasHS" selected="true" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaVisitas.css" text="Aceptadas" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                        <JFXRadioButton fx:id="rdRechazadas" onAction="#accionRechazadassHS" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaVisitas.css" text="Rechazadas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                        <JFXRadioButton fx:id="rdPendientes" onAction="#accionPendientesHS" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaVisitas.css" text="Pendientes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                     </children>
+                                                                  </GridPane>
                                                                </children>
                                                             </GridPane>
                                                          </children>
@@ -507,7 +478,7 @@
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutY="247.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                          <AnchorPane layoutY="199.0" styleClass="color" stylesheets="@cssvistas/CssVistaVisitas.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="199.0">
                                              <children>
                                                 <Text fill="WHITE" layoutX="192.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos visita" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="6.185546875" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="191.9619140625" AnchorPane.topAnchor="3.705078125">
                                                    <font>
@@ -516,10 +487,185 @@
                                                 </Text>
                                              </children>
                                           </AnchorPane>
+                                          <GridPane layoutX="7.0" layoutY="37.0" prefHeight="150.0" prefWidth="517.0" AnchorPane.topAnchor="40.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="164.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="353.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno:" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno:" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección:" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtRutResidenteSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtNombreResidenteSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApellidoPResidenteSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApellidoMResidenteSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtDireccionResidenteSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </GridPane>
+                                          <GridPane layoutY="237.0" prefHeight="120.0" prefWidth="517.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="164.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="358.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Paterno:" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Materno:" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtRutVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtNombreVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApellidoPVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtApellidoMVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Visita:" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Visita:" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtFechaVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="txtEstadoVisitaSV" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </GridPane>
+                                          <GridPane layoutX="81.0" layoutY="438.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <JFXButton fx:id="btnDenegar" onAction="#accionDenegarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" scaleZ="1.2" styleClass="btnModificar" stylesheets="@cssvistas/CssBotones.css" text="Denegar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <FontAwesomeIcon glyphName="CLOSE" scaleX="1.2" scaleY="1.2" scaleZ="1.2" wrappingWidth="12.142857551574707" />
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" />
+                                                   </GridPane.margin>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnAceptarVisita" onAction="#accionAceptarVisita" prefHeight="39.0" prefWidth="110.0" ripplerFill="#62559a" styleClass="btnAgregar" stylesheets="@cssvistas/CssBotones.css" text="Aceptar" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                                   <graphic>
+                                                      <FontAwesomeIcon glyphName="CHECK" scaleX="1.2" scaleY="1.2" scaleZ="1.2" wrappingWidth="12.142857551574707" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <GridPane.margin>
+                                                      <Insets right="10.0" />
+                                                   </GridPane.margin>
+                                                </JFXButton>
+                                             </children>
+                                          </GridPane>
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </GridPane>
+                              <Text fx:id="txtIdSolicitudVisitaHistorial" layoutX="275.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
                            </children>
                         </AnchorPane>
                      </content>

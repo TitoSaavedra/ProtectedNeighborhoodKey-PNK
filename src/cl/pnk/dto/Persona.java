@@ -98,6 +98,17 @@ public class Persona {
         this.tipoPersona = tipoPersona;
     }
 
+    public Persona(Integer idPersona, String rut, String nombre, String segNombre, String apePaterno, String apeMaterno, int estado, int tipoPersona) {
+        this.idPersona = idPersona;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.segNombre = segNombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.estado = estado;
+        this.tipoPersona = tipoPersona;
+    }
+
     public Integer getIdPersona() {
         return idPersona;
     }

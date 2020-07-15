@@ -317,7 +317,7 @@ public class VistaResidenteControlador implements Initializable {
     public void accionEliminarResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
-            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            Persona persona = new PersonaDal().obtenerPersonaRut(rut,"2");
             Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
             new PersonaDal().eliminarPersona(persona);
             new CuentaDal().eliminarCuenta(cuenta.getIdCuenta());
@@ -341,7 +341,7 @@ public class VistaResidenteControlador implements Initializable {
     public void accionModificarrResidente(ActionEvent event) throws FileNotFoundException {
         if (validarCampos()) {
             String rut = this.jtxtRut.getText();
-            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            Persona persona = new PersonaDal().obtenerPersonaRut(rut,"2");
             if (validarModificiarCorreo(this.jtxtCorreo.getText().trim().toLowerCase(), persona)) {
                 this.modificarResidente(persona);
                 mostrarDatosTabla();
@@ -463,7 +463,7 @@ public class VistaResidenteControlador implements Initializable {
         int estado = 1;
         Persona persona = new Persona(idPersona, rut, nombre, segNombre, apePaterno, apeMaterno, telefono, email, estado);
         new PersonaDal().ingresarPersona(persona);
-        Persona ultimaPersona = new PersonaDal().obtenerUltimaPersona();
+        Persona ultimaPersona = new PersonaDal().obtenerUltimaPersona("2");
         String piso = this.jtxtPiso.getText();
         String block = this.jtxtBlock.getText();
         String numero = this.jtxtNumeroCasa.getText();
@@ -832,30 +832,36 @@ public class VistaResidenteControlador implements Initializable {
         this.resetImagenUsuario();
         if (this.utilidadesPrograma.validarRut(rut)) {
             this.ocultarAdvertencia(this.txtResultadoBusquedaRutP1);
-            Persona persona = new PersonaDal().obtenerPersonaRut(rut);
+            Persona persona = new PersonaDal().obtenerPersonaRut(rut,"2");
             if (persona.getRut() != null) {
-                Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
-                DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(persona.getIdPersona());
-                Direccion direccion = new DireccionDal().obtenerDireccion(direccionPersona.getIdDireccion());
-                this.habilitarModElim();
-                this.asignarValorJTextField(this.jtxtRut, rut);
-                this.asignarValorJTextField(this.jtxtNombre, persona.getNombre());
-                this.asignarValorJTextField(this.jtxtSegNombre, persona.getSegNombre());
-                this.asignarValorJTextField(this.jtxtApellidoPaterno, persona.getApePaterno());
-                this.asignarValorJTextField(this.jtxtApellidoMaterno, persona.getApeMaterno());
-                this.asignarValorJTextField(this.jtxtTelefono, persona.getTelefono());
-                this.asignarValorJTextField(this.jtxtCorreo, persona.getEmail());
-                this.asignarValorJPasswordField(this.jtxtClave, cuenta.getClave());
-                this.asignarValorJPasswordField(this.jtxtRepitaClave, cuenta.getClave());
-                this.asignarValorJTextField(this.jtxtPiso, direccion.getPiso());
-                this.asignarValorJTextField(this.jtxtBlock, direccion.getBlock());
-                this.asignarValorJTextField(this.jtxtNumeroCasa, direccion.getNumero());
-                if (cuenta.getFoto() != null) {
-                    this.clImagenVista.setFill(new ImagePattern(cuenta.getFoto()));
+                if (persona.getTipoPersona() == 1) {
+                    Cuenta cuenta = new CuentaDal().getCuentaPersona(persona.getIdPersona());
+                    DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(persona.getIdPersona());
+                    Direccion direccion = new DireccionDal().obtenerDireccion(direccionPersona.getIdDireccion());
+                    this.habilitarModElim();
+                    this.asignarValorJTextField(this.jtxtRut, rut);
+                    this.asignarValorJTextField(this.jtxtNombre, persona.getNombre());
+                    this.asignarValorJTextField(this.jtxtSegNombre, persona.getSegNombre());
+                    this.asignarValorJTextField(this.jtxtApellidoPaterno, persona.getApePaterno());
+                    this.asignarValorJTextField(this.jtxtApellidoMaterno, persona.getApeMaterno());
+                    this.asignarValorJTextField(this.jtxtTelefono, persona.getTelefono());
+                    this.asignarValorJTextField(this.jtxtCorreo, persona.getEmail());
+                    this.asignarValorJPasswordField(this.jtxtClave, cuenta.getClave());
+                    this.asignarValorJPasswordField(this.jtxtRepitaClave, cuenta.getClave());
+                    this.asignarValorJTextField(this.jtxtPiso, direccion.getPiso());
+                    this.asignarValorJTextField(this.jtxtBlock, direccion.getBlock());
+                    this.asignarValorJTextField(this.jtxtNumeroCasa, direccion.getNumero());
+                    if (cuenta.getFoto() != null) {
+                        this.clImagenVista.setFill(new ImagePattern(cuenta.getFoto()));
+                    } else {
+                        this.resetImagenUsuario();
+                    }
                 } else {
+                    this.desabhilitarModElim();
+                    this.resetCampos("");
                     this.resetImagenUsuario();
+                    this.mostrarAdvertencia(this.txtResultadoBusquedaRutP1, "Solo se permiten residentes");
                 }
-
             } else {
                 this.desabhilitarModElim();
                 this.resetCampos(rut);

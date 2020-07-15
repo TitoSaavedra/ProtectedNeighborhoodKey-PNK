@@ -8,6 +8,10 @@ package cl.pnk.utils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -86,5 +90,16 @@ public class UtilidadesPrograma {
         } catch (Exception e) {
         }
         return validacion;
+    }
+    
+    public String obtenerDiaActual(){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(date);
+    }
+    public String obtenerHoraActual(){
+        LocalTime time = LocalTime.now(); 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return time.format(formatter);
     }
 }

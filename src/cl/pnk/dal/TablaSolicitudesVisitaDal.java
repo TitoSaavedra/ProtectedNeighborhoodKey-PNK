@@ -12,6 +12,7 @@ import cl.pnk.dto.Persona;
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.dto.TablaSolicitudesVisita;
 import cl.pnk.utils.DBUtils;
+import java.io.FileNotFoundException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,23 +25,24 @@ public class TablaSolicitudesVisitaDal {
 
     private DBUtils dbutils = new DBUtils();
 
-    public ObservableList<TablaSolicitudesVisita> obtenerTablaResidentes() {
+    public ObservableList<TablaSolicitudesVisita> obtenerTablaSolicitudesVisita(String estadoVisita) throws FileNotFoundException {
         ObservableList<TablaSolicitudesVisita> listaTablaSolicitudesVisita = FXCollections.observableArrayList();
         try {
-            TablaSolicitudesVisita tablaSolicitudesVisita = new TablaSolicitudesVisita();
-            List<SolicitudVisita> listaSolicitudVisita = new SolicitudVisitaDal().obtenerSolicitudesVisita("3");
+            List<SolicitudVisita> listaSolicitudVisita = new SolicitudVisitaDal().obtenerSolicitudesVisita(estadoVisita);
             for (SolicitudVisita solicitudVisita : listaSolicitudVisita) {
-                Cuenta cuentaResidente = new CuentaDal().getCuenta(solicitudVisita.getIdCuentaResidente());
+                TablaSolicitudesVisita tablaSolicitudesVisita = new TablaSolicitudesVisita();
+                Cuenta cuentaResidente = new CuentaDal().getCuentaSinFoto(solicitudVisita.getIdCuentaResidente());
                 Persona personaVisita = new PersonaDal().obtenerPersonaId(solicitudVisita.getIdPersonaVisita());
-                DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(personaVisita.getIdPersona());
+                DireccionPersona direccionPersona = new DireccionPersonaDal().obtenerDireccionPersona(cuentaResidente.getPersona().getIdPersona());
                 Direccion direccion = new DireccionDal().obtenerDireccion(direccionPersona.getIdDireccion());
-                String direccionResidente = "Piso: "+direccion.getPiso()+" Block: "+direccion.getBlock()+" Nro: "+direccion.getNumero();
+                String direccionResidente = direccion.getPiso() + " " + direccion.getBlock() + " " + direccion.getNumero();
+                tablaSolicitudesVisita.setIdVisita(solicitudVisita.getIdSolicitud());
                 tablaSolicitudesVisita.setRutVisita(personaVisita.getRut());
-                tablaSolicitudesVisita.setNombreApPaternoVisita(personaVisita.getNombre()+" "+personaVisita.getApePaterno());
+                tablaSolicitudesVisita.setNombreApPaternoVisita(personaVisita.getNombre() + " " + personaVisita.getApePaterno());
                 tablaSolicitudesVisita.setRutResidente(cuentaResidente.getPersona().getRut());
-                tablaSolicitudesVisita.setNombreApPaternoResidente(cuentaResidente.getPersona().getNombre()+" "+cuentaResidente.getPersona().getApePaterno());
+                tablaSolicitudesVisita.setNombreApPaternoResidente(cuentaResidente.getPersona().getNombre() + " " + cuentaResidente.getPersona().getApePaterno());
                 tablaSolicitudesVisita.setDireccionResidente(direccionResidente);
-                tablaSolicitudesVisita.setFechaVisita(solicitudVisita.getFechaVisita()+" "+solicitudVisita.getHoraVisita());
+                tablaSolicitudesVisita.setFechaVisita(solicitudVisita.getFechaVisita() + " " + solicitudVisita.getHoraVisita());
                 listaTablaSolicitudesVisita.add(tablaSolicitudesVisita);
             }
         } catch (Exception e) {

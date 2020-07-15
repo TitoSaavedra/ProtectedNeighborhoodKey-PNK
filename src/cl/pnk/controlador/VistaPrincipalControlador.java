@@ -32,7 +32,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 /**
@@ -83,7 +86,9 @@ public class VistaPrincipalControlador implements Initializable {
     private TranslateTransition closeNav = null;
     private RotateTransition rt;
     private double x, y;
-    
+    private boolean stageLoaded = false;
+    private String btnStilo1 = getClass().getResource("/cl/pnk/vistas/CssPrincipal.css").toExternalForm();
+    private String btnStilo2 = getClass().getResource("/cl/pnk/vistas/CssPrincipalAlt.css").toExternalForm();
 
     /**
      * Initializes the controller class.
@@ -132,6 +137,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionBarrera(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.btnBarrera);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -149,6 +156,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionVisita(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.btnVisita);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaVisitante.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -166,6 +175,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionResidente(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.bntResidentes);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaResidente.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -183,6 +194,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionEncomienda(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.btnEncomienda);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaEncomiendas.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -200,6 +213,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionNotificacion(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.btnNotificacion);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaNotificacion.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -218,6 +233,8 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void accionInforme(ActionEvent event) throws IOException {
         cerrarMenu();
+        this.resetColores();
+        this.btnSeleccionado(this.btnInforme);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
@@ -255,6 +272,8 @@ public class VistaPrincipalControlador implements Initializable {
     public void inicioApp() throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaBarreraUA.fxml"));
         AnchorPane panel = tamanoPanel(pane);
+        this.resetColores();
+        this.btnSeleccionado(this.btnBarrera);
         apVista.getChildren().removeAll();
         apVista.getChildren().setAll(panel);
         rt = new RotateTransition(Duration.millis(300), btnImage);
@@ -315,7 +334,7 @@ public class VistaPrincipalControlador implements Initializable {
         Image image = new Image(getClass().getResource("/cl/pnk/imagenes/IconoMenu.png").toString(), true);
         btnImage.setImage(image);
         rotacion();
-        closeNav.setToX(-(apMenu.getWidth()));
+        closeNav.setToX(-(apMenu.getWidth()+20));
         closeNav.play();
 
     }
@@ -389,15 +408,22 @@ public class VistaPrincipalControlador implements Initializable {
      */
     @FXML
     public void accionOpcion(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cl/pnk/vistas/VistaArduino.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        // stage.initModality(Modality.APPLICATION_MODAL);
-        //stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("Conexión Arduino");
-        stage.setScene(new Scene(root1));
-        stage.show();
-
+        if (stageLoaded == false) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cl/pnk/vistas/VistaArduino.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image("/cl/pnk/imagenes/IconoApp.png"));
+            //stage.initModality(Modality.APPLICATION_MODAL);
+            //stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("Conexión Arduino");
+            stage.setScene(new Scene(root1));
+            stage.show();
+            stageLoaded = true;
+            stage.setOnCloseRequest((WindowEvent q) -> {
+                stageLoaded = false;
+            });
+        }
     }
 
     /**
@@ -420,5 +446,28 @@ public class VistaPrincipalControlador implements Initializable {
     @FXML
     public void mouseSalioFotoPerfil(MouseEvent event) {
         this.clImagenPerfil.setEffect(new DropShadow(+25, 0d, +2d, Color.TRANSPARENT));
+    }
+
+    private void resetColores() {
+        //remove style
+        this.btnBarrera.getStylesheets().remove(this.btnStilo2);
+        this.bntResidentes.getStylesheets().remove(this.btnStilo2);
+        this.btnVisita.getStylesheets().remove(this.btnStilo2);
+        this.btnEncomienda.getStylesheets().remove(this.btnStilo2);
+        this.btnInforme.getStylesheets().remove(this.btnStilo2);
+        this.btnNotificacion.getStylesheets().remove(this.btnStilo2);
+        //add style
+        this.btnBarrera.getStylesheets().add(this.btnStilo1);
+        this.bntResidentes.getStylesheets().add(this.btnStilo1);
+        this.btnVisita.getStylesheets().add(this.btnStilo1);
+        this.btnEncomienda.getStylesheets().add(this.btnStilo1);
+        this.btnInforme.getStylesheets().add(this.btnStilo1);
+        this.btnNotificacion.getStylesheets().add(this.btnStilo1);
+    }
+
+    private void btnSeleccionado(Button button) {
+        button.getStylesheets().remove(this.btnStilo1);
+        button.getStylesheets().add(this.btnStilo2);
+
     }
 }

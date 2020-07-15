@@ -9,19 +9,23 @@ and open the template in the editor.
 */
 
 .color{
-    -fx-background-color: #E73364;
+    -fx-background-color:#E73364;
 }
 .btnEstilo{
-    -fx-background-color: #E73364;
+    -fx-background-color:#E73364;
 }
 .jfx-tab-pane .headers-region {
-    -fx-background-color:   #E73364;
+    -fx-background-color:#E73364;
 }
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color:    #E73364;
+    -fx-background-color:#E73364;
 }
 
 .jfx-tab-pane .tab-selected-line {
     -fx-stroke: #ffff00;
     -fx-stroke-width: 3pt;
+}
+
+.jfxradiobutton{
+    -jfx-selected-color:#E73364;
 }

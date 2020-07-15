@@ -85,7 +85,7 @@
                                           </TextField>
                                           <Text fx:id="txtResultadoBusquedaRutP1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="375.13671875" GridPane.rowIndex="1">
                                              <font>
-                                                <Font name="Arial Bold" size="14.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </Text>
                                           <JFXButton onAction="#accionFiltrarP1" prefHeight="39.0" prefWidth="167.0" ripplerFill="#62559a" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaResidente.css" text="Buscar" textFill="WHITE" GridPane.columnIndex="1">
@@ -396,7 +396,7 @@
                                     </AnchorPane>
                                  </children>
                               </GridPane>
-                              <Text fx:id="txtConfirmacionAccion" layoutX="445.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TextoConfirmacionAccion">
+                              <Text fx:id="txtConfirmacionAccion" layoutX="445.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TextoConfirmacionAccion" visible="false" AnchorPane.bottomAnchor="32.185546875" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="530.9755859375" AnchorPane.topAnchor="538.705078125">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>

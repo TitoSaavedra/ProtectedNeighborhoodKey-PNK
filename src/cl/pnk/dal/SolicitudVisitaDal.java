@@ -1,8 +1,8 @@
 package cl.pnk.dal;
 
-
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.utils.DBUtils;
+import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -50,5 +50,66 @@ public class SolicitudVisitaDal {
             this.dbutils.desconectar();
         }
         return listaSolicitudesVisita;
+    }
+
+    public void ingresarSolicitudVisita(SolicitudVisita solicitudVisita) {
+        dbutils.conectar();
+        try {
+            String sql = "INSERT INTO solicitud_visita (ID_SOLICITUD_VISITA, ID_CUENTA, ESTADO_SOLICITUD_VISITA, FECHA_VISITA, ID_PERSONA, HORA_VISITA)"
+                    + " VALUES(?,?,?,?,?,?)";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setInt(1, 0);
+            st.setInt(2, solicitudVisita.getIdCuentaResidente());
+            st.setInt(3, 1);
+            st.setString(4, solicitudVisita.getFechaVisita());
+            st.setInt(5, solicitudVisita.getIdPersonaVisita());
+            st.setString(6, solicitudVisita.getHoraVisita());
+            st.executeUpdate();
+        } catch (Exception e) {
+        } finally {
+            dbutils.desconectar();
+        }
+    }
+
+    public SolicitudVisita obtenerSolicitudVisita(int idSolicitud) {
+        SolicitudVisita solicitudVisita = new SolicitudVisita();
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT ID_SOLICITUD_VISITA,ID_CUENTA,ESTADO_SOLICITUD_VISITA,FECHA_VISITA,ID_PERSONA,HORA_VISITA FROM solicitud_visita WHERE solicitud_visita.ID_SOLICITUD_VISITA =? ";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            sq.setInt(1, idSolicitud);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                solicitudVisita.setIdSolicitud(rs.getInt(1));
+                solicitudVisita.setIdCuentaResidente(rs.getInt(2));
+                solicitudVisita.setEstadoSolicitud(rs.getInt(3));
+                solicitudVisita.setFechaVisita(rs.getString(4));
+                solicitudVisita.setIdPersonaVisita(rs.getInt(5));
+                solicitudVisita.setHoraVisita(rs.getString(6));
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return solicitudVisita;
+    }
+
+    public void modificarSolicitudVisita(int idSolicitud, int estado) {
+        try {
+            dbutils.conectar();
+            String sql = "UPDATE solicitud_visita SET ESTADO_SOLICITUD_VISITA = ? WHERE solicitud_visita.ID_SOLICITUD_VISITA = ?;";
+            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            st.setInt(1, estado);
+            st.setInt(2, idSolicitud);
+            System.out.println(st);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+        } finally {
+            //4 desconectar DB
+            dbutils.desconectar();
+        }
     }
 }

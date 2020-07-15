@@ -215,7 +215,7 @@ public class CuentaDal {
                 //Falta añadir los datos de la persona
                 Persona persona = new PersonaDal().obtenerPersonaId(rs.getInt(5));
                 cuenta.setPersona(persona);
-                TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(5));
+                TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(6));
                 cuenta.setTarjetaNfc(tarjetaNfc);
             }
             rs.close();
@@ -245,6 +245,32 @@ public class CuentaDal {
                 cuenta.setFoto(image);
                 //Falta añadir los datos de la persona
                 Persona persona = new PersonaDal().obtenerPersonaId(rs.getInt(5));
+                cuenta.setPersona(persona);
+                TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(6));
+                cuenta.setTarjetaNfc(tarjetaNfc);
+            }
+            rs.close();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.dbutils.desconectar();
+        }
+        return cuenta;
+    }
+    
+    public Cuenta getCuentaSinFoto(int idCuenta){
+        Cuenta cuenta = new Cuenta();
+        try {
+            this.dbutils.conectar();
+            String sql = "SELECT ID_CUENTA,CLAVE,ESTADO_CUENTA,ID_PERSONA,UID FROM cuenta WHERE ID_CUENTA = '" + idCuenta + "';";
+            PreparedStatement sq = this.dbutils.getConexion().prepareStatement(sql);
+            ResultSet rs = sq.executeQuery();
+            while (rs.next()) {
+                cuenta.setIdCuenta(rs.getInt(1));
+                cuenta.setClave(rs.getString(2));
+                cuenta.setEstado(rs.getInt(3));
+                //Falta añadir los datos de la persona
+                Persona persona = new PersonaDal().obtenerPersonaId(rs.getInt(4));
                 cuenta.setPersona(persona);
                 TarjetaNfc tarjetaNfc = new TarjetaNfcDal().obtenerTarjetaNfcId(rs.getString(5));
                 cuenta.setTarjetaNfc(tarjetaNfc);

@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -64,7 +65,7 @@
                                 <FontAwesomeIcon glyphName="USERS" styleClass="btnMenu" text="" />
                             </graphic>
                         </Button>
-                        <Button fx:id="btnNotificacion" alignment="CENTER" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP" GridPane.rowIndex="4">
+                        <Button fx:id="btnNotificacion" alignment="CENTER" mnemonicParsing="false" onAction="#accionNotificacion" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Envio de notificación" textOverrun="CLIP" visible="false" GridPane.rowIndex="7">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -72,7 +73,7 @@
                                 <FontAwesomeIcon glyphName="BELL" styleClass="btnMenu" />
                             </graphic>
                         </Button>
-                        <Button fx:id="btnInforme" alignment="CENTER" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP" GridPane.rowIndex="5">
+                        <Button fx:id="btnInforme" alignment="CENTER" mnemonicParsing="false" onAction="#accionInforme" prefHeight="50.0" prefWidth="300.0" styleClass="btnMenu" stylesheets="@CssPrincipal.css" text="Gestión de informes" textOverrun="CLIP" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -125,6 +126,9 @@
                     </children>
                 </GridPane>
             </children>
+         <effect>
+            <DropShadow />
+         </effect>
         </AnchorPane>
         <ImageView fx:id="btnImage" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="25.0" y="55.0">
             <image>
