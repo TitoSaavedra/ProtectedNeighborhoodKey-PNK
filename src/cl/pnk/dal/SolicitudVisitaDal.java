@@ -1,6 +1,7 @@
 package cl.pnk.dal;
 
 import cl.pnk.dto.SolicitudVisita;
+import cl.pnk.utils.ConnDBAmazon;
 import cl.pnk.utils.DBUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +20,7 @@ import java.util.List;
 public class SolicitudVisitaDal {
 
     private DBUtils dbutils = new DBUtils();
+    private ConnDBAmazon connDBAmazon = new ConnDBAmazon();
 
     /**
      * @param estadoSolicitud 1=Aceptado 2=Negado 3=En proceso
@@ -52,11 +54,11 @@ public class SolicitudVisitaDal {
     }
 
     public void ingresarSolicitudVisita(SolicitudVisita solicitudVisita) {
-        dbutils.conectar();
+        connDBAmazon.conectar();
         try {
             String sql = "INSERT INTO solicitud_visita (ID_SOLICITUD_VISITA, ID_CUENTA, ESTADO_SOLICITUD_VISITA, FECHA_VISITA, ID_PERSONA, HORA_VISITA)"
                     + " VALUES(?,?,?,?,?,?)";
-            PreparedStatement st = dbutils.getConexion().prepareStatement(sql);
+            PreparedStatement st = connDBAmazon.getConexion().prepareStatement(sql);
             st.setInt(1, 0);
             st.setInt(2, solicitudVisita.getIdCuentaResidente());
             st.setInt(3, 1);
@@ -66,7 +68,7 @@ public class SolicitudVisitaDal {
             st.executeUpdate();
         } catch (Exception e) {
         } finally {
-            dbutils.desconectar();
+            connDBAmazon.desconectar();
         }
     }
 

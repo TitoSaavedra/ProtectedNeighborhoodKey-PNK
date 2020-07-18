@@ -12,6 +12,7 @@ import cl.pnk.dal.PersonaDal;
 import cl.pnk.dal.SolicitudVisitaDal;
 import cl.pnk.dal.TablaResidenteDal;
 import cl.pnk.dal.TablaSolicitudesVisitaDal;
+import cl.pnk.dal.TokenDal;
 import cl.pnk.dto.Cuenta;
 import cl.pnk.dto.Direccion;
 import cl.pnk.dto.DireccionPersona;
@@ -19,6 +20,8 @@ import cl.pnk.dto.Persona;
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.dto.TablaResidente;
 import cl.pnk.dto.TablaSolicitudesVisita;
+import cl.pnk.dto.Token;
+import cl.pnk.notificaciones.NotificacionCelular;
 import cl.pnk.utils.UtilidadesPrograma;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
@@ -176,6 +179,7 @@ public class VistaVisitanteControlaldor implements Initializable {
     private int opcionAgregar = 0;
     @FXML
     private Text txtIdSolicitudVisitaHistorial;
+    private NotificacionCelular notificacionCelular = new NotificacionCelular();
 
     /**
      * Initializes the controller class.
@@ -516,6 +520,10 @@ public class VistaVisitanteControlaldor implements Initializable {
             this.textoConfirmacion("Visitante agregado", true, 2);
         } else {
             this.textoConfirmacion("Visita registrada", true, 2);
+        }
+        Token token = new TokenDal().getSession(cuentaResidtente.getIdCuenta());
+        if (token.getIdCuenta() == cuentaResidtente.getIdCuenta()) {
+             notificacionCelular.enviarNotificacion("Has+recibido+una+visita+:",visita.getNombre()+"+"+visita.getApePaterno());
         }
         habilitarModElim();
         mostrarDatosTablaVisitas();

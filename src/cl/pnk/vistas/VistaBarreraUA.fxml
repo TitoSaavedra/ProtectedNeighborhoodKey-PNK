@@ -43,7 +43,7 @@
                <tabs>
                   <Tab fx:id="submenuUltimosAccesos" onSelectionChanged="#accionUltimoAcceso" text="Historial de Acceso">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#refreshPage" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <GridPane layoutX="50.0" layoutY="27.0" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="27.0">
                                  <columnConstraints>

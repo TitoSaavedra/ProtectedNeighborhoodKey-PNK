@@ -195,6 +195,7 @@ public class CuentaDal {
      * @return cuenta encontrada
      * @throws FileNotFoundException si la cuenta el la bd tiene la imagen nula
      */
+
     public Cuenta getCuenta(int idCuenta) throws FileNotFoundException {
         Cuenta cuenta = new Cuenta();
         byte[] imageBytes;

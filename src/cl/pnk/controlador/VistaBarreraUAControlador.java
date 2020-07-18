@@ -46,7 +46,6 @@ public class VistaBarreraUAControlador implements Initializable {
     private Tab submenuUltimosAccesos;
     @FXML
     private TableView<TablaAcceso> tvRegistroAcceso;
-    private TextField jtfBusqueda111;
     @FXML
     private Text txtRutResidente;
     @FXML
@@ -90,7 +89,7 @@ public class VistaBarreraUAControlador implements Initializable {
     }
 
     @FXML
-    private void accionUltimoAcceso(Event event) {
+    private void accionUltimoAcceso(Event event) throws FileNotFoundException {
         cambioNombreMenuRuta(submenuUltimosAccesos.getText());
     }
 
@@ -133,7 +132,7 @@ public class VistaBarreraUAControlador implements Initializable {
 
     @FXML
     private void accionFiltrarTvAcceso(KeyEvent event) throws FileNotFoundException {
-        mostrarDatosAccesoFiltrado(this.jtfBusqueda111.getText().trim());
+        mostrarDatosAccesoFiltrado(this.jtfFiltroAcceso.getText().trim());
     }
 
     public void mostrarDatosAcceso() throws FileNotFoundException {
@@ -153,5 +152,16 @@ public class VistaBarreraUAControlador implements Initializable {
         this.rowFechaAcceso.setCellValueFactory(new PropertyValueFactory<>("fechaAcceso"));
         this.rowTipoAcceso.setCellValueFactory(new PropertyValueFactory<>("tipoAcceso"));
         this.tvRegistroAcceso.setItems(tablaAccesos);
+    }
+
+    @FXML
+    private void refreshPage(MouseEvent event) {
+           if (event.getClickCount() == 3 && !event.isConsumed()) {
+            try {
+                event.consume();
+             this.mostrarDatosAcceso();
+            } catch (Exception e) {
+            }
+        }
     }
 }

@@ -9,19 +9,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Clase de conexion de la bd
  *
  * @author TitoS
  */
-public class DBUtils {
-
+public class ConnDBAmazon {
     //Atributos
     private final String usuario = "root";
-    // private final String password = "PNK_server1";
-    // private final String servidor = "34.232.87.118";
-    private final String password = "";
-    private final String servidor = "localhost";
-    private final String baseDatos = "pnk_rial";
+    private final String password = "PNK_server1";
+    private final String servidor = "34.232.87.118";
+    private final String baseDatos = "pnk";
     private Connection conexion;
 
     /**

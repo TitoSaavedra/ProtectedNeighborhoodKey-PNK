@@ -253,7 +253,6 @@ public class VistaPrincipalControlador implements Initializable {
      * @param event Evento de accion que se genera al apretar el boton. Aqui se
      * carga y se muestra el archivo VistaInforme.fxml
      * @throws IOException Si no se encuntra el archivo de vista.
-     * @throws IOException Si no se encuntra el archivo de vista.
      * @see VistaInformeControlador
      */
     @FXML

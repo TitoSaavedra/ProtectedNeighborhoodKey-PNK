@@ -375,16 +375,16 @@ public class VistaEncomiendasControlador implements Initializable {
     @FXML
     private void accionEntregadasHE(ActionEvent event) {
         this.tgSeleccionado = 1;
-        this.rowFechaRecepcionHistorial.setText("Fecha entrega");
-        this.rowHoraRecepcionHistorial.setText("Hora entrega");
+        this.rowFechaRecepcionHistorial.setText("Fecha entrega :");
+        this.rowHoraRecepcionHistorial.setText("Hora entrega :");
         mostrarDatosTablaHistorialEncomiendas();
     }
 
     @FXML
     private void accionPendientesHE(ActionEvent event) {
         this.tgSeleccionado = 3;
-        this.rowFechaRecepcionHistorial.setText("Fecha recepción");
-        this.rowHoraRecepcionHistorial.setText("Hora recepción");
+        this.rowFechaRecepcionHistorial.setText("Fecha recepción :");
+        this.rowHoraRecepcionHistorial.setText("Hora recepción :");
         mostrarDatosTablaHistorialEncomiendas();
     }
 
@@ -435,8 +435,8 @@ public class VistaEncomiendasControlador implements Initializable {
         this.txtDescripcionEncomienda.setText(encomienda.getDescripcion());
         this.txtNombreEncomienda.setVisible(true);
         this.txtDescripcionEncomienda.setVisible(true);
-        this.cambioTextoEncomienda(this.txtFechaMuestra, "Fecha de recepción");
-        this.cambioTextoEncomienda(this.txtHoraMuestra, "Hora de recepción");
+        this.cambioTextoEncomienda(this.txtFechaMuestra, "Fecha de recepción :");
+        this.cambioTextoEncomienda(this.txtHoraMuestra, "Hora de recepción :");
         this.txtFecha.setText(solicitudEncomienda.getFechaEntrega());
         this.txtHora.setText(solicitudEncomienda.getHoraEntrega());
         this.txtFecha.setVisible(true);
