@@ -260,7 +260,7 @@ public class VistaPrincipalControlador implements Initializable {
         cerrarMenu();
         this.resetColores();
         this.btnSeleccionado(this.btnInforme);
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/cl/pnk/vistas/VistaInforme.fxml"));
         AnchorPane panel = tamanoPanel(pane);
         apVista.getChildren().removeAll();
         apVista.getChildren().setAll(panel);

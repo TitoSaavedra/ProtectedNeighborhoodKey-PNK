@@ -13,6 +13,7 @@ import cl.pnk.dal.PersonaDal;
 import cl.pnk.dal.SolicitudEncomiendaDal;
 import cl.pnk.dal.TablaResidenteDal;
 import cl.pnk.dal.TablaSolicitudEncomiendaDal;
+import cl.pnk.dal.TokenDal;
 import cl.pnk.dto.Cuenta;
 import cl.pnk.dto.Direccion;
 import cl.pnk.dto.DireccionPersona;
@@ -21,6 +22,8 @@ import cl.pnk.dto.Persona;
 import cl.pnk.dto.SolicitudEncomienda;
 import cl.pnk.dto.TablaResidente;
 import cl.pnk.dto.TablaSolicitudEncomienda;
+import cl.pnk.dto.Token;
+import cl.pnk.notificaciones.NotificacionCelular;
 import cl.pnk.utils.UtilidadesPrograma;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
@@ -143,6 +146,7 @@ public class VistaEncomiendasControlador implements Initializable {
     private Tab submenuEncomiendas;
     @FXML
     private Text txtIdSolicitudEncomienda;
+    private NotificacionCelular notificacionCelular = new NotificacionCelular();
 
     /**
      * Initializes the controller class.
@@ -204,6 +208,10 @@ public class VistaEncomiendasControlador implements Initializable {
         solicitudEncomienda.setHoraEntrega(hora);
         new SolicitudEncomiendaDal().ingresarSolicitudEncomienda(solicitudEncomienda);
         this.textoConfirmacion("Encomienda registrada", true, 2);
+        Token token = new TokenDal().getSession(cuenta.getIdCuenta());
+        if (token.getIdCuenta() == cuenta.getIdCuenta()) {
+            notificacionCelular.enviarNotificacion("Has+recibido+una+encomienda+de:", ultimaEncomienda.getNombre());
+        }
     }
 
     @FXML

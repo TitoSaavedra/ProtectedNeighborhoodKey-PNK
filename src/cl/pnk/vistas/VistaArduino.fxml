@@ -28,12 +28,12 @@
               </rowConstraints>
                <children>
                   <ComboBox fx:id="cbPuertas" prefWidth="150.0" />
-                    <Button fx:id="btnConectar" onAction="#conectar" style="-fx-background-color: #FFC233;" text="Conectar" GridPane.rowIndex="1">
+                    <Button fx:id="btnConectar" onAction="#conectar" style="-fx-background-color: #FFC233;" text="Conectar" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAccion" mnemonicParsing="false" onAction="#prenderLed" prefHeight="25.0" prefWidth="150.0" styleClass="btnIngresar" stylesheets="@cssvistas/CssVistaIngreso.css" text="Accion" GridPane.rowIndex="3">
+                  <Button fx:id="btnAccion" mnemonicParsing="false" onAction="#prenderLed" prefHeight="25.0" prefWidth="150.0" styleClass="btnIngresar" stylesheets="@cssvistas/CssVistaIngreso.css" text="Abrir" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -42,9 +42,9 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="apConectando" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3FA7D9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="apConectando" prefHeight="111.0" prefWidth="320.0" style="-fx-background-color: #3FA7D9;" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane layoutX="28.0" layoutY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane layoutX="28.0" layoutY="32.0" prefHeight="95.0" prefWidth="320.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -53,19 +53,35 @@
                 <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Conectando" textAlignment="CENTER" wrappingWidth="151.8486328125" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets bottom="10.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <JFXSpinner radius="20.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <JFXSpinner prefHeight="23.0" prefWidth="10.0" radius="20.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <cursor>
                         <Cursor fx:constant="WAIT" />
                      </cursor>
                   </JFXSpinner>
+                  <GridPane prefHeight="59.0" prefWidth="320.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Estado barrera :" GridPane.halignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="3.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text fx:id="txtEstadoBarrera" strokeType="OUTSIDE" strokeWidth="0.0" text="Abierta.." GridPane.columnIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </GridPane>
                </children>
             </GridPane>
          </children>

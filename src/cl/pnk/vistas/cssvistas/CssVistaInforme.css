@@ -26,3 +26,6 @@ and open the template in the editor.
     -fx-stroke: #ffff00;
     -fx-stroke-width: 3pt;
 }
+.jfxradiobutton{
+    -jfx-selected-color:#52DBCD;
+}

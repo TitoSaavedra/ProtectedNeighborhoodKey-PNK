@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
@@ -80,6 +81,88 @@
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Historial Visitas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane prefHeight="694.0" prefWidth="1200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="652.0" minHeight="10.0" prefHeight="649.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <GridPane prefHeight="511.0" prefWidth="577.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TableView fx:id="tvSolicitudesHistorial" prefHeight="431.0" prefWidth="575.0" GridPane.rowIndex="1">
+                                             <columns>
+                                                <TableColumn fx:id="rowNombreApellidoVisitanteHistorial" prefWidth="285.0" resizable="false" text="Nombre Visitante" />
+                                                <TableColumn fx:id="rowNombreApellidoResidenteHistorial" prefWidth="285.0" resizable="false" text="Nombre Residente" />
+                                                <TableColumn fx:id="rowDireccionResidenteHistorial" prefWidth="285.0" resizable="false" text="Dirección Residente" />
+                                                <TableColumn fx:id="rowFechaVisitaHistorial" prefWidth="285.0" resizable="false" text="Fecha Visita" />
+                                             </columns>
+                                          </TableView>
+                                          <GridPane>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                          </GridPane>
+                                          <GridPane>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <JFXRadioButton fx:id="rdAceptadas" onAction="#accionAceptadasHS" selected="true" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaInforme.css" text="Aceptadas" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                      <JFXRadioButton fx:id="rdRechazadas" onAction="#accionRechazadassHS" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaInforme.css" text="Rechazadas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                      <JFXRadioButton fx:id="rdPendientes" onAction="#accionPendientesHS" styleClass="jfxradiobutton" stylesheets="@cssvistas/CssVistaInforme.css" text="Pendientes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                      <JFXButton maxHeight="36.0" minHeight="36.0" onAction="#accionExportarHistorialVisita" prefHeight="36.0" prefWidth="120.0" styleClass="btnEstilo" stylesheets="@cssvistas/CssVistaInforme.css" text="Excel" textFill="WHITE" GridPane.columnIndex="3">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                         <graphic>
+                                                            <FontAwesomeIcon fill="WHITE" glyphName="FILE_TEXT" />
+                                                         </graphic>
+                                                      </JFXButton>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Historial Encomiendas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                   </Tab>
                </tabs>

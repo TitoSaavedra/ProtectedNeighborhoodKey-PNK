@@ -185,7 +185,7 @@ public class VistaResidenteControlador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.txtResultadoBusquedaRutP1.setVisible(false);
-        this.jfxTabPane.getTabs().remove(submenuSeguridad);
+   //     this.jfxTabPane.getTabs().remove(submenuSeguridad);
         this.resetImagenUsuario();
         this.mostrarDatosTabla();
         this.desabilitarTodosTextoError();

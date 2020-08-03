@@ -11,6 +11,7 @@ import cl.pnk.dto.DireccionPersona;
 import cl.pnk.dto.Persona;
 import cl.pnk.dto.SolicitudVisita;
 import cl.pnk.dto.TablaSolicitudesVisita;
+import cl.pnk.utils.ConnDBAmazon;
 import cl.pnk.utils.DBUtils;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -24,7 +25,7 @@ import javafx.collections.ObservableList;
 public class TablaSolicitudesVisitaDal {
 
     private DBUtils dbutils = new DBUtils();
-
+    private ConnDBAmazon connDBAmazon = new ConnDBAmazon();
     public ObservableList<TablaSolicitudesVisita> obtenerTablaSolicitudesVisita(String estadoVisita) throws FileNotFoundException {
         ObservableList<TablaSolicitudesVisita> listaTablaSolicitudesVisita = FXCollections.observableArrayList();
         try {
