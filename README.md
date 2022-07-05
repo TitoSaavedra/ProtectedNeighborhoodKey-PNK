@@ -20,3 +20,8 @@ La solución a desarrollar contempla entregar principalmente un acceso rápido, 
 
 ## Video de muestra del funcionamiento
 
+[![Img alt text](https://i9.ytimg.com/vi/LUavGVwGTbE/sddefault.jpg?v=5f221558&sqp=COCdkpYG&rs=AOn4CLDmqoTCySRJI1VslduHesj0_mpy5w)](https://www.youtube.com/watch?v=qDLW8HNtp4E)
+
+## Técnologias usadas
+
+<p align="left"> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> </p>
