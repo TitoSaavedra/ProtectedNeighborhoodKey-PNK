@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_visitas"
+        android:enabled="true"
+        android:icon="@drawable/ic_visitas"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/nav_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_inicio"
+        android:title=""
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/nav_historial"
+        android:enabled="true"
+        android:icon="@drawable/ic_historial"
+        android:title=""
+        app:showAsAction="ifRoom" />
+</menu>

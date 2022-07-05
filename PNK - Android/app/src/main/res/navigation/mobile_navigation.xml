@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="cl.inacap.pnk.ui.fragments.home.HomeFragment"
+        android:label="@string/label_inicio"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_notificaciones"
+            app:destination="@id/notificaciones" />
+        <action
+            android:id="@+id/action_nav_home_to_notificacionVista"
+            app:destination="@id/notificacionVista" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_visitas"
+        android:name="cl.inacap.pnk.ui.fragments.visitas.TabbedFragment"
+        android:label="@string/label_visitas"
+        tools:layout="@layout/fragment_tabbed">
+        <action
+            android:id="@+id/action_nav_visitas_to_visitaPerfil"
+            app:destination="@id/visitaPerfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_historial"
+        android:name="cl.inacap.pnk.ui.fragments.historial.HistorialFragment"
+        android:label="@string/label_historial"
+        tools:layout="@layout/fragment_historial" />
+    <fragment
+        android:id="@+id/nav_seguridad"
+        android:name="cl.inacap.pnk.ui.fragments.seguridad.SeguridadFragment"
+        android:label="@string/label_seguridad"
+        tools:layout="@layout/fragment_seguridad" >
+        <action
+            android:id="@+id/action_nav_seguridad_self"
+            app:destination="@id/nav_seguridad" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificaciones"
+        android:name="cl.inacap.pnk.ui.fragments.Notificaciones.Notificaciones"
+        android:label="Notificaciones"
+        tools:layout="@layout/fragment_notificaciones" >
+        <action
+            android:id="@+id/action_notificaciones_to_notificacionVista"
+            app:destination="@id/notificacionVista" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificacionVista"
+        android:name="cl.inacap.pnk.ui.fragments.Notificaciones.NotificacionVista"
+        android:label="Notificacion Detalle"
+        tools:layout="@layout/fragment_notificacion_vista" />
+    <fragment
+        android:id="@+id/perfil"
+        android:name="cl.inacap.pnk.ui.fragments.perfil.Perfil"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfil_to_perfilActualizarContra"
+            app:destination="@id/perfilActualizarContra" />
+        <action
+            android:id="@+id/action_perfil_to_perfilActualizar"
+            app:destination="@id/perfilActualizar" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilActualizarContra"
+        android:name="cl.inacap.pnk.ui.fragments.perfil.PerfilActualizarContra"
+        android:label="Actualizar contraseña"
+        tools:layout="@layout/fragment_perfil_actualizar_contra" />
+    <fragment
+        android:id="@+id/perfilActualizar"
+        android:name="cl.inacap.pnk.ui.fragments.perfil.PerfilActualizar"
+        android:label="Actualizar Perfil"
+        tools:layout="@layout/fragment_perfil_actualizar" />
+    <fragment
+        android:id="@+id/visitaPerfil"
+        android:name="cl.inacap.pnk.ui.fragments.visitas.VisitaPerfil"
+        android:label="Perfil Visita"
+        tools:layout="@layout/fragment_visita_perfil" >
+        <action
+            android:id="@+id/action_visitaPerfil_to_nav_visitas"
+            app:destination="@id/nav_visitas" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_nav_seguridad"
+        app:destination="@id/nav_seguridad"
+        app:enterAnim="@anim/nav_default_enter_anim" /><action android:id="@+id/action_global_perfil" app:destination="@id/perfil"/>
+
+</navigation>

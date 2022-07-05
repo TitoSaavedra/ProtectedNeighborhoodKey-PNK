@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryAlt"
+    tools:context=".ui.Login">
+
+
+    <ImageView
+        android:id="@+id/banner_top"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_banner_bg"
+        android:layout_marginTop="0dp"
+        ></ImageView>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:src="@drawable/img_logo_pnk"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        ></ImageView>
+
+    <TextView
+        android:id="@+id/tv_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlanco">
+    </TextView>
+
+    <EditText
+        android:id="@+id/ed_correo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_correo"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/input_login"
+        android:hint="@string/email"
+        android:drawableLeft="@drawable/ic_person_white_24dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingEnd="10dp"
+        android:drawablePadding="10dp"
+        android:textColorHint="@color/colorBlanco"
+        android:inputType="text"
+        android:textColor="@color/colorBlanco"
+        android:textSize="16sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_clave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contraseña"
+        android:layout_below="@+id/ed_correo"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlanco"></TextView>
+
+    <EditText
+        android:id="@+id/ed_clave"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_clave"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/input_login"
+        android:hint="@string/contraseña"
+        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingEnd="10dp"
+        android:drawablePadding="10dp"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlanco"
+        android:textColorHint="@color/colorBlanco">
+    </EditText>
+
+
+    <Button
+        android:id="@+id/btn_iniciar"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ed_clave"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_background"
+        android:backgroundTint="@color/colorVerde"
+        android:textColor="@color/colorBlanco"
+        android:textSize="16sp"
+        android:text="@string/iniciarSesion">
+    </Button>
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/ed_clave"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="100dp"
+        android:background="@color/colorVerde"
+        android:layout_centerHorizontal="true">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:lottie_rawRes="@raw/loading_login1"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"></com.airbnb.lottie.LottieAnimationView>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_olvidasteContra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_iniciar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/olvidasteContraseña"
+        android:textColor="@color/colorBlanco"
+        android:textSize="18sp"></TextView>
+
+    <TextView
+        android:id="@+id/tv_noCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_olvidasteContra"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/noCuenta"
+        android:textColor="@color/colorBlanco"
+        android:textSize="18sp"></TextView>
+
+    <ImageView
+        android:id="@+id/banner_bot"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:rotation="180"
+        android:src="@drawable/img_banner_bg"></ImageView>
+
+</RelativeLayout>

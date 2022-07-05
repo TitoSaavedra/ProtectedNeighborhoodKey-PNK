@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="3.5dp"
+    android:layout_marginBottom="3.5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:elevation="10dp"
+    android:padding="10dp"
+    app:cardCornerRadius="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_visita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person_black_40dp"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            ></ImageView>
+        <TextView
+            android:id="@+id/tv_id_visita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"></TextView>
+
+        <TextView
+            android:id="@+id/tv_rut_visita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/img_visita"
+            android:text="RUT DE VISITA"></TextView>
+
+        <TextView
+            android:id="@+id/tv_nombre_visita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rut_visita"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/img_visita"
+            android:text="NOMBRE VISITA"></TextView>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

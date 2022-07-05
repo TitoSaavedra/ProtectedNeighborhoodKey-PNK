@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.Notificaciones.NotificacionVista">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_lottie" />
+
+    <RelativeLayout
+        android:id="@+id/pantalla_notificacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:padding="10dp"
+            android:background="#fff"
+            android:id="@+id/liner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_tipo_notificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/label_tipo_noti"></TextView>
+            ></RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="7dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="6dp"
+            android:layout_below="@+id/liner">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
+                <ImageView
+                    android:id="@+id/imgNotificacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/tv_titulo_noti"
+                    android:src="@drawable/ic_visitas_40dp"></ImageView>
+                <TextView
+                    android:id="@+id/tv_titulo_noti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="TITULO NOTIFICACION"></TextView>
+                <TextView
+                    android:id="@+id/tv_detalle1"
+                    android:layout_below="@+id/imgNotificacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Nombre: "></TextView>
+                <TextView
+                    android:id="@+id/tv_detalle2"
+                    android:layout_below="@id/tv_detalle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignStart="@id/tv_detalle1"
+                    android:text="Descripcion: "></TextView>
+                <TextView
+                    android:id="@+id/tv_detalle3"
+                    android:layout_below="@id/tv_detalle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignStart="@id/tv_detalle1"
+                    android:text="Fecha ingreso: "></TextView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="7dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="6dp"
+            android:layout_below="@+id/cardViewInicio">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
+                <TextView
+                    android:id="@+id/tv_notificacion_resultado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:text="TITULO NOTIFICACION"></TextView>
+                <ImageView
+                    android:id="@+id/imgResultado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/tv_notificacion_resultado"
+                    android:src="@drawable/ic_check_accept"></ImageView>
+                <TextView
+                    android:id="@+id/tv_fecha_retiro"
+                    android:layout_below="@id/imgResultado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Fecha retiro: "></TextView>
+                <TextView
+                    android:id="@+id/tv_hora_retiro"
+                    android:layout_below="@id/tv_fecha_retiro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignStart="@+id/tv_fecha_retiro"
+                    android:text="Fecha ingreso: "></TextView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

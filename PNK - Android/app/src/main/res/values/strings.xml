@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">PNK</string>
+    <string name="server">http://34.232.87.118/BD_PNK/</string>
+    <string name="email">Direccion de correo</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciarSesion">Iniciar sesión</string>
+    <string name="olvidasteContraseña">¿Olvidaste tu contraseña?</string>
+    <string name="noCuenta">¿No tienes cuenta?</string>
+    <string name="title_activity_inicio">Inicio</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Label de menús -->
+    <string name="menu_cerrar">Cerrar sesión</string>
+    <string name="menu_seguridad">Seguridad</string>
+    <string name="menu_pagina_web">Pagina web</string>
+    <string name="menu_apliacion">Play store</string>
+    <string name="menu_app_version">App versión</string>
+
+    <!-- Titulos de pantallas -->
+    <string name="label_inicio">Inicio</string>
+    <string name="label_visitas">Visitas</string>
+    <string name="label_historial">Historial</string>
+    <string name="label_seguridad">Seguridad</string>
+
+    <!-- Inicio -->
+    <string name="label_acceso_estado">Acceso: Buscando...</string>
+    <string name="label_Notificaciones">Notificaciones</string>
+    <string name="label_ver_mas">Ver más</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Notificaciones-->
+    <string name="label_filtro">Filtro:</string>
+    <string-array name="sp_opciones">
+        <item>Todas</item>
+        <item>Visitas</item>
+        <item>Encomiendas</item>
+    </string-array>
+    <!--Notificaciones vista-->
+    <string name="label_tipo_noti">Tipo Notificacion</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_tablbed">TablbedActivity</string>
+    <string name="tab_text_1">Visitantes</string>
+    <string name="tab_text_2">Historial visitas</string>
+</resources>

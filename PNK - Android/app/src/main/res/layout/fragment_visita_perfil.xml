@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.visitas.VisitaPerfil">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView3"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_lottie" />
+
+    <RelativeLayout
+        android:id="@+id/pantalla_visita"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <TextView
+                android:id="@+id/tv_nombre_completo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diego Rivarola"
+                android:layout_marginBottom="30dp"
+                android:layout_marginStart="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/tv_nombre_visita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textColor="#fff"
+                android:layout_marginBottom="5dp"
+                android:textSize="16sp"
+                android:layout_alignStart="@+id/tv_nombre_completo"
+                android:visibility="gone"
+                android:text="Primera visita: 18/05/2020"></TextView>
+        </RelativeLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_sin_foto"></de.hdodenhof.circleimageview.CircleImageView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_datos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            android:elevation="6dp"
+            android:layout_below="@id/img_perfil">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/tvDatosPersonales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos Personales"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"></TextView>
+                <ImageView
+                    android:id="@+id/imgRut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_rut"
+                    android:tint="@color/colorVerde"
+                    android:layout_below="@id/tvDatosPersonales"></ImageView>
+                <TextView
+                    android:id="@+id/tv_rut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Rut: 18354223-7"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@+id/imgRut"
+                    android:layout_below="@id/tvDatosPersonales"></TextView>
+                <ImageView
+                    android:id="@+id/imgNombres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_perfil"
+                    android:tint="@color/colorVerde"
+                    android:layout_below="@id/imgRut"></ImageView>
+                <TextView
+                    android:id="@+id/tv_nombres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/imgRut"
+                    android:layout_toRightOf="@id/imgNombres"
+                    android:textSize="16sp"
+                    android:text="Nombre: Diego"></TextView>
+                <ImageView
+                    android:id="@+id/imgApellidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_perfil"
+                    android:tint="@color/colorVerde"
+                    android:layout_below="@id/imgNombres"></ImageView>
+                <TextView
+                    android:id="@+id/tv_apellidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgNombres"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/imgApellidos"
+                    android:textSize="16sp"
+                    android:text="Apellido: Rivarola"></TextView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            android:elevation="6dp"
+            android:layout_below="@id/cardView_datos">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/tv_solicitud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Solicitar acceso"
+                    android:textSize="18sp"></TextView>
+                <TextView
+                    android:id="@+id/tv_fecha_acceso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_solicitud"
+                    android:labelFor="@id/et_fecha_acceso"
+                    android:layout_alignStart="@id/et_fecha_acceso"
+                    android:text="Fecha acceso:"></TextView>
+
+                <EditText
+                    android:id="@+id/et_fecha_acceso"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_fecha_acceso"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/input_login"
+                    android:focusable="auto"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:textAlignment="center"></EditText>
+                <TextView
+                    android:id="@+id/tv_hora_acceso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_fecha_acceso"
+                    android:layout_alignStart="@id/et_fecha_acceso"
+                    android:layout_marginTop="10dp"
+                    android:text="Hora acceso:"></TextView>
+
+                <EditText
+                    android:id="@+id/et_hora_acceso"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_hora_acceso"
+                    android:layout_alignStart="@+id/tv_hora_acceso"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/input_login"
+                    android:focusableInTouchMode="false"
+                    android:inputType="datetime"
+                    android:textAlignment="center"></EditText>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/et_hora_acceso">
+                    <Button
+                        android:id="@+id/btn_solicitar_acceso"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:background="@drawable/btn_background"
+                        android:backgroundTint="@color/colorVerde"
+                        android:layout_marginEnd="10dp"
+                        android:text="Solicitar"></Button>
+
+                    <Button
+                        android:id="@+id/btn_cancelar_acceso"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_background"
+                        android:backgroundTint="@color/colorRojo"
+                        android:layout_toRightOf="@+id/btn_solicitar_acceso"
+                        android:layout_marginStart="10dp"
+                        android:text="Cancelar"
+                        android:textColor="#fff"></Button>
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#357CEA</color>
+    <color name="colorPrimaryAlt">#10B2FF</color>
+    <color name="colorRojo">#EE3F3F</color>
+    <color name="colorRojoDegradado">#92EE3F3F</color>
+    <color name="colorVerde">#52DBCE</color>
+    <color name="colorVerdeDegradado">#8552DBCE</color>
+    <color name="colorBlanco">#fff</color>
+    <color name="colorCelesteBtn">#3FA7D9</color>
+</resources>

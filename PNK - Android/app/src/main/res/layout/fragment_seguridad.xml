@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.seguridad.SeguridadFragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:text="Tarjeta de acceso NFC"></TextView>
+
+    <ImageView
+        android:id="@+id/img_nfc"
+        android:layout_width="87dp"
+        android:layout_height="82dp"
+        android:layout_below="@+id/tv_titulo"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_nfc"></ImageView>
+    <TextView
+        android:id="@+id/tv_estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_titulo"
+        android:layout_toRightOf="@id/img_nfc"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Estado: "></TextView>
+    <Button
+        android:id="@+id/btn_desbloquear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tv_estado"
+        android:layout_toRightOf="@id/img_nfc"
+        android:layout_marginStart="10dp"
+        android:text="Desbloquear"
+        android:enabled="false"
+        android:textSize="10sp"
+        android:background="@drawable/btn_background"
+        android:drawableLeft="@drawable/ic_lock_open"
+        android:padding="10dp"
+        android:backgroundTint="@color/colorVerde"></Button>
+    <Button
+        android:id="@+id/btn_bloquear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:textSize="10sp"
+        android:text="Bloquear"
+        android:enabled="false"
+        android:backgroundTint="@color/colorRojo"
+        android:layout_toRightOf="@id/btn_desbloquear"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/tv_estado"
+        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:padding="10dp"
+        android:background="@drawable/btn_background"></Button>
+
+    <TextView
+        android:id="@+id/tv_inicio_sesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_nfc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:text="Inicios de sesión"></TextView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSesion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_inicio_sesion"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="45dp"></androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>
+
+</FrameLayout>

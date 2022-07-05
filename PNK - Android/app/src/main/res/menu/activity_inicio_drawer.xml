@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_seguridad"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/menu_seguridad" />
+        <item
+            android:id="@+id/cerrarSesion"
+            android:icon="@drawable/ic_power_settings"
+            android:title="@string/menu_cerrar" />
+    </group>
+
+    <item android:title="Información">
+        <menu>
+            <item
+                android:id="@+id/pagina_web"
+                android:icon="@drawable/ic_web"
+                android:title="@string/menu_pagina_web" />
+            <item
+                android:id="@+id/app_movil"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="@string/menu_apliacion" />
+            <item
+                android:id="@+id/app_version"
+                android:icon="@drawable/ic_android_black_24dp"
+                android:enabled="false"
+                android:title="PNK v0.1" />
+        </menu>
+    </item>
+
+</menu>

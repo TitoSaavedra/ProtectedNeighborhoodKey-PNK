@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="3.5dp"
+    android:layout_marginBottom="3.5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:elevation="10dp"
+    android:padding="10dp"
+    app:cardCornerRadius="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_solicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_visitas_40dp"
+                android:layout_toLeftOf="@id/tv_tipo_solicitud"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                ></ImageView>
+            <TextView
+                android:id="@+id/tv_id_solicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"></TextView>
+            <TextView
+                android:id="@+id/tv_tipo_solicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBaseline="@id/img_solicitud"
+                android:layout_marginTop="10dp"
+                android:text="TIPO SOLICITUD"></TextView>
+            <TextView
+                android:id="@+id/tv_detalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tipo_solicitud"
+                android:layout_alignStart="@id/tv_tipo_solicitud"
+                android:layout_marginTop="5dp"
+                android:text="SOLICITUD DETALLE"></TextView>
+            <TextView
+                android:id="@+id/tv_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_detalle"
+                android:layout_alignStart="@id/tv_tipo_solicitud"
+                android:layout_marginTop="5dp"
+                android:text="SOLICITUD FECHA"></TextView>
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.perfil.PerfilActualizar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <TextView
+                android:id="@+id/tv_nombre_completo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                ></TextView>
+        </RelativeLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/img_perfil"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:civ_border_width="5dp"
+            app:civ_border_color="@color/colorBlanco"
+            android:src="@drawable/img_sin_foto"
+            ></de.hdodenhof.circleimageview.CircleImageView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="6dp"
+            android:layout_below="@id/img_perfil">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/tv_titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Datos actuales"></TextView>
+                <TextView
+                    android:id="@+id/tv_email_actual"
+                    android:layout_below="@id/tv_titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:textSize="18sp"
+                    android:text="Email: "></TextView>
+                <TextView
+                android:id="@+id/tv_telefono_actual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefono: "
+                android:layout_below="@+id/tv_email_actual"
+                android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                android:layout_alignStart="@id/tv_email_actual"></TextView>
+                <TextView
+                    android:id="@+id/tv_nuevo_datos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/tv_telefono_actual"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Nuevos datos"></TextView>
+                <TextView
+                    android:id="@+id/tv_email_nuevo"
+                    android:layout_below="@id/tv_nuevo_datos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:labelFor="@+id/et_contra_nueva"
+                    android:layout_alignStart="@id/et_email_nuevo"
+                    android:textSize="18sp"
+                    android:text="Email nuevo:"></TextView>
+                <EditText
+                    android:id="@+id/et_email_nuevo"
+                    android:layout_below="@+id/tv_email_nuevo"
+                    android:background="@drawable/input_login"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="240dp"
+                    android:hint="Email nuevo"
+                    android:padding="5dp"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableTint="@color/colorVerde"
+                    android:textColor="@color/colorVerde"
+                    android:inputType="textEmailAddress"
+                    android:layout_height="wrap_content"></EditText>
+                <TextView
+                    android:id="@+id/tv_telefono_nuevo"
+                    android:layout_below="@id/et_email_nuevo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:labelFor="@+id/et_contra_nueva"
+                    android:layout_alignStart="@id/et_email_nuevo"
+                    android:textSize="18sp"
+                    android:text="Telefono nuevo:"></TextView>
+                <EditText
+                    android:id="@+id/et_telefono_nuevo"
+                    android:layout_below="@+id/tv_telefono_nuevo"
+                    android:background="@drawable/input_login"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="240dp"
+                    android:hint="Telefono nuevo"
+                    android:padding="5dp"
+                    android:inputType="number"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/colorVerde"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableTint="@color/colorVerde"
+
+                    android:layout_height="wrap_content"></EditText>
+                <Button
+                    android:id="@+id/btn_actualizarDatosPerfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_background"
+                    android:textColor="#fff"
+                    android:padding="10dp"
+                    android:text="Guardar cambios"
+                    android:layout_below="@id/et_telefono_nuevo"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    ></Button>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</FrameLayout>
